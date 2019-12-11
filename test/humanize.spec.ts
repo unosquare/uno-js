@@ -1,14 +1,14 @@
 import { humanize } from '../lib/humanize';
 
-describe('humanize', function () {
-    describe('humanize word', function () {
-        it('should return humanized string', function () {
+describe('humanize', () => {
+    describe('humanize word', () => {
+        it('should return humanized string', () => {
             const result = humanize('HelloWorld!');
             expect(result).toBe('Hello World!');
         });
     });
-    describe('humanize lowercase word', function () {
-        it('should return humanized string', function () {
+    describe('humanize lowercase word', () => {
+        it('should return humanized string', () => {
             const result = humanize('helloworld!');
             expect(result).toBe('Helloworld!');
         });

@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jasmine-ts test/**/*.spec.ts",
-    "lint": "tslint src/**/*.ts",
-    "lint:fix": "tslint --fix src/**/*.ts",
+    "lint": "tsc --noEmit && eslint src/**/*.{js,ts} --quiet --fix",
     "build": "tsc",
     "prepublish": "npm run build"
   },
@@ -27,10 +26,27 @@
   "homepage": "https://github.com/unosquare/uno-js#readme",
   "devDependencies": {
     "@types/jasmine": "^3.3.15",
+    "@typescript-eslint/eslint-plugin": "^2.11.0",
+    "@typescript-eslint/parser": "^2.11.0",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "jasmine": "^3.1.0",
     "jasmine-ts": "^0.2.1",
+    "prettier": "^1.19.1",
     "ts-node": "^8.5.4",
     "tslint": "^5.20.1",
     "typescript": "^3.7.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }

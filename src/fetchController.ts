@@ -18,9 +18,11 @@ async function defaultResponseResolver(response: Response) {
 
     switch (response.status) {
         case 401:
-            throw new Error(responseJson && responseJson.error_description ?
-                String(responseJson.error_description) :
-                'The token is invalid/expired');
+            throw new Error(
+                responseJson && responseJson.error_description
+                    ? String(responseJson.error_description)
+                    : 'The token is invalid/expired',
+            );
         case 200:
         case 204:
             return responseJson;
@@ -55,7 +57,8 @@ export async function requestController(
     accessToken: string,
     requestMethod: string,
     requestBody: any,
-    options: any) {
+    options: any,
+) {
     const request = getRequest(url, accessToken, requestMethod, requestBody, options.headersResolver);
     const response = await fetch(request);
 
