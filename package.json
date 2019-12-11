@@ -1,0 +1,36 @@
+{
+  "name": "uno-js",
+  "version": "0.0.1",
+  "description": "Javascript common used functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-ts test/**/*.spec.ts",
+    "lint": "tslint src/**/*.ts",
+    "lint:fix": "tslint --fix src/**/*.ts",
+    "build": "tsc",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unosquare/uno-js.git"
+  },
+  "keywords": [
+    "Javascript",
+    "Functions",
+    "JS"
+  ],
+  "author": "Unosquare",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unosquare/uno-js/issues"
+  },
+  "homepage": "https://github.com/unosquare/uno-js#readme",
+  "devDependencies": {
+    "@types/jasmine": "^3.3.15",
+    "jasmine": "^3.1.0",
+    "jasmine-ts": "^0.2.1",
+    "ts-node": "^8.5.4",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.3"
+  }
+}
