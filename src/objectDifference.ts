@@ -2,7 +2,7 @@ export const objectDifference = (obj1: any, obj2: any) => {
     if (!obj2 || Object.prototype.toString.call(obj2) !== '[object Object]') {
         return obj1;
     }
-    let diffs = {};
+    const diffs = {};
     let prop: string;
 
     const compare = (item1, item2) => {

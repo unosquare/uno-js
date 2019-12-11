@@ -16,7 +16,6 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "resolveJsonModule": true,
-        "jsx": "react",
         "outDir": "./lib",
         "declaration": true,
         "sourceMap": true

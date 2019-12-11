@@ -1,7 +1,6 @@
 {
     "extends": [
-      "tslint:recommended",
-      "tslint-react"
+      "tslint:recommended"
     ],
     "jsRules": {
       "class-name": true,
