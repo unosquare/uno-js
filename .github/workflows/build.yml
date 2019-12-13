@@ -22,3 +22,4 @@ jobs:
       - name: npm build and unit
         run: |
           npm run build
+          npm test

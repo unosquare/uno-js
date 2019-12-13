@@ -1,16 +1,19 @@
 import { debounce } from '../lib/debounce';
 
+const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+
 describe('debounce', () => {
-    it('should return array lenght == 1', () => {
+    it('should return array lenght == 1', async () => {
         const result = [];
         const fn = debounce(() => {
             result.push('Hello!');
-            console.log(result);
-        }, 500);
+        }, 150);
         fn();
+        await delay(100);
         fn();
+        await delay(100);
         fn();
-        while (result.length <= 0) { const x = 1; }
+        await delay(300);
         expect(result.length).toBe(1);
     });
 });
