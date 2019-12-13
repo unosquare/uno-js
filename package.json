@@ -1,8 +1,8 @@
 {
   "name": "uno-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Javascript common used functions",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jasmine-ts test/**/*.spec.ts",
     "lint": "tsc --noEmit && eslint src/**/*.{js,ts} --quiet --fix",
@@ -18,7 +18,7 @@
     "JS"
   ],
   "author": "Unosquare",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/unosquare/uno-js/issues"
   },
