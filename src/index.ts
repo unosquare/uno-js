@@ -5,4 +5,4 @@ export * from './humanize';
 export * from './objectDifference';
 export * from './removeDuplicated';
 export * from './toTitleCase';
-export * from './withEnter';
+export * from './withEnter'
