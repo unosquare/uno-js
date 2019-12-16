@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/unosquare/uno-js#readme",
   "devDependencies": {
+    "@neovici/github-actions-eslint-annotator": "^0.3.0",
     "@types/jasmine": "^3.3.15",
     "@typescript-eslint/eslint-plugin": "^2.11.0",
     "@typescript-eslint/parser": "^2.11.0",
