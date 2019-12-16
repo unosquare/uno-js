@@ -14,8 +14,11 @@ jobs:
           key: node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             node-
-      - name: npm build and unit
+      - name: npm build and coverage
         run: |
           npm ci
           npm run build
           npm test
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
