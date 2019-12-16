@@ -6,3 +6,4 @@ export * from './objectDifference';
 export * from './removeDuplicated';
 export * from './toTitleCase';
 export * from './withEnter';
+export * from './SimpleObservable';
