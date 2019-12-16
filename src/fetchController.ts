@@ -42,7 +42,13 @@ async function defaultResponseResolver(response: Response): Promise<any> {
     }
 }
 
-function getRequest(url: string, accessToken: string, requestMethod: string, requestBody: any, headersResolver: any): Request {
+function getRequest(
+    url: string,
+    accessToken: string,
+    requestMethod: string,
+    requestBody: any,
+    headersResolver: any,
+): Request {
     const init = {
         body: requestBody ? requestBody : null,
         headers: headersResolver(url, accessToken),
