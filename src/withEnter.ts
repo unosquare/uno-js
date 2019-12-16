@@ -8,4 +8,4 @@ export const asyncOnEnterKey = (callback: () => void) => async (ev: { keyCode: n
     if (ev.keyCode === 13) {
         await callback();
     }
-};
+}
