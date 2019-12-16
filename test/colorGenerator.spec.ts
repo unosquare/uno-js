@@ -1,4 +1,4 @@
-import { colorGenerator } from '../dist';
+import { colorGenerator } from '../src/colorGenerator';
 
 describe('colorGenerator', () => {
     it('should return an array of rgb colors', () => {

@@ -1,4 +1,4 @@
-import { debounce } from '../dist';
+import { debounce } from '../src/debounce';
 
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
