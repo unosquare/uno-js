@@ -19,6 +19,8 @@ jobs:
         run: |
           npm ci
           npm run preparepackage
+          cd dist
+          ls
       - name: Publish
         uses: geoperez/merge-release@master
         env:
