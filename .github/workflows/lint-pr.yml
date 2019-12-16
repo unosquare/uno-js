@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: stefanoeb/eslint-action@1.0.0
-        with:
-          args: './src/**/*.{js,ts,tsx}'
+      - name: ESLint
+        run: npx github-actions-eslint-annotator
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
