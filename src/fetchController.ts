@@ -12,7 +12,7 @@ function defaultHeadersResolver(url: string, accessToken: string): Headers {
     return headers;
 }
 
-async function defaultResponseResolver(response: Response): any {
+async function defaultResponseResolver(response: Response): Promise<any> {
     const responseBody = await response.text();
     const responseJson = responseBody ? JSON.parse(responseBody) : {};
 
