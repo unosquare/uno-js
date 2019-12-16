@@ -18,7 +18,7 @@
         "resolveJsonModule": true,
         "outDir": "./lib",
         "declaration": true,
-        "sourceMap": true
+        "sourceMap": false
     },
     "include": ["src/**/*.ts"],
     "exclude": ["test/**/*.*", "node_modules"]
