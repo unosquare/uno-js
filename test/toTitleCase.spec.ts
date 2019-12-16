@@ -1,4 +1,4 @@
-import { toTitleCase } from '../lib/toTitleCase';
+import { toTitleCase } from '../dist';
 
 describe('toTitleCase', () => {
     it('should return title cased string', () => {

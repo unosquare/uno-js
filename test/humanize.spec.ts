@@ -1,4 +1,4 @@
-import { humanize } from '../lib/humanize';
+import { humanize } from '../dist';
 
 describe('humanize', () => {
     describe('humanize word', () => {

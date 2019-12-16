@@ -1,4 +1,4 @@
-import { objectDifference } from '../lib/objectDifference';
+import { objectDifference } from '../dist';
 
 const x = { name: 'Mike', age: '3', gender: 'Male' };
 const y = { name: 'John', age: '5', gender: 'Male' };

@@ -1,4 +1,4 @@
-import { removeDuplicated } from '../lib/removeDuplicated';
+import { removeDuplicated } from '../dist';
 
 const values = [
     { name: 'Mike', age: '3', gender: 'Male' },
