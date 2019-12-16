@@ -1,5 +1,5 @@
 function defaultHeadersResolver(url: string, accessToken: string): Headers {
-    let headers = new Headers();
+    const headers = new Headers();
 
     if (url === '/api/token') {
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
