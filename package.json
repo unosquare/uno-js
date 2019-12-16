@@ -1,6 +1,6 @@
 {
   "name": "uno-js",
-  "version": "0.1.0",
+  "version": "0.2.2",
   "description": "Javascript common used functions",
   "main": "dist/index.js",
   "scripts": {

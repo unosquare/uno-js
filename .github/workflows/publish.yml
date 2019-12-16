@@ -18,9 +18,20 @@ jobs:
       - name: npm build
         run: |
           npm ci
+<<<<<<< HEAD
           npm run build
+=======
+          npm run preparepackage
+          cd dist
+          ls
+>>>>>>> f6b005ca5f275e6377027d87ab938f1004344f38
       - name: Publish
         uses: mikeal/merge-release@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+<<<<<<< HEAD
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+=======
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          PACKAGE_PATH: ./dist/
+>>>>>>> f6b005ca5f275e6377027d87ab938f1004344f38
