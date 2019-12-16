@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - run: npm ci
       - uses: a-b-r-o-w-n/eslint-action@v1
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
