@@ -4,8 +4,9 @@ export type Procedure = (...args: any[]) => void;
 export function debounce<F extends Procedure>(func: F, waitMilliseconds = 500): F {
     let timeoutId: any;
 
-    return function(this: any, ...args: any[]) {
-        const context = this;
+    // tslint:disable-next-line: only-arrow-functions
+    return function(t: any, ...args: any[]) {
+        const context = t;
 
         const doLater = () => {
             timeoutId = undefined;
