@@ -16,7 +16,7 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "resolveJsonModule": true,
-        "outDir": "./lib",
+        "outDir": "./dist",
         "declaration": true,
         "sourceMap": false
     },
