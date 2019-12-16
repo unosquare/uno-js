@@ -6,7 +6,10 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: stefanoeb/eslint-action@1.0.0
+      - uses: actions/checkout@v1   
+      - run: npm ci
+      - name: Lint
+        uses: Krizzu/eslint-check-action@v1.0.0
         with:
-          args: './src/**/*.{js,ts,tsx}'
+          ghToken: ${{ secrets.GITHUB_TOKEN }}
+          eslintExt: "ts, tsx"
