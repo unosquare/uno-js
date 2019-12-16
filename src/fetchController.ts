@@ -1,5 +1,5 @@
-function defaultHeadersResolver(url: string, accessToken: string) {
-    const headers = new Headers();
+function defaultHeadersResolver(url: string, accessToken: string): Headers {
+    let headers = new Headers();
 
     if (url === '/api/token') {
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -12,7 +12,7 @@ function defaultHeadersResolver(url: string, accessToken: string) {
     return headers;
 }
 
-async function defaultResponseResolver(response: Response) {
+async function defaultResponseResolver(response: Response): any {
     const responseBody = await response.text();
     const responseJson = responseBody ? JSON.parse(responseBody) : {};
 
@@ -42,7 +42,7 @@ async function defaultResponseResolver(response: Response) {
     }
 }
 
-function getRequest(url: string, accessToken: string, requestMethod: string, requestBody: any, headersResolver: any) {
+function getRequest(url: string, accessToken: string, requestMethod: string, requestBody: any, headersResolver: any): Request {
     const init = {
         body: requestBody ? requestBody : null,
         headers: headersResolver(url, accessToken),
