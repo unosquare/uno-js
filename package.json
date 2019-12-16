@@ -1,12 +1,15 @@
 {
   "name": "uno-js",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Javascript common used functions",
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "jasmine-ts test/**/*.spec.ts",
-    "lint": "tsc --noEmit && eslint src/**/*.{js,ts} --quiet --fix",
-    "build": "tsc"
+    "lint": "eslint src/**/*.{js,ts}",
+    "lint:fix": "eslint src/**/*.{js,ts} --fix",
+    "build": "tsc",
+    "preparepackage": "npm run build && npm run copypackage",
+    "copypackage": "npx shx cp package.json dist"
   },
   "repository": {
     "type": "git",
@@ -24,11 +27,12 @@
   },
   "homepage": "https://github.com/unosquare/uno-js#readme",
   "devDependencies": {
-    "@neovici/github-actions-eslint-annotator": "^0.3.0",
     "@types/jasmine": "^3.3.15",
     "@typescript-eslint/eslint-plugin": "^2.11.0",
     "@typescript-eslint/parser": "^2.11.0",
     "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "jasmine": "^3.1.0",
     "jasmine-ts": "^0.2.1",
     "prettier": "^1.19.1",

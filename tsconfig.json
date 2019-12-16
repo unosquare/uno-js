@@ -16,9 +16,9 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "resolveJsonModule": true,
-        "outDir": "./lib",
+        "outDir": "./dist",
         "declaration": true,
-        "sourceMap": true
+        "sourceMap": false
     },
     "include": ["src/**/*.ts"],
     "exclude": ["test/**/*.*", "node_modules"]

@@ -1,4 +1,4 @@
-function defaultHeadersResolver(url: string, accessToken: string) {
+function defaultHeadersResolver(url: string, accessToken: string): Headers {
     const headers = new Headers();
 
     if (url === '/api/token') {
@@ -12,7 +12,7 @@ function defaultHeadersResolver(url: string, accessToken: string) {
     return headers;
 }
 
-async function defaultResponseResolver(response: Response) {
+async function defaultResponseResolver(response: Response): Promise<any> {
     const responseBody = await response.text();
     const responseJson = responseBody ? JSON.parse(responseBody) : {};
 
@@ -42,7 +42,13 @@ async function defaultResponseResolver(response: Response) {
     }
 }
 
-function getRequest(url: string, accessToken: string, requestMethod: string, requestBody: any, headersResolver: any) {
+function getRequest(
+    url: string,
+    accessToken: string,
+    requestMethod: string,
+    requestBody: any,
+    headersResolver: any,
+): Request {
     const init = {
         body: requestBody ? requestBody : null,
         headers: headersResolver(url, accessToken),
