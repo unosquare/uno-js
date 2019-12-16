@@ -14,9 +14,6 @@ jobs:
           key: node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             node-
-      - uses: stefanoeb/eslint-action@1.0.0
-        with:
-          args: './src/**/*.{js,ts,tsx}'
       - name: npm build and unit
         run: |
           npm ci
