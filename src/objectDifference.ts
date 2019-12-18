@@ -1,11 +1,11 @@
-export const objectDifference: any = (obj1: any, obj2: any) => {
+export const objectDifference: {} = (obj1: {}, obj2: {}) => {
     if (!obj2 || Object.prototype.toString.call(obj2) !== '[object Object]') {
         return obj1;
     }
     const diffs = {};
     let prop: string;
 
-    const compare = (item1, item2) => {
+    const compare = (item1: any, item2: any): void => {
         if (item1 !== item2) {
             diffs[prop] = { prev: item1, new: item2, type: prop };
         }

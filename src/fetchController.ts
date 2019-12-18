@@ -46,10 +46,10 @@ function getRequest(
     url: string,
     accessToken: string,
     requestMethod: string,
-    requestBody: any,
+    requestBody: BodyInit,
     headersResolver: any,
 ): Request {
-    const init = {
+    const init: RequestInit = {
         body: requestBody ? requestBody : null,
         headers: headersResolver(url, accessToken),
         method: requestMethod,
@@ -64,7 +64,7 @@ export async function requestController(
     requestMethod: string,
     requestBody: any,
     options: any,
-) {
+): Promise<any> {
     const request = getRequest(url, accessToken, requestMethod, requestBody, options.headersResolver);
     const response = await fetch(request);
 
