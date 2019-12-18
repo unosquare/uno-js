@@ -62,7 +62,7 @@ export async function requestController(
     url: string,
     accessToken: string,
     requestMethod: string,
-    requestBody: any,
+    requestBody: BodyInit,
     options: any,
 ): Promise<any> {
     const request = getRequest(url, accessToken, requestMethod, requestBody, options.headersResolver);
