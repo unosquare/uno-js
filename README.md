@@ -4,5 +4,13 @@
 # uno-js
 
 Unosquare Typescript/JavaScript Library, zero dependencies.
+String and array manipulation, easy-to-use fetch controller and more, written in Typescript.
+
+### Installation (npm)
+To install uno-js through npm, you only need to write down the following command:
+
+    npm install uno-js --save
+
+npm link - [uno-js package](https://www.npmjs.com/package/uno-js)
 
 Check the documentation of this library at [https://unosquare.github.io/uno/uno-js](https://unosquare.github.io/uno/uno-js).
