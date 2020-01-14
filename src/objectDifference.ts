@@ -5,7 +5,7 @@ export const objectDifference = (obj1: {}, obj2: {}): {} => {
     const diffs = {};
     let prop: string;
 
-    const compare = (item1: any, item2: any): void => {
+    const compare = (item1: {}, item2: {}): void => {
         if (item1 !== item2) {
             diffs[prop] = { prev: item1, new: item2, type: prop };
         }
