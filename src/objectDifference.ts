@@ -1,4 +1,4 @@
-export const objectDifference: {} = (obj1: {}, obj2: {}) => {
+export const objectDifference = (obj1: {}, obj2: {}): {} => {
     if (!obj2 || Object.prototype.toString.call(obj2) !== '[object Object]') {
         return obj1;
     }
