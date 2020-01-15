@@ -1,10 +1,11 @@
 import { toDate } from '../src/toDate';
 
-const value = { x: '2020-01-21T06:00:00', y: 3, z: '20200101' };
+const value = { x1: '2020-01-21T06:00:00', x2: '2020-01-01T00:00:00', y1: 3, y2: '20200101' };
 
 describe('toDate', () => {
     toDate(value);
-    it('should return true if Date', () => expect(value.x.constructor === Date).toBe(true));
+    it('should return true if Date', () =>
+        expect(value.x1.constructor === Date && value.x2.constructor === Date).toBe(true));
     it('should return true if not Date', () =>
-        expect(value.y.constructor !== Date && value.z.constructor !== Date).toBe(true));
+        expect(value.y1.constructor !== Date && value.y2.constructor !== Date).toBe(true));
 });
