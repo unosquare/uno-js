@@ -11,8 +11,10 @@ String and array manipulation, easy-to-use fetch controller and more, written in
 
 To install uno-js through npm, you only need to write down the following command:
 
-```
+```sh
     npm install uno-js --save
 ```
 
 Check the documentation of this library at [https://unosquare.github.io/uno/uno-js](https://unosquare.github.io/uno/uno-js).
+
+*NOTE* - This project include a copy of the function `parseISO` from [date-fns](https://github.com/date-fns/date-fns).

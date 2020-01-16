@@ -8,3 +8,4 @@ export * from './toDate';
 export * from './toTitleCase';
 export * from './withEnter';
 export * from './SimpleObservable';
+export * from './parseISO';
