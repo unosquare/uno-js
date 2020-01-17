@@ -13,7 +13,11 @@ export const toDate = (obj: {}): void => {
             obj[prop] = toLocalTime(obj[prop]);
         }
         if (typeof obj[prop] === 'object') {
-            Object.keys(obj[prop]).map(() => toDate(obj[prop]));
+            if (obj[prop] instanceof Array) {
+                Object.keys(obj[prop]).map(i => toDate(obj[prop][i]));
+            } else {
+                Object.keys(obj[prop]).map(() => toDate(obj[prop]));
+            }
         }
     });
 };
