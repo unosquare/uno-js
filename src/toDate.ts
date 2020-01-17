@@ -21,5 +21,8 @@ export const toDate = (obj: {}): void => {
                 ),
             );
         }
+        if (typeof obj[prop] !== 'string') {
+            Object.keys(obj[prop]).map(() => toDate(obj[prop]));
+        }
     });
 };
