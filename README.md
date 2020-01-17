@@ -10,7 +10,7 @@ String, array and Date manipulation, easy-to-use fetch controller and more, writ
 
 ### Installation (npm)
 
-To install uno-js through npm, you only need to write down the following command:
+To install uno-js through npm, you only need to run the following command:
 
 ```sh
     npm install uno-js --save
