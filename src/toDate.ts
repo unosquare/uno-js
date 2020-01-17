@@ -14,7 +14,7 @@ export const toDate = (obj: {}): void => {
         }
         if (typeof obj[prop] === 'object') {
             if (obj[prop] instanceof Array) {
-                Object.keys(obj[prop]).map(i => toDate(obj[prop][i]));
+                obj[prop].map(x => toDate(x));
             } else {
                 Object.keys(obj[prop]).map(() => toDate(obj[prop]));
             }
