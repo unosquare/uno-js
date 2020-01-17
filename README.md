@@ -5,7 +5,8 @@
 # uno-js
 
 Unosquare Typescript/JavaScript Library, zero dependencies.
-String and array manipulation, easy-to-use fetch controller and more, written in Typescript.
+
+String, array and Date manipulation, easy-to-use fetch controller and more, written in Typescript.
 
 ### Installation (npm)
 
