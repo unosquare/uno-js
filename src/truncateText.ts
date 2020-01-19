@@ -1,13 +1,16 @@
-export const truncateText = (text: string, length: number): string => {
+export const truncateText = (complement: TemplateStringsArray | string, text: string, length: number): string => {
+    let result = text;
     if (text && text.length > length) {
-        const newString = text.substr(0, length);
-        const indexLastSpace = newString.lastIndexOf(' ');
+        result = text.substr(0, length);
+        const indexLastSpace = result.lastIndexOf(' ');
 
-        if (indexLastSpace > -1) {
-            return `${text.substr(0, indexLastSpace).trimEnd()}...`;
+        if (indexLastSpace > -1 && typeof complement === 'string') {
+            return `${result.substr(0, indexLastSpace).trimEnd()}${complement}`;
+        } else if (indexLastSpace > -1 && typeof complement === 'object') {
+            result = result.substr(0, indexLastSpace).trimEnd();
         } else {
-            return `${newString}...`;
+            return `${result}${complement}`;
         }
     }
-    return text;
+    return typeof complement === 'object' ? `${complement[0]}${result}${complement[2]}` : result;
 };
