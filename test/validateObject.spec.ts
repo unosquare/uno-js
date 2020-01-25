@@ -13,23 +13,23 @@ const invalidObject = {
 };
 
 describe('validateObject', () => {
-    const valid = validateObject(validObject, propName => {
+    const valid = validateObject(validObject, (propName, propValue) => {
         switch (propName) {
             case 'x':
-                return validObject[propName] == 'Valid';
+                return propValue == 'Valid';
             case 'y':
-                return validObject[propName] !== null;
+                return propValue !== null;
             default:
                 return true;
         }
     });
 
-    const invalid = validateObject(invalidObject, propName => {
+    const invalid = validateObject(invalidObject, (propName, propValue, objectToValidate) => {
         switch (propName) {
             case 'x':
-                return validObject[propName] == 'Valid';
+                return propValue == 'Valid';
             case 'y':
-                return validObject[propName] !== null;
+                return objectToValidate['x'] === 'Invalid' && propValue !== null;
         }
     });
 
