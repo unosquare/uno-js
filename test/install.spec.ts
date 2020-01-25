@@ -10,14 +10,20 @@ describe('install', () => {
             expect(x[0].date.constructor === Date && x[1].constructor !== Date).toBe(true);
         });
     });
-    describe('Installed humanize', () =>
-        it('should return true if humanized', () => expect('thisIsGood'['humanize']()).toBe('This Is Good')));
+    describe('Installed humanize', () => {
+        it('should return true if humanized', () => {
+            expect('thisIsGood'['humanize']()).toBe('This Is Good');
+        });
+    });
     describe('Multiple install call', () => {
         it('shouldnt throw exception', () => {
             install();
             expect(true).toBe(true);
         });
     });
-    describe('Installed validateNotNull', () =>
-        it('should return true if validateNotNull', () => expect(x[0]['validateNotNull']()).toBe(true)));
+    describe('Installed validateNotNull', () => {
+        it('should return true if validateNotNull', () => {
+            expect(x[0]['validateNotNull']()).toBe(true);
+        });
+    });
 });
