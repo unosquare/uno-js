@@ -8,6 +8,7 @@ export * from './SimpleObservable';
 export * from './stringTemplate';
 export * from './toDate';
 export * from './toLocalTime';
+export * from './install';
 export * from './toTitleCase';
 export * from './truncateText';
 export * from './withEnter';
