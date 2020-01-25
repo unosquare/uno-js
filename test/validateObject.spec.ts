@@ -13,13 +13,30 @@ const invalidObject = {
 };
 
 describe('validateObject', () => {
+    const valid = validateObject(validObject, propName => {
+        switch (propName) {
+            case 'x':
+                return validObject[propName] == 'Valid';
+            case 'y':
+                return validObject[propName] !== null;
+            default:
+                return true;
+        }
+    });
+
+    const invalid = validateObject(invalidObject, propName => {
+        switch (propName) {
+            case 'x':
+                return validObject[propName] == 'Valid';
+            case 'y':
+                return validObject[propName] !== null;
+        }
+    });
+
     it('should return true if valid', () => {
-        expect(validateObject(validObject)).toBe(true);
+        expect(valid).toBe(true);
     });
     it('should return false if invalid', () => {
-        expect(validateObject(invalidObject)).toBe(false);
-    });
-    it('should return true if ignore null prop', () => {
-        expect(validateObject(invalidObject, ['y'])).toBe(true);
+        expect(invalid).toBe(false);
     });
 });

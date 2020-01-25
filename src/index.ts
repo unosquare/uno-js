@@ -13,3 +13,4 @@ export * from './truncateText';
 export * from './withEnter';
 export * from './parseISO';
 export * from './validateObject';
+export * from './validateNotNull';
