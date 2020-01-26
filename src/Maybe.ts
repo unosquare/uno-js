@@ -1,11 +1,11 @@
-export class Maybe {
+export class Maybe<T> {
     private value;
 
-    constructor(value: any) {
+    constructor(value: T) {
         this.value = value;
     }
 
-    public map(fn: Function): Maybe {
+    public map(fn: Function): Maybe<T> {
         return new Maybe(this.value !== null && this.value !== undefined ? fn(this.value) : null);
     }
 
