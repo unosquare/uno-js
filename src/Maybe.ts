@@ -9,7 +9,7 @@ export class Maybe<T> {
         return new Maybe(this.value !== null && this.value !== undefined ? fn(this.value) : null);
     }
 
-    public getOrDefault(defaultValue: any): any {
+    public getOrDefault(defaultValue?: T): T {
         return this.value !== null ? this.value : defaultValue;
     }
 }
