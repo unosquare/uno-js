@@ -2,7 +2,7 @@ import { validateObject } from '../src/validateObject';
 
 const validObject = {
     x: 'Valid',
-    y: 0,
+    y: 1,
     z: true,
 };
 
@@ -13,30 +13,24 @@ const invalidObject = {
 };
 
 describe('validateObject', () => {
-    const valid = validateObject(validObject, (propName, propValue) => {
-        switch (propName) {
+    const validation = validateObject((prop, item) => {
+        switch (prop) {
             case 'x':
-                return propValue == 'Valid';
+                return item[prop] == 'Valid';
             case 'y':
-                return propValue !== null;
+                return item[prop] !== null && item[prop] > 0;
             default:
                 return true;
         }
     });
 
-    const invalid = validateObject(invalidObject, (propName, propValue, objectToValidate) => {
-        switch (propName) {
-            case 'x':
-                return propValue == 'Valid';
-            case 'y':
-                return objectToValidate['x'] === 'Invalid' && propValue !== null;
-        }
-    });
+    const isValid = validation(validObject);
+    const isInvalid = validation(invalidObject);
 
     it('should return true if valid', () => {
-        expect(valid).toBe(true);
+        expect(isValid).toBe(true);
     });
     it('should return false if invalid', () => {
-        expect(invalid).toBe(false);
+        expect(isInvalid).toBe(false);
     });
 });
