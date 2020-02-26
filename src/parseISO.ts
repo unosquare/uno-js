@@ -15,7 +15,7 @@ const timeRegex = /^(\d{2}(?:[.,]\d*)?)(?::?(\d{2}(?:[.,]\d*)?))?(?::?(\d{2}(?:[
 const timezoneRegex = /^([+-])(\d{2})(?::?(\d{2}))?$/;
 
 // Validation functions
-function getTimezoneOffsetInMilliseconds(dirtyDate: Date) {
+function getTimezoneOffsetInMilliseconds(dirtyDate: Date): number {
     const date = new Date(dirtyDate.getTime());
     const baseTimezoneOffset = Math.ceil(date.getTimezoneOffset());
     date.setSeconds(0, 0);
@@ -27,8 +27,8 @@ function getTimezoneOffsetInMilliseconds(dirtyDate: Date) {
 // February is null to handle the leap year (using ||)
 const daysInMonths = [31, null, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-function isLeapYearIndex(year: number) {
-    return year % 400 === 0 || (year % 4 === 0 && year % 100);
+function isLeapYearIndex(year: number): boolean {
+    return (year % 400 === 0 || (year % 4 === 0 && year % 100)) == true;
 }
 
 function validateDate(year: number, month: number, date: number): boolean {
@@ -55,8 +55,8 @@ function validateTimezone(_hours: number, minutes: number): boolean {
     return minutes >= 0 && minutes <= 59;
 }
 
-function splitDateString(dateString: string): any {
-    const dateStrings: any = {};
+function splitDateString(dateString: string): { date?: string; time?: string; timezone?: string } {
+    const dateStrings: { date?: string; time?: string; timezone?: string } = {};
     const array = dateString.split(patterns.dateTimeDelimiter);
     let timeString: string;
 
@@ -103,11 +103,11 @@ function parseYear(dateString: string, additionalDigits: number): { year?: numbe
     };
 }
 
-function parseDateUnit(value: any): number {
+function parseDateUnit(value: string): number {
     return value ? parseInt(value) : 1;
 }
 
-function parseTimeUnit(value: any): number {
+function parseTimeUnit(value: string): number {
     return (value && parseFloat(value.replace(',', '.'))) || 0;
 }
 
@@ -239,7 +239,7 @@ function parseDate(dateString: string, year?: number): Date {
  * var result = parseISO('+02014101', { additionalDigits: 1 })
  * //=> Fri Apr 11 2014 00:00:00
  */
-export function parseISO(argument: string, dirtyOptions?: any): Date {
+export function parseISO(argument: string, dirtyOptions?: { additionalDigits?: string }): Date {
     const options = dirtyOptions || {};
 
     const additionalDigits =

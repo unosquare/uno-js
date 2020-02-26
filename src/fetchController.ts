@@ -1,6 +1,13 @@
 export type ResponsePromise = object | string | number | boolean | any[];
+export type ResponseResolver = (response: Response) => Promise<ResponsePromise>;
+export type HeaderResolver = (url: string, accessToken?: string) => Headers;
 
-function defaultHeadersResolver(url: string, accessToken: string): Headers {
+export interface FetchOptions {
+    headersResolver: HeaderResolver;
+    responseResolver: ResponseResolver;
+}
+
+const defaultHeadersResolver: HeaderResolver = (url: string, accessToken?: string) => {
     const headers = new Headers();
 
     if (url === '/api/token') {
@@ -12,9 +19,9 @@ function defaultHeadersResolver(url: string, accessToken: string): Headers {
     }
 
     return headers;
-}
+};
 
-async function defaultResponseResolver(response: Response): Promise<ResponsePromise> {
+const defaultResponseResolver: ResponseResolver = async (response: Response) => {
     const responseBody = await response.text();
     const responseJson = responseBody ? JSON.parse(responseBody) : {};
 
@@ -42,7 +49,7 @@ async function defaultResponseResolver(response: Response): Promise<ResponseProm
                 error: 'Something went wrong, please try again',
             };
     }
-}
+};
 
 export const enum RequestMethod {
     Post = 'POST',
@@ -51,18 +58,12 @@ export const enum RequestMethod {
     Delete = 'DELETE',
 }
 
-export interface InitRequest {
-    method: string;
-    headers: Headers;
-    body: any;
-}
-
 export function getRequest(
     url: string,
     accessToken: string,
     requestMethod: RequestMethod,
     requestBody: BodyInit,
-    headersResolver: (url: string, accessToken: string) => Headers,
+    headersResolver: HeaderResolver,
 ): Request {
     const init: RequestInit = {
         body: requestBody ? requestBody : null,
@@ -78,20 +79,17 @@ export function getResponse(
     accessToken: string,
     requestMethod = RequestMethod.Get,
     requestBody?: BodyInit,
-    headersResolver?: (url: string, accessToken: string) => Headers,
+    headersResolver?: HeaderResolver,
 ): Promise<Response> {
     const request = getRequest(url, accessToken, requestMethod, requestBody, headersResolver ?? defaultHeadersResolver);
     return fetch(request);
 }
 
 export async function requestController(
+    options: FetchOptions,
     url: string,
-    accessToken: string,
-    requestMethod: RequestMethod,
-    options: {
-        headersResolver?: (url: string, accessToken: string) => Headers;
-        responseResolver?: (response: Response) => Promise<ResponsePromise>;
-    },
+    accessToken?: string,
+    requestMethod?: RequestMethod,
     requestBody?: BodyInit,
 ): Promise<ResponsePromise> {
     const response = await getResponse(url, accessToken, requestMethod, requestBody, options.headersResolver);
@@ -99,18 +97,17 @@ export async function requestController(
     return await options.responseResolver(response);
 }
 
-export const defaultOptions = {
+export const defaultOptions: FetchOptions = {
     headersResolver: defaultHeadersResolver,
     responseResolver: defaultResponseResolver,
 };
 
-export function createFetchController(options: {
-    headersResolver?: (url: string, accessToken: string) => Headers;
-    responseResolver?: (response: Response) => Promise<ResponsePromise>;
-}): (
+export function createFetchController(
+    options: FetchOptions,
+): (
     url: string,
-    accessToken: string,
-    requestMethod: RequestMethod,
+    accessToken?: string,
+    requestMethod?: RequestMethod,
     requestBody?: BodyInit,
 ) => Promise<ResponsePromise> {
     options = Object.assign({}, defaultOptions, options);
@@ -120,5 +117,5 @@ export function createFetchController(options: {
         accessToken: string,
         requestMethod: RequestMethod,
         requestBody?: BodyInit,
-    ): Promise<ResponsePromise> => requestController(url, accessToken, requestMethod, options, requestBody);
+    ): Promise<ResponsePromise> => requestController(options, url, accessToken, requestMethod, requestBody);
 }
