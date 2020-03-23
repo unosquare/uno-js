@@ -1,6 +1,6 @@
 export const validateNotNull = (item: object, ignoreProps?: string[]): boolean => {
     let isValid = true;
-    Object.keys(item).map(prop => {
+    Object.keys(item).map((prop) => {
         if (item[prop] == null) {
             if (ignoreProps && ignoreProps.indexOf(prop) > -1) {
                 return;

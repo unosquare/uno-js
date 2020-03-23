@@ -1,5 +1,3 @@
-export const validateObject = (fn: (propName: string, originalItem?: object) => boolean): Function => {
-    return (item: object): boolean => {
-        return !Object.keys(item).some(x => !fn(x, item));
-    };
-};
+export const validateObject = (
+    fn: (propName: string, originalItem?: object) => boolean,
+): ((item: object) => boolean) => (item: object): boolean => !Object.keys(item).some((x) => !fn(x, item));

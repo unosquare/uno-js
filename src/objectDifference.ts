@@ -10,7 +10,7 @@ export const objectDifference = (obj1: {}, obj2: {}): {} => {
         }
     };
 
-    Object.keys(obj1).map(prop => compare(obj1[prop], obj2[prop], prop));
+    Object.keys(obj1).map((prop) => compare(obj1[prop], obj2[prop], prop));
 
     return diffs;
 };

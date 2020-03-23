@@ -8,7 +8,5 @@ export const stringTemplate = (template: string | string[], isPrefix: boolean): 
         };
     }
 
-    return (value: string): string => {
-        return isPrefix ? template + value : value + template;
-    };
+    return (value: string): string => (isPrefix ? template + value : value + template);
 };

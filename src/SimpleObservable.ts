@@ -11,6 +11,6 @@ export class SimpleObservable {
     }
 
     public inform(change?: string): void {
-        this.observers.forEach(observer => observer(change));
+        this.observers.forEach((observer) => observer(change));
     }
 }

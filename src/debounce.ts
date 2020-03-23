@@ -5,7 +5,7 @@ export function debounce<F extends Procedure>(func: F, waitMilliseconds = 500): 
     let timeoutId: number;
 
     // tslint:disable-next-line: only-arrow-functions
-    return function(t: any, ...args: any[]) {
+    return function (t: any, ...args: any[]) {
         const context = t;
 
         const doLater = (): void => {
