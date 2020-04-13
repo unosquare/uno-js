@@ -10,7 +10,7 @@ describe('toDate', () => {
         const date = toLocalTime(value.x1);
         expect(date.constructor === Date && date.getFullYear() === 2020).toBe(true);
     });
-    it('Date should return true if same timezone', () => {
+    xit('Date should return true if same timezone', () => {
         const date = toLocalTime(value.x2);
         expect(date.getTimezoneOffset() === new Date().getTimezoneOffset()).toBe(true);
     });
