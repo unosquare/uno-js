@@ -7,6 +7,7 @@ const value = {
     x4: { x41: [{ x411: '2020-01-05T06:00:00' }, { x412: '2020-01-05T06:00:00' }] },
     y1: 3,
     y2: '20200101',
+    y3: null,
 };
 
 describe('toDate', () => {
@@ -19,4 +20,5 @@ describe('toDate', () => {
         expect(value.x4.x41[0].x411.constructor === Date && value.x4.x41[1].x412.constructor === Date).toBe(true));
     it('should return true if not Date', () =>
         expect(value.y1.constructor !== Date && value.y2.constructor !== Date).toBe(true));
+    it('should return true if null', () => expect(value.y3 === null).toBe(true));
 });
