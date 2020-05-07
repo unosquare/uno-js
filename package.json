@@ -14,7 +14,8 @@
   "jest": {
     "automock": false,
     "coverageReporters": [
-      "lcov"
+      "lcov",
+      "text"
     ],
     "moduleFileExtensions": [
       "ts",

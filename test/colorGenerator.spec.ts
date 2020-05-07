@@ -1,6 +1,5 @@
 import { colorGenerator } from '../src/colorGenerator';
 
-//Started
 describe('colorGenerator', () => {
     it('should return an array of rgb colors', () => {
         const result = colorGenerator([0, 0, 0], [90, 60, 30], 3)[1];
