@@ -1,4 +1,4 @@
-import { toLocalTime } from "./toLocalTime";
+import { toLocalTime } from './toLocalTime';
 
 const dateTimeFormatOptions = {
     month: 'long',
