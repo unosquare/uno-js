@@ -30,4 +30,9 @@ describe('stringTemplate', () => {
         const prefixResult = prefixSample('Johnson', 5);
         expect(prefixResult).toBe(results.x4);
     });
+    it('string should return undefined', () => {
+        const prefixSample = stringTemplate(templates, false);
+        const prefixResult = prefixSample('');
+        expect(prefixResult).toBe('undefined');
+    });
 });

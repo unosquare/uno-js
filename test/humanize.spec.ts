@@ -13,4 +13,11 @@ describe('humanize', () => {
             expect(result).toBe('Helloworld!');
         });
     });
+
+    describe('humanize lowercase word', () => {
+        it('should return empty string', () => {
+            const result = humanize('');
+            expect(result).toBe('');
+        });
+    });
 });

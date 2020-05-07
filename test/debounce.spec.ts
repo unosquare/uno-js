@@ -16,4 +16,14 @@ describe('debounce', () => {
         await delay(300);
         expect(result.length).toBe(1);
     });
+
+    it('should return array lenght == 1', async () => {
+        const result = [];
+        const fn = debounce(() => {
+            result.push('Hello!');
+        });
+        fn();
+        await delay(600);
+        expect(result.length).toBe(1);
+    });
 });

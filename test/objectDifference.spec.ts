@@ -24,4 +24,8 @@ describe('objectDifference', () => {
         const result = objectDifference(x, y).hasOwnProperty('gender');
         expect(result).toBe(false);
     });
+    it('should return true', () => {
+        const result = objectDifference(x, null).hasOwnProperty('gender');
+        expect(result).toBeTruthy();
+    });
 });
