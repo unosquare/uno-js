@@ -1,5 +1,9 @@
 import { parseISO } from '../src/parseISO';
 //Started
 describe('parseISO', () => {
-    it('should return valid date', () => expect(parseISO('2010-01-01T06:00:00.000Z') instanceof Date).toBe(true));
+    it('should return valid date', () => expect(parseISO('2010-01-01T06:00:00.000Z') instanceof Date).toBeTruthy());
+    
+    it('should return valid date - validateDate', () => expect(parseISO('2020-31-31T06:00:00.000Z') instanceof Date).toBeTruthy());
+
+    it('should return valid date', () => expect(parseISO('') instanceof Date).toBeTruthy());
 });
