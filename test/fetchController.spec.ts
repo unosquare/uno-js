@@ -9,17 +9,6 @@ describe('createFetchController', () => {
         fetch.resetMocks();
     });
 
-    it('Calls invalid url and returns error from body', async ()=>{
-        fetch.once(async () => ({
-            status: 200
-        }));
-
-        const response: any = await requestController('/api/token');
-        expect(response.Message).toBeUndefined();
-
-        expect(fetch.mock.calls.length).toEqual(1);
-    });
-
     it.each([200, 204])('Calls %s and returns data', async (httpStatus)=>{
         fetch.once(async () => ({
             status: httpStatus,
@@ -32,7 +21,7 @@ describe('createFetchController', () => {
         expect(fetch.mock.calls.length).toEqual(1);
     });
 
-    it.each([400, 500])('Calls %s and returns data', async (httpStatus)=>{
+    it.each([400, 500])('Calls %s and returns error', async (httpStatus)=>{
         fetch.once(async () => ({
             status: httpStatus,
             body: JSON.stringify({ Message: 'Error' }),
@@ -55,6 +44,16 @@ describe('createFetchController', () => {
         expect(fetch.mock.calls.length).toEqual(1);
     });
 
+    it('Calls invalid url and returns error from body', async () => {
+        fetch.once(async () => ({
+            status: 401
+        }));
+
+        await expect(requestController('https://error.com')).rejects.toThrow('The token is invalid/expired');
+
+        expect(fetch.mock.calls.length).toEqual(1);
+    });
+
     it('Calls invalid url and returns error from body', async ()=>{
         fetch.once(async () => ({
             status: 404,
@@ -69,11 +68,10 @@ describe('createFetchController', () => {
 
     it('Calls invalid url and returns error Something went wrong, please try again', async ()=>{
         fetch.once(async () => ({
-            status: 1,
-            body: JSON.stringify({})
+            status: 1
         }));
 
-        const response: any = await requestController('https://error.com');
+        const response: any = await requestController('/api/token');
         expect(response.error).toEqual('Something went wrong, please try again');
 
         expect(fetch.mock.calls.length).toEqual(1);
