@@ -5,5 +5,7 @@ describe('parseISO', () => {
     
     it('should return valid date - validateDate', () => expect(parseISO('2020-31-31T06:00:00.000Z') instanceof Date).toBeTruthy());
 
+    it('should return valid date - validateDate', () => expect(parseISO('2020-31-31T06:00:00.000Z', { additionalDigits: '2' }) instanceof Date).toBeTruthy());
+
     it('should return valid date', () => expect(parseISO('') instanceof Date).toBeTruthy());
 });
