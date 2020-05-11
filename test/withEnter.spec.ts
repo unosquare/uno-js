@@ -1,5 +1,4 @@
-import { onEnterKey } from '../src/withEnter';
-import { asyncOnEnterKey } from '../src/withEnter';
+import { onEnterKey, asyncOnEnterKey} from '../src/withEnter';
 
 describe('onEnterKey', () => {
     it('Should execute callback', () => {
