@@ -1,7 +1,8 @@
-export const objectDifference = (obj1: {}, obj2: {}): {} => {
+export const objectDifference = <T>(obj1: T, obj2: T | any): T | any => {
     if (!obj2 || Object.prototype.toString.call(obj2) !== '[object Object]') {
         return obj1;
     }
+
     const diffs = {};
 
     const compare = (item1: {}, item2: {}, prop: string): void => {

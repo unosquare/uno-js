@@ -2,14 +2,13 @@ import fetch from 'jest-fetch-mock';
 import { createFetchController, defaultOptions } from '../src/fetchController';
 
 describe('createFetchController', () => {
-
     const requestController = createFetchController(defaultOptions);
 
     beforeEach(() => {
         fetch.resetMocks();
     });
 
-    it.each([200, 204])('Calls %s and returns data', async (httpStatus)=>{
+    it.each([200, 204])('Calls %s and returns data', async (httpStatus) => {
         fetch.once(async () => ({
             status: httpStatus,
             body: JSON.stringify({ Message: 'HELLO' }),
@@ -21,7 +20,7 @@ describe('createFetchController', () => {
         expect(fetch.mock.calls.length).toEqual(1);
     });
 
-    it.each([400, 500])('Calls %s and returns error', async (httpStatus)=>{
+    it.each([400, 500])('Calls %s and returns error', async (httpStatus) => {
         fetch.once(async () => ({
             status: httpStatus,
             body: JSON.stringify({ Message: 'Error' }),
@@ -46,7 +45,7 @@ describe('createFetchController', () => {
 
     it('Calls invalid url and returns error from body', async () => {
         fetch.once(async () => ({
-            status: 401
+            status: 401,
         }));
 
         await expect(requestController('https://error.com')).rejects.toThrow('The token is invalid/expired');
@@ -54,7 +53,7 @@ describe('createFetchController', () => {
         expect(fetch.mock.calls.length).toEqual(1);
     });
 
-    it('Calls invalid url and returns error from body', async ()=>{
+    it('Calls invalid url and returns error from body', async () => {
         fetch.once(async () => ({
             status: 404,
             body: JSON.stringify({ Message: 'Not Found' }),
@@ -66,9 +65,9 @@ describe('createFetchController', () => {
         expect(fetch.mock.calls.length).toEqual(1);
     });
 
-    it('Calls invalid url and returns error Something went wrong, please try again', async ()=>{
+    it('Calls invalid url and returns error Something went wrong, please try again', async () => {
         fetch.once(async () => ({
-            status: 1
+            status: 1,
         }));
 
         const response: any = await requestController('/api/token');

@@ -17,6 +17,6 @@ export function debounce<F extends Procedure>(func: F, waitMilliseconds = 500): 
             clearTimeout(timeoutId);
         }
 
-        timeoutId = setTimeout(doLater, waitMilliseconds);
+        timeoutId = window.setTimeout(doLater, waitMilliseconds);
     } as F;
 }

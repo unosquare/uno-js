@@ -6,7 +6,7 @@ const dateTimeFormatOptions = {
     day: 'numeric',
 };
 
-export const toLocaleString = (date: string, locales = 'en-us') => {
+export const toLocaleString = (date: string, locales = 'en-us'): string => {
     const dateString = toLocalTime(date).toLocaleDateString(locales, dateTimeFormatOptions);
     return dateString !== 'Invalid Date' ? dateString : '';
 };

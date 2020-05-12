@@ -1,6 +1,6 @@
 import { debounce } from '../src/debounce';
 
-const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 describe('debounce', () => {
     it('should return array lenght == 1', async () => {
