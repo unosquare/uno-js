@@ -15,6 +15,8 @@ const timeRegex = /^(\d{2}(?:[.,]\d*)?)(?::?(\d{2}(?:[.,]\d*)?))?(?::?(\d{2}(?:[
 const timezoneRegex = /^([+-])(\d{2})(?::?(\d{2}))?$/;
 
 // Validation functions
+
+/* istanbul ignore next */
 function getTimezoneOffsetInMilliseconds(dirtyDate: Date): number {
     const date = new Date(dirtyDate.getTime());
     const baseTimezoneOffset = Math.ceil(date.getTimezoneOffset());
