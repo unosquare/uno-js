@@ -14,6 +14,14 @@
     "preparepackage": "npm run build && npm run copypackage",
     "copypackage": "npx shx cp package.json dist"
   },
+  "prettier": {
+    "endOfLine": "auto",
+    "semi": true,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 120,
+    "tabWidth": 4
+},
   "jest": {
     "automock": false,
     "setupFiles": [
@@ -66,8 +74,8 @@
   "homepage": "https://github.com/unosquare/uno-js#readme",
   "devDependencies": {
     "@types/jest": "^25.2.2",
-    "@typescript-eslint/eslint-plugin": "^2.33.0",
-    "@typescript-eslint/parser": "^2.33.0",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
     "eslint": "^7.0.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
