@@ -21,7 +21,7 @@
     "singleQuote": true,
     "printWidth": 120,
     "tabWidth": 4
-},
+  },
   "jest": {
     "automock": false,
     "setupFiles": [
@@ -73,16 +73,16 @@
   },
   "homepage": "https://github.com/unosquare/uno-js#readme",
   "devDependencies": {
-    "@types/jest": "^25.2.2",
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^2.34.0",
-    "eslint": "^7.0.0",
+    "@types/jest": "^25.2.3",
+    "@typescript-eslint/eslint-plugin": "^3.0.0",
+    "@typescript-eslint/parser": "^3.0.0",
+    "eslint": "^7.1.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
     "jest": "^26.0.1",
     "jest-fetch-mock": "^3.0.3",
     "prettier": "^2.0.5",
     "ts-jest": "^26.0.0",
-    "typescript": "^3.9.2"
+    "typescript": "^3.9.3"
   }
 }
