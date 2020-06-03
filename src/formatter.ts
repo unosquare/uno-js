@@ -25,7 +25,7 @@ export const formatter = (data: string | number, format: FormatTypes): string =>
             if (!parsedMoney) {
                 return 'N/A';
             }
-            return parsedMoney.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            return `$${parsedMoney.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
         case FormatTypes.PERCENTAGE:
             return `${Math.round(parseFloat(stringData))}%`;
         case FormatTypes.DECIMAL_PERCENTAGE:
