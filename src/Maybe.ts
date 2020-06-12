@@ -1,7 +1,7 @@
 export class Maybe<T> {
     private value;
 
-    constructor(value: T) {
+    constructor(value: T, unused: string) {
         this.value = value;
     }
 
