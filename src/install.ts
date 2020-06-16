@@ -51,7 +51,7 @@ export const install = (): void => {
 
     if (!Object.prototype.hasOwnProperty('objectDifference')) {
         Object.defineProperty(Object.prototype, 'objectDifference', {
-            value: function (toCompare: {}) {
+            value: function (toCompare: Record<string, unknown>) {
                 return UnoJs.objectDifference(this, toCompare);
             },
         });

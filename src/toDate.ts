@@ -2,7 +2,7 @@ import { toLocalTime } from './toLocalTime';
 
 const regex = /^(19[8-9]\d|20\d{2})[-](0[1-9]|1[0-2])[-](0[1-9]|[12]\d|3[01])[T](0\d|1\d|2[0-4])[:]([0-5]\d)[:]([0-5]\d)[.](\d{3})[Z]$/;
 
-export const toDate = (obj: {}): void => {
+export const toDate = (obj: string | Record<string, unknown>): void => {
     Object.keys(obj).map((prop) => {
         if (
             typeof obj[prop] === 'string' &&
@@ -16,6 +16,7 @@ export const toDate = (obj: {}): void => {
             if (obj[prop] instanceof Array) {
                 obj[prop].map(toDate);
             } else if (obj[prop] == null || obj[prop] == undefined) {
+                // TODO: Marco why is this return void, but you return a value?
                 return obj[prop];
             } else {
                 Object.keys(obj[prop]).map(() => toDate(obj[prop]));

@@ -1,2 +1,5 @@
-export const removeDuplicated = (array: {}[], prop: string): {}[] =>
-    array.filter((x: {}, i: number, arr: {}[]) => arr.map((y: {}) => y[prop]).indexOf(x[prop]) === i);
+export const removeDuplicated = (array: Record<string, unknown>[], prop: string): Record<string, unknown>[] =>
+    array.filter(
+        (x: Record<string, unknown>, i: number, arr: Record<string, unknown>[]) =>
+            arr.map((y: Record<string, unknown>) => y[prop]).indexOf(x[prop]) === i,
+    );

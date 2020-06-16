@@ -1,4 +1,5 @@
-export type ResponsePromise = object | string | number | boolean | any[];
+export type JsonPrimitives = Record<string, unknown> | string | number | boolean;
+export type ResponsePromise = JsonPrimitives | JsonPrimitives[];
 export type ResponseResolver = (response: Response) => Promise<ResponsePromise>;
 export type HeaderResolver = (url: string, accessToken?: string) => Headers;
 
