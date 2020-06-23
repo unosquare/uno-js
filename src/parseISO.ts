@@ -41,6 +41,7 @@ function validateDayOfYearDate(year: number, dayOfYear: number): boolean {
     return dayOfYear >= 1 && dayOfYear <= (isLeapYearIndex(year) ? 366 : 365);
 }
 
+/* istanbul ignore next */
 function validateWeekDate(_year: number, week: number, day: number): boolean {
     return week >= 1 && week <= 53 && day >= 0 && day <= 6;
 }
@@ -53,6 +54,7 @@ function validateTime(hours: number, minutes: number, seconds: number): boolean 
     return seconds >= 0 && seconds < 60 && minutes >= 0 && minutes < 60 && hours >= 0 && hours < 25;
 }
 
+/* istanbul ignore next */
 function validateTimezone(_hours: number, minutes: number): boolean {
     return minutes >= 0 && minutes <= 59;
 }
