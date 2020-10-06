@@ -1,4 +1,7 @@
 export const toLocalTime = (date: string | Date): Date => {
+    if (typeof date == 'string' && date.toUpperCase().endsWith('Z')) {
+        return new Date(date);
+    }
     const baseDate = date instanceof Date ? date : new Date(date);
     return new Date(
         Date.UTC(
