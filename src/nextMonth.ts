@@ -1,5 +1,5 @@
 export function nextMonth(date: Date): Date {
-    date.setMonth(date.getMonth() + 2);
-    date.setDate(0);
+    date.setDate(1);
+    date.setMonth(date.getMonth() + 1);
     return date;
 }
