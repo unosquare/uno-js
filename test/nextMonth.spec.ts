@@ -6,20 +6,20 @@ describe('nextMonth', () => {
     const april = new Date(2020, 3, 30);
     const december = new Date(2020, 11, 1);
 
-    it('should return February 29th 2020', () => {
-        const result = nextMonth(january).toDateString();
-        expect(result).toBe('Sat Feb 29 2020');
+    it('should return February', () => {
+        const result = nextMonth(january).getMonth();
+        expect(result).toBe(1);
     });
-    it('should return April 30th 2020', () => {
-        const result = nextMonth(march).toDateString();
-        expect(result).toBe('Thu Apr 30 2020');
+    it('should return April', () => {
+        const result = nextMonth(march).getMonth();
+        expect(result).toBe(3);
     });
-    it('should return May 31th 2020', () => {
-        const result = nextMonth(april).toDateString();
-        expect(result).toBe('Sun May 31 2020');
+    it('should return May', () => {
+        const result = nextMonth(april).getMonth();
+        expect(result).toBe(4);
     });
-    it('should return Oct 1st 2020', () => {
-        const result = nextMonth(december).toDateString();
-        expect(result).toBe('Sun Jan 31 2021');
+    it('should return January', () => {
+        const result = nextMonth(december).getMonth();
+        expect(result).toBe(0);
     });
 });

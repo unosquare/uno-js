@@ -19,3 +19,5 @@ export * from './validateObject';
 export * from './validateNotNull';
 export * from './toLocaleString';
 export * from './formatter';
+export * from './isDate';
+export * from './isString';
