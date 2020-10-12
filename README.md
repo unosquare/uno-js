@@ -17,5 +17,3 @@ To install uno-js through npm, you only need to run the following command:
 ```
 
 Check the documentation of this library at [https://unosquare.github.io/uno/uno-js](https://unosquare.github.io/uno/uno-js).
-
-*NOTE* - This project include a copy of the function `parseISO` from [date-fns](https://github.com/date-fns/date-fns).
