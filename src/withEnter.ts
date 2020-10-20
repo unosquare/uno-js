@@ -4,7 +4,7 @@ export const onEnterKey = (callback: () => void) => (ev: { keyCode: number }): v
     }
 };
 
-export const asyncOnEnterKey = (callback: () => void) => async (ev: { keyCode: number }): Promise<void> => {
+export const asyncOnEnterKey = (callback: () => Promise<void>) => async (ev: { keyCode: number }): Promise<void> => {
     if (ev.keyCode === 13) {
         await callback();
     }
