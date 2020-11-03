@@ -16,7 +16,7 @@ describe('onEnterKey', () => {
 describe('asyncOnEnterKey', () => {
     it('Should execute callback', () => {
         let x = 0;
-        const callback = () => {
+        const callback = async () => {
             x++;
         };
         asyncOnEnterKey(callback)({keyCode: 0});
