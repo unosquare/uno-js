@@ -1,7 +1,7 @@
 export type JsonPrimitives = Record<string, unknown> | string | number | boolean;
 export type ResponsePromise = JsonPrimitives | JsonPrimitives[];
 export type ResponseResolver = (response: Response) => Promise<ResponsePromise>;
-export type HeaderResolver = (url: string, accessToken?: string) => Headers;
+export type HeaderResolver = (url: string, accessToken?: string) => Promise<Headers>;
 
 export interface FetchOptions {
     headersResolver: HeaderResolver;
@@ -19,7 +19,7 @@ const defaultHeadersResolver: HeaderResolver = (url: string, accessToken?: strin
         headers.append('Authorization', `Bearer ${accessToken}`);
     }
 
-    return headers;
+    return Promise.resolve(headers);
 };
 
 const defaultResponseResolver: ResponseResolver = async (response: Response) => {
@@ -59,30 +59,30 @@ export const enum RequestMethod {
     Delete = 'DELETE',
 }
 
-export function getRequest(
+export async function getRequest(
     url: string,
     accessToken: string,
     requestMethod: RequestMethod,
     requestBody: BodyInit,
     headersResolver: HeaderResolver,
-): Request {
+): Promise<Request> {
     const init: RequestInit = {
         body: requestBody ? requestBody : null,
-        headers: headersResolver(url, accessToken),
+        headers: await headersResolver(url, accessToken),
         method: requestMethod,
     };
 
     return new Request(url, init);
 }
 
-export function getResponse(
+export async function getResponse(
     url: string,
     accessToken: string,
     requestMethod = RequestMethod.Get,
     requestBody?: BodyInit,
     headersResolver?: HeaderResolver,
 ): Promise<Response> {
-    const request = getRequest(url, accessToken, requestMethod, requestBody, headersResolver ?? defaultHeadersResolver);
+    const request = await getRequest(url, accessToken, requestMethod, requestBody, headersResolver ?? defaultHeadersResolver);
     return fetch(request);
 }
 
