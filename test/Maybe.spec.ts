@@ -9,9 +9,8 @@ describe('Maybe', () => {
     const validItem = new Maybe(item);
     const invalidItem = new Maybe(null);
 
-    it('should return string "Valid"', () => {
-        expect(validItem.map(n => n.propString).getOrDefault('Invalid')).toBe('Valid');
-    });
+    it('should return string "Valid"', () => 
+        expect(validItem.map(n => n.propString).getOrDefault('Invalid')).toBe('Valid'));
 
     it('should return "Null"', () => {
         expect(

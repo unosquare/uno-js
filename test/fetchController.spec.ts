@@ -1,11 +1,21 @@
 import fetch from 'jest-fetch-mock';
-import { createFetchController, defaultOptions } from '../src/fetchController';
+import { createFetchController, getResponse, RequestMethod } from '../src/fetchController';
 
 describe('createFetchController', () => {
-    const requestController = createFetchController(defaultOptions);
+    const requestController = createFetchController();
 
-    beforeEach(() => {
-        fetch.resetMocks();
+    beforeEach(() => fetch.resetMocks());
+
+    // TODO: Headers from request is not present :\
+    xit('Calls url and returns valid headers', async () => {
+        fetch.once(async (request) => ({
+            body: JSON.stringify(request.headers),
+        }));
+
+        const headers = { 'X-TOKEN': async () => 'Y' };
+        const response = await getResponse('https://google.com', RequestMethod.Get, null, headers);
+        const responseData = await response.json();
+        expect(responseData).toEqual({ 'X-TOKEN': 'Y' });
     });
 
     it.each([200, 204])('Calls %s and returns data', async (httpStatus) => {

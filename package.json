@@ -1,6 +1,6 @@
 {
   "name": "uno-js",
-  "version": "0.2.3",
+  "version": "2.0.0",
   "description": "Javascript common used functions, zero dependencies",
   "main": "dist/index.js",
   "scripts": {
@@ -44,7 +44,7 @@
     "globals": {
       "ts-jest": {
         "diagnostics": false,
-        "tsConfig": "tsconfig.json"
+        "tsconfig": "tsconfig.json"
       }
     },
     "collectCoverage": true,
@@ -73,7 +73,7 @@
   },
   "homepage": "https://github.com/unosquare/uno-js#readme",
   "devDependencies": {
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.16",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
     "@typescript-eslint/parser": "^4.9.0",
     "eslint": "^7.14.0",
