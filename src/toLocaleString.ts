@@ -1,6 +1,6 @@
 import { toLocalTime } from './toLocalTime';
 
-const dateTimeFormatOptions = {
+const dateTimeFormatOptions: Intl.DateTimeFormatOptions = {
     month: 'long',
     year: 'numeric',
     day: 'numeric',
