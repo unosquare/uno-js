@@ -18,14 +18,14 @@ export const formatter = (data: string | number, format: FormatTypes): string =>
     if (data == null) {
         return 'N/A';
     }
+
     const stringData = data.toString();
+
     switch (format) {
-        case FormatTypes.MONEY:
+        case FormatTypes.MONEY: {
             const parsedMoney = parseFloat(stringData);
-            if (!parsedMoney) {
-                return 'N/A';
-            }
-            return `$${parsedMoney.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+            return !parsedMoney ? 'N/A' : `$${parsedMoney.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+        }
         case FormatTypes.PERCENTAGE:
             return `${Math.round(parseFloat(stringData))}%`;
         case FormatTypes.DECIMAL_PERCENTAGE:
@@ -34,12 +34,10 @@ export const formatter = (data: string | number, format: FormatTypes): string =>
             return toLocalTime(stringData).toLocaleDateString('en-us');
         case FormatTypes.DATE_LOCAL:
             return new Date(stringData).toLocaleDateString('en-us');
-        case FormatTypes.DECIMAL:
+        case FormatTypes.DECIMAL: {
             const parsedDecimal = parseFloat(stringData);
-            if (!parsedDecimal) {
-                return 'N/A';
-            }
-            return parsedDecimal.toFixed(2);
+            return !parsedDecimal ? 'N/A' : parsedDecimal.toFixed(2);
+        }
         case FormatTypes.DAYS:
             return `${stringData} days`;
         case FormatTypes.MONTHS:
