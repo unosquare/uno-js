@@ -74,8 +74,8 @@
   "homepage": "https://github.com/unosquare/uno-js#readme",
   "devDependencies": {
     "@types/jest": "^26.0.22",
-    "@unosquare/eslint-config-unosquare": "^0.0.5",
     "eslint": "^7.23.0",
+    "eslint-config-unosquare": "^0.0.5",
     "jest": "^26.6.3",
     "jest-fetch-mock": "^3.0.3",
     "prettier": "^2.2.1",

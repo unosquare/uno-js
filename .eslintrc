@@ -11,7 +11,7 @@
         "browser": true,
         "jest": true
     },
-    "extends": "@unosquare/eslint-config-unosquare",
+    "extends": "eslint-config-unosquare",
     "rules": {
       "no-extend-native": 0,
       "no-param-reassign": 0
