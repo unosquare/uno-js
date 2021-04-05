@@ -1,4 +1,4 @@
-import { Maybe } from '../src/Maybe';
+import Maybe from '../src/Maybe';
 
 const item = {
     propString: 'Valid',

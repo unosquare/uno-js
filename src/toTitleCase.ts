@@ -1,4 +1,4 @@
-export function toTitleCase(title: string): string {
+const toTitleCase = (title: string): string => {
     const words = title.toLowerCase().split(' ');
 
     for (let i = 0; i < words.length; i++) {
@@ -6,4 +6,6 @@ export function toTitleCase(title: string): string {
     }
 
     return words.join(' ');
-}
+};
+
+export default toTitleCase;

@@ -1,4 +1,4 @@
-import { validateObject } from '../src/validateObject';
+import validateObject from '../src/validateObject';
 
 const validObject = {
     x: 'Valid',

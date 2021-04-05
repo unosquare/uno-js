@@ -1,4 +1,4 @@
-import { SimpleObservable } from '../src/SimpleObservable';
+import SimpleObservable from '../src/SimpleObservable';
 
 describe('SimpleObservable', () => {
     const observable = new SimpleObservable();

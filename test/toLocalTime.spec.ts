@@ -1,4 +1,4 @@
-import { toLocalTime } from '../src/toLocalTime';
+import toLocalTime from '../src/toLocalTime';
 
 describe('toDate', () => {
     it('string should return true if Date', () => {

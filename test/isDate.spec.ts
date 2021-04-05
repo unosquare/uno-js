@@ -1,4 +1,4 @@
-import { isDate } from '../src/isDate';
+import isDate from '../src/isDate';
 
 describe('isDate', () => {
     it('Return false on wrong string', () => {

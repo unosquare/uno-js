@@ -1,4 +1,4 @@
-import { removeDuplicated } from '../src/removeDuplicated';
+import removeDuplicated from '../src/removeDuplicated';
 
 const values = [
     { name: 'Mike', age: '3', gender: 'Male' },

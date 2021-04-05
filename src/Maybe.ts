@@ -1,4 +1,4 @@
-export class Maybe<T> {
+class Maybe<T> {
     private value: T;
 
     constructor(value: T) {
@@ -13,3 +13,5 @@ export class Maybe<T> {
         return this.value !== null ? this.value : defaultValue;
     }
 }
+
+export default Maybe;

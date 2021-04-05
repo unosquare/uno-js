@@ -1,4 +1,4 @@
-export class SimpleObservable {
+class SimpleObservable {
     private observers: Array<(change?: string) => void> = [];
 
     public subscribe(observer: (change?: string) => void): () => void {
@@ -14,3 +14,5 @@ export class SimpleObservable {
         this.observers.forEach((observer) => observer(change));
     }
 }
+
+export default SimpleObservable;

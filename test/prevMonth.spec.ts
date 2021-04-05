@@ -1,4 +1,4 @@
-import { prevMonth } from '../src/prevMonth';
+import prevMonth from '../src/prevMonth';
 
 describe('prevMonth', () => {
     const january = new Date(2020, 0, 31);

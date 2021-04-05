@@ -1,4 +1,4 @@
-import { humanize } from '../src/humanize';
+import humanize from '../src/humanize';
 
 describe('humanize', () => {
     describe('humanize word', () => {

@@ -1,4 +1,4 @@
-import { getQueryParam } from '../src/getQueryParam';
+import getQueryParam from '../src/getQueryParam';
 
 describe('getQueryParam', () => {
     const singleUrl = 'https://github.com/unosquare/uno-js?id=3';

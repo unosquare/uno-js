@@ -1,5 +1,5 @@
-export const toLocalTime = (date: string | Date): Date => {
-    if (typeof date == 'string' && date.toUpperCase().endsWith('Z')) {
+const toLocalTime = (date: string | Date): Date => {
+    if (typeof date === 'string' && date.toUpperCase().endsWith('Z')) {
         return new Date(date);
     }
     const baseDate = date instanceof Date ? date : new Date(date);
@@ -15,3 +15,5 @@ export const toLocalTime = (date: string | Date): Date => {
         ),
     );
 };
+
+export default toLocalTime;

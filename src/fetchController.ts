@@ -12,6 +12,7 @@ const resolveHeaders = async (headersData?: HeadersData) => {
 
     if (headersData) {
         for (const i of Object.keys(headersData)) {
+            // eslint-disable-next-line 
             headers.append(i, await headersData[i]());
         }
     }
@@ -63,7 +64,7 @@ export async function getRequest(
     headersData: HeadersData,
 ): Promise<Request> {
     const init: RequestInit = {
-        body: requestBody ? requestBody : null,
+        body: requestBody || null,
         headers: await resolveHeaders(headersData),
         method: requestMethod,
     };
@@ -78,7 +79,7 @@ export async function getResponse(
     headersData?: HeadersData,
 ): Promise<Response> {
     const request = await getRequest(url, requestMethod, requestBody, headersData);
-    return await fetch(request);
+    return fetch(request);
 }
 
 export async function requestController(
@@ -89,7 +90,7 @@ export async function requestController(
     headersData?: HeadersData,
 ): Promise<ResponsePromise> {
     const response = await getResponse(url, requestMethod, requestBody, headersData);
-    return await responseResolver(response);
+    return responseResolver(response);
 }
 
 export function createFetchController(

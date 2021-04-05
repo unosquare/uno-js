@@ -1,4 +1,4 @@
-import { toLocaleString } from '../src/toLocaleString';
+import toLocaleString from '../src/toLocaleString';
 
 const stringDate = '2020-01-21T06:00:00';
 const locales = 'en-us';

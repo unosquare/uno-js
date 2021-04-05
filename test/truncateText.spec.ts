@@ -1,4 +1,4 @@
-import { truncateText } from '../src/truncateText';
+import truncateText from '../src/truncateText';
 
 const toTruncate = 'Lorem ipsum dolor sit amet, consectetur ';
 

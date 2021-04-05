@@ -1,0 +1,19 @@
+{
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "paths": ["./src"]
+            }
+        }
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "jest": true
+    },
+    "extends": "@unosquare/eslint-config-unosquare",
+    "rules": {
+      "no-extend-native": 0,
+      "no-param-reassign": 0
+    }
+}

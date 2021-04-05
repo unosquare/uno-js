@@ -1,4 +1,4 @@
-export const getQueryParam = (param: string, url: string): string | number | null => {
+const getQueryParam = (param: string, url: string): string | number | null => {
     const regex = new RegExp(`\\b(${param}=)\\b`);
     const match = url.match(regex);
 
@@ -17,3 +17,5 @@ export const getQueryParam = (param: string, url: string): string | number | nul
 
     return hasAnchor >= initial ? url.substr(initial, hasAnchor - initial) : url.substr(initial);
 };
+
+export default getQueryParam;

@@ -1,4 +1,4 @@
-export const objectDifference = <T>(obj1: T, obj2: T | Record<string, unknown>): T | Record<string, unknown> => {
+const objectDifference = <T>(obj1: T, obj2: T | Record<string, unknown>): T | Record<string, unknown> => {
     if (!obj2 || Object.prototype.toString.call(obj2) !== '[object Object]') {
         return obj1;
     }
@@ -11,7 +11,9 @@ export const objectDifference = <T>(obj1: T, obj2: T | Record<string, unknown>):
         }
     };
 
-    Object.keys(obj1).map((prop) => compare(obj1[prop], obj2[prop], prop));
+    Object.keys(obj1).forEach((prop) => compare(obj1[prop], obj2[prop], prop));
 
     return diffs;
 };
+
+export default objectDifference;

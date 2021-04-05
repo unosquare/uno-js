@@ -1,18 +1,20 @@
-import { isDate } from './isDate';
-import { isString } from './isString';
-import { toLocalTime } from './toLocalTime';
+import isDate from './isDate';
+import isString from './isString';
+import toLocalTime from './toLocalTime';
 
-export const toDate = (obj: string | Record<string, unknown>): void => {
-    Object.keys(obj).map((prop) => {
+const toDate = (obj: string | Record<string, unknown>): void => {
+    Object.keys(obj).forEach((prop) => {
         if (isString(obj[prop]) && isDate(obj[prop])) {
             obj[prop] = toLocalTime(obj[prop]);
         }
         if (typeof obj[prop] === 'object' && obj[prop]) {
             if (obj[prop] instanceof Array) {
-                obj[prop].map(toDate);
+                obj[prop].forEach(toDate);
             } else {
-                Object.keys(obj[prop]).map(() => toDate(obj[prop]));
+                Object.keys(obj[prop]).forEach(() => toDate(obj[prop]));
             }
         }
     });
 };
+
+export default toDate;

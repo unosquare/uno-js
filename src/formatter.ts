@@ -1,4 +1,4 @@
-import { toLocalTime } from './toLocalTime';
+import toLocalTime from './toLocalTime';
 
 export enum FormatTypes {
     MONEY = 'money',
@@ -29,7 +29,7 @@ export const formatter = (data: string | number, format: FormatTypes): string =>
         case FormatTypes.PERCENTAGE:
             return `${Math.round(parseFloat(stringData))}%`;
         case FormatTypes.DECIMAL_PERCENTAGE:
-            return `${parseInt(stringData).toFixed(2)}%`;
+            return `${parseInt(stringData, 10).toFixed(2)}%`;
         case FormatTypes.DATE:
             return toLocalTime(stringData).toLocaleDateString('en-us');
         case FormatTypes.DATE_LOCAL:
@@ -42,5 +42,7 @@ export const formatter = (data: string | number, format: FormatTypes): string =>
             return `${stringData} days`;
         case FormatTypes.MONTHS:
             return `${stringData} months`;
+        default:
+            return 'N/A';
     }
 };

@@ -1,4 +1,4 @@
-import { toDate } from '../src/toDate';
+import toDate from '../src/toDate';
 
 const value = {
     x1: '2020-01-21T06:00:00',

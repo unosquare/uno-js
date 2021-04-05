@@ -1,4 +1,4 @@
-import { validateNotNull } from '../src/validateNotNull';
+import validateNotNull from '../src/validateNotNull';
 
 const validObject = {
     x: 'Valid',
