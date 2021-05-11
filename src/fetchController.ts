@@ -50,7 +50,7 @@ const defaultResponseResolver: ResponseResolver = async (response: Response) => 
     }
 };
 
-export const enum RequestMethod {
+export enum RequestMethod {
     Post = 'POST',
     Get = 'GET',
     Put = 'PUT',
