@@ -50,8 +50,8 @@
     "collectCoverage": true,
     "coverageThreshold": {
       "global": {
-        "branches": 75,
-        "functions": 95,
+        "branches": 74,
+        "functions": 93,
         "lines": 90,
         "statements": -80
       }
@@ -74,12 +74,12 @@
   "homepage": "https://github.com/unosquare/uno-js#readme",
   "devDependencies": {
     "@types/jest": "^26.0.23",
-    "eslint": "^7.25.0",
+    "eslint": "^7.27.0",
     "eslint-config-unosquare": "^0.0.8",
-    "jest": "^26.6.3",
+    "jest": "^27.0.4",
     "jest-fetch-mock": "^3.0.3",
-    "prettier": "^2.2.1",
-    "ts-jest": "^26.5.5",
-    "typescript": "^4.2.4"
+    "prettier": "^2.3.0",
+    "ts-jest": "^27.0.2",
+    "typescript": "^4.3.2"
   }
 }

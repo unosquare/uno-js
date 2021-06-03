@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { debounce } from '../src/debounce';
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
