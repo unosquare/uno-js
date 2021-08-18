@@ -75,7 +75,7 @@
   "devDependencies": {
     "@types/jest": "^27.0.1",
     "eslint": "^7.32.0",
-    "eslint-config-unosquare": "^0.0.9",
+    "eslint-config-unosquare": "^0.0.10",
     "jest": "^27.0.6",
     "jest-fetch-mock": "^3.0.3",
     "prettier": "^2.3.2",
