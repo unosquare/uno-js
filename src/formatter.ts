@@ -24,7 +24,7 @@ export const formatter = (data: string | number, format: FormatTypes): string =>
     switch (format) {
         case FormatTypes.MONEY: {
             const parsedMoney = parseFloat(stringData);
-            const truncate = Math[parsedMoney < 0 ? 'ceil' : 'floor'](parsedMoney * 100) / 100;
+            const truncate = Math[parsedMoney < 0 ? 'ceil' : 'floor'](parsedMoney * 100000) / 100000;
             return !parsedMoney ? 'N/A' : `$${truncate.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
         }
         case FormatTypes.PERCENTAGE:
