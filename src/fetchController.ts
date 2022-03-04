@@ -74,11 +74,11 @@ export async function getRequest(
 
 export async function getResponse(
     url: string,
-    requestMethod = RequestMethod.Get,
+    requestMethod?: RequestMethod,
     requestBody?: BodyInit,
     headersData?: HeadersData,
 ): Promise<Response> {
-    const request = await getRequest(url, requestMethod, requestBody, headersData);
+    const request = await getRequest(url, requestMethod || RequestMethod.Get, requestBody, headersData);
     return fetch(request);
 }
 
