@@ -6,7 +6,8 @@ const truncateText = (complement: TemplateStringsArray | string, text: string, l
 
         if (indexLastSpace > -1 && typeof complement === 'string') {
             return `${result.substr(0, indexLastSpace).trimEnd()}${complement}`;
-        } if (indexLastSpace > -1 && typeof complement === 'object') {
+        }
+        if (indexLastSpace > -1 && typeof complement === 'object') {
             result = result.substr(0, indexLastSpace).trimEnd();
         } else {
             return `${result}${complement}`;

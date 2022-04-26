@@ -12,7 +12,7 @@ const resolveHeaders = async (headersData?: HeadersData) => {
 
     if (headersData) {
         for (const i of Object.keys(headersData)) {
-            // eslint-disable-next-line 
+            // eslint-disable-next-line
             headers.append(i, await headersData[i]());
         }
     }
