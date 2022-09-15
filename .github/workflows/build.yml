@@ -20,10 +20,6 @@ jobs:
             node-
       - name: 🏗 npm build and coverage
         run: |
-          npm ci
+          npm ci --force
           npm run build
           npm test
-      - name: 🎯 Coverage
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
