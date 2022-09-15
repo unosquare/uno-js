@@ -20,3 +20,4 @@ export { default as toLocaleString } from './toLocaleString';
 export * from './formatter';
 export { default as isDate } from './isDate';
 export { default as isString } from './isString';
+export { default as compareDates } from './compareDates';
