@@ -21,3 +21,5 @@ export * from './formatter';
 export { default as isDate } from './isDate';
 export { default as isString } from './isString';
 export { default as compareDates } from './compareDates';
+export { default as nextMonth } from './nextMonth';
+export { default as prevMonth } from './prevMonth';
