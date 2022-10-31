@@ -1,6 +1,6 @@
 {
   "name": "uno-js",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Javascript common used functions, zero dependencies",
   "main": "dist/index.js",
   "scripts": {
@@ -74,13 +74,13 @@
   "homepage": "https://github.com/unosquare/uno-js#readme",
   "devDependencies": {
     "@types/jest": "^27.4.1",
-    "eslint": "^8.23.1",
+    "eslint": "^8.26.0",
     "eslint-config-unosquare": "^0.1.8",
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^27.5.1",
     "jest-fetch-mock": "^3.0.3",
     "prettier": "^2.7.1",
     "ts-jest": "^27.1.4",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.4"
   }
 }
