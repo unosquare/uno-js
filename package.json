@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest --runInBand",
+    "cest": "jest --collectCoverage --runInBand",
     "lint": "eslint src/**/*.{js,ts}",
     "lint:fix": "eslint src/**/*.{js,ts} --fix",
     "prettier": "prettier --check src/**/*.ts*",
@@ -47,7 +48,6 @@
         "tsconfig": "tsconfig.json"
       }
     },
-    "collectCoverage": true,
     "coverageThreshold": {
       "global": {
         "branches": 74,
