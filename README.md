@@ -1,5 +1,5 @@
 [![npm version](https://badge.fury.io/js/uno-js.svg)](https://www.npmjs.com/package/uno-js)
-[![codecov](https://codecov.io/gh/unosquare/uno-js/branch/master/graph/badge.svg)](https://codecov.io/gh/unosquare/uno-js)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=unosquare_uno-js&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=unosquare_uno-js)
 ![GitHub Actions - CI](https://github.com/unosquare/uno-js/workflows/Node%20CI/badge.svg)
 
 # uno-js
