@@ -27,3 +27,4 @@ export * from './abortController';
 export { default as createCsv } from './createCsv';
 export { default as accurateSum } from './accurateSum';
 export * from './truncate';
+export * from './dictionary';
