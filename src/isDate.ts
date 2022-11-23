@@ -1,6 +1,5 @@
-const regexISO =
-    /^(19[8-9]\d|20\d{2})[-](0[1-9]|1[0-2])[-](0[1-9]|[12]\d|3[01])[T](0\d|1\d|2[0-4])[:]([0-5]\d)[:]([0-5]\d)[.](\d{3})[Z]$/;
-const regexDate = /^(19[8-9]\d|20\d{2})[-](0[1-9]|1[0-2])[-](0[1-9]|[12]\d|3[01])/;
+const regexISO = /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)/;
+const regexDate = /\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])/;
 
 const isDate = (value: unknown): boolean => {
     const stringValue = value.toString();
