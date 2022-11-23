@@ -5,6 +5,7 @@ describe('formatter', () => {
     const zero = 0;
     const million = 1000000;
     const stringValue = 'Money';
+
     it('should return formatted million money', () => {
         const id = formatter(million, FormatTypes.MONEY);
         expect(id).toBe('$1,000,000.00');

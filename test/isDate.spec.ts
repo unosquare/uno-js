@@ -21,4 +21,12 @@ describe('isDate', () => {
         const result = isDate('2020-10-07T19:25:32.937Z');
         expect(result).toBeTruthy();
     });
+    it('Return true on valid date object', () => {
+        const result = isDate(new Date('2020-01-01'));
+        expect(result).toBeTruthy();
+    });
+    it('Return false on invalid date object', () => {
+        const result = isDate(new Date('Invalid'));
+        expect(result).toBeFalsy();
+    });
 });

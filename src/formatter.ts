@@ -25,7 +25,7 @@ export const formatter = (data: string | number, format: FormatTypes): string =>
         case FormatTypes.MONEY: {
             const parsedMoney = parseFloat(stringData);
             const truncate = Math[parsedMoney < 0 ? 'ceil' : 'floor'](parsedMoney * 100000) / 100000;
-            return !parsedMoney ? 'N/A' : `$${truncate.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+            return !parsedMoney ? 'N/A' : `$${truncate.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}`;
         }
         case FormatTypes.PERCENTAGE:
             return `${Math.round(parseFloat(stringData))}%`;
