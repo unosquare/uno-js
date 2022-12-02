@@ -30,6 +30,10 @@ describe('formatter', () => {
         const id = formatter(number, FormatTypes.DECIMAL);
         expect(id).toBe('90.00');
     });
+    it('should return 90', () => {
+        const id = formatter(number, FormatTypes.NUMBER);
+        expect(id).toBe('90');
+    });
     it('should return N/A on decimal', () => {
         const id = formatter(stringValue, FormatTypes.DECIMAL);
         expect(id).toBe('N/A');
