@@ -1,5 +1,5 @@
 const escapeValuesWithQuotes = (str: string): string =>
-    str.match(/\$-?(\d{1,3},+)?(\d{1,3},\d{3}\.\d+)/g) ? str.replace(/,\$/g, '","$') : str.replace(/,/g, '","');
+    str.match(/\$-?(\d{1,3},+)?(\d{1,3},\d{3}(\.\d)*)/g) ? str.replace(/,\$/g, '","$') : str.replace(/,/g, '","');
 
 const escapeValuesWithCommas = (data: any[]): string[] =>
     data.map((value: any) =>
