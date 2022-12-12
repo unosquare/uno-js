@@ -8,8 +8,8 @@ const dateOptions: any = { month: 'numeric', day: 'numeric' };
 const formatWeekDaysRange = (start: Date, end: Date) =>
     `[${start.toLocaleDateString('en-US', dateOptions)} - ${end.toLocaleDateString('en-US', dateOptions)}]`;
 
-export const getWeekDaysRange = (week: number) => {
-    const year = new Date().getFullYear();
+export const getWeekDaysRange = (week: number, year: number = null) => {
+    year = year || new Date().getFullYear();
     const firstDayOfYear = new Date(year, 0, 1);
 
     let pivotDay = 1 + (week - 1) * 7 - firstDayOfYear.getDay();
@@ -22,18 +22,18 @@ export const getWeekDaysRange = (week: number) => {
     return formatWeekDaysRange(weekStart, weekEnd);
 };
 
-const getWeek = (date: any) => {
+export const getWeek = (date: any) => {
     const onejan = new Date(date.getFullYear(), 0, 1);
     return Math.ceil(((date - +onejan) / 86400000 + onejan.getDay() + 1) / 7) - 1;
 };
 
 export const getWeekOfYear = (): number => getWeek(new Date());
 
-export const compareDates = (a: string, b: string) => {
-    const aDate = new Date(a);
-    const bDate = new Date(b);
-    if (aDate < bDate) return -1;
-    if (aDate > bDate) return 1;
+export const compareDates = (a: string, b: string) => compareRealDates(new Date(a), new Date(b));
+
+export const compareRealDates = (a: Date, b: Date) => {
+    if (a < b) return -1;
+    if (a > b) return 1;
     return 0;
 };
 

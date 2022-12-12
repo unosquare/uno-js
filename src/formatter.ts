@@ -1,4 +1,5 @@
 import toLocalTime from './toLocalTime';
+import { truncate } from './truncate';
 
 export enum FormatTypes {
     MONEY = 'money',
@@ -21,8 +22,12 @@ export const formatter = (data: string | number, format: FormatTypes): string =>
     switch (format) {
         case FormatTypes.MONEY: {
             const parsedMoney = parseFloat(stringData);
-            const truncate = Math[parsedMoney < 0 ? 'ceil' : 'floor'](parsedMoney * 100000) / 100000;
-            return !parsedMoney ? 'N/A' : `$${truncate.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}`;
+            return !parsedMoney
+                ? 'N/A'
+                : new Intl.NumberFormat('en-US', {
+                      style: 'currency',
+                      currency: 'USD',
+                  }).format(truncate(parsedMoney, 100000));
         }
         case FormatTypes.PERCENTAGE:
             return `${Math.round(parseFloat(stringData))}%`;
