@@ -1,5 +1,5 @@
-import { compareDates, formatQuarter, getWeek,getWeekDaysRange } from '../src/dateUtils';
-        
+import { compareDates, formatQuarter, getWeekDaysRange } from '../src/dateUtils';
+
 describe('formatQuarter', () => {
     it('should return formatted quarter', () => {
         const rawQuarter = '2020-Q1';
@@ -12,18 +12,6 @@ describe('getWeekDaysRange', () => {
         const week = 2;
         const year = 2020;
         expect(getWeekDaysRange(week, year)).toBe('[1/5 - 1/11]');
-    });
-});
-
-describe('getWeek', () => {
-    it('should return week number from 2020-01-01', () => {
-        const date = new Date('2020-01-01');
-        expect(getWeek(date)).toBe(52);
-    });
-
-    it('should return week number from 2020-01-08', () => {
-        const date = new Date('2020-01-08');
-        expect(getWeek(date)).toBe(1);
     });
 });
 

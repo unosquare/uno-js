@@ -26,5 +26,6 @@ export { default as prevMonth } from './prevMonth';
 export * from './abortController';
 export { default as createCsv } from './createCsv';
 export { default as accurateSum } from './accurateSum';
+export { default as trimText } from './trimText';
 export * from './truncate';
 export * from './dictionary';
