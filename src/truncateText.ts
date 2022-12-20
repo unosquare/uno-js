@@ -14,7 +14,7 @@ const truncateText = (complement: TemplateStringsArray | string, text: string, l
             return `${result}${complement}`;
         }
     }
-    
+
     return typeof complement === 'object' ? `${complement[0]}${result}${complement[2]}` : result;
 };
 

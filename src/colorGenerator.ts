@@ -10,7 +10,7 @@ const interpolation = (a: number[], b: number[], factor: number): number[] => {
 
 const colorGenerator = (startColor: number[], endColor: number[], factor: number): string[] => {
     const ret = [];
-    
+
     for (let i = 0; i < factor; i++) {
         const rgb = interpolation(startColor, endColor, i / (factor - 1));
         ret.push(`rgba(${rgb[0]},${rgb[1]},${rgb[2]}, 1)`);

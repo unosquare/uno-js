@@ -29,3 +29,4 @@ export { default as accurateSum } from './accurateSum';
 export { default as trimText } from './trimText';
 export * from './truncate';
 export * from './dictionary';
+export * from './nameof';
