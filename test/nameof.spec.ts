@@ -1,4 +1,4 @@
-import { nameof, selectNumber, sumBy } from '../src/nameof';
+import { nameof, selectNumberByName, sumByName, selectNumberBy, sumBy } from '../src/nameof';
 
 interface People {
     name: string;
@@ -15,15 +15,12 @@ describe('nameof', () => {
     });
 
     it('should return the name of the typed property', () => {
-        const obj: People = {
-            name: 'John',
-        };
         const result = nameof<People>('name');
         expect(result).toBe('name');
     });
 });
 
-describe('selectNumber', () => {
+describe('selectNumberByName', () => {
     it('should return an array of numbers', () => {
         const data = [
             {
@@ -32,8 +29,48 @@ describe('selectNumber', () => {
             },
             { name: 'Jane', age: 30 },
         ];
-        const result = selectNumber<People>('age', data);
+        const result = selectNumberByName<People>(data, 'age');
         expect(result).toEqual([20, 30]);
+    });
+});
+
+describe('selectNumberBy', () => {
+    it('should return an array of numbers', () => {
+        const data = [
+            {
+                name: 'John',
+                age: 20,
+            },
+            { name: 'Jane', age: 30 },
+        ];
+        const result = selectNumberBy(data, (x) => x.age);
+        expect(result).toEqual([20, 30]);
+    });
+});
+
+describe('sumByName', () => {
+    it('should return the sum of the selected property', () => {
+        const data = [
+            {
+                name: 'John',
+                age: 20,
+            },
+            { name: 'Jane', age: 30 },
+        ];
+        const result = sumByName<People>(data, 'age');
+        expect(result).toBe(50);
+    });
+
+    it('should return the sum of the selected property with a callback', () => {
+        const data = [
+            {
+                name: 'John',
+                age: 20,
+            },
+            { name: 'Jane', age: 30 },
+        ];
+        const result = sumByName<People>(data, 'age', (x) => x * 2);
+        expect(result).toBe(140);
     });
 });
 
@@ -46,7 +83,7 @@ describe('sumBy', () => {
             },
             { name: 'Jane', age: 30 },
         ];
-        const result = sumBy<People>('age', data);
+        const result = sumBy(data, (x) => x.age);
         expect(result).toBe(50);
     });
 
@@ -58,7 +95,11 @@ describe('sumBy', () => {
             },
             { name: 'Jane', age: 30 },
         ];
-        const result = sumBy<People>('age', data, (x) => x * 2);
+        const result = sumBy(
+            data,
+            (x) => x.age,
+            (x) => x * 2,
+        );
         expect(result).toBe(140);
     });
 });
