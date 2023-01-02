@@ -24,7 +24,7 @@ export const getWeekDaysRange = (week: number, year: number = null) => {
 
 export const getWeek = (date: any) => {
     const onejan = new Date(date.getFullYear(), 0, 1);
-    return Math.ceil(((date - +onejan) / 86400000 + onejan.getDay() + 1) / 7) - 1;
+    return Math.ceil(((date - +onejan) / 86400000 + onejan.getDay() + 1) / 7);
 };
 
 export const getWeekOfYear = (): number => getWeek(new Date());
