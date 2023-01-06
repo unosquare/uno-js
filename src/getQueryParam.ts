@@ -6,16 +6,16 @@ const getQueryParam = (param: string, url: string): string | number | null => {
         return null;
     }
 
-    const hasMoreValues = url.indexOf('&');
-    const initial = match.index + match[0].length;
+    const restUrl = url.substring(match.index + match[0].length);
+    const hasMoreValues = restUrl.indexOf('&');
 
-    if (hasMoreValues >= initial) {
-        return url.substring(initial, hasMoreValues);
+    if (hasMoreValues) {
+        return restUrl.substring(0, hasMoreValues);
     }
 
-    const hasAnchor = url.lastIndexOf('#');
+    const hasAnchor = restUrl.lastIndexOf('#');
 
-    return hasAnchor >= initial ? url.substring(initial, hasAnchor) : url.substring(initial);
+    return hasAnchor ? restUrl.substring(0, hasAnchor) : restUrl;
 };
 
 export default getQueryParam;
