@@ -2,7 +2,7 @@ import getQueryParam from '../src/getQueryParam';
 
 describe('getQueryParam', () => {
     const singleUrl = 'https://github.com/unosquare/uno-js?id=3';
-    const multipleUrl = 'https://github.com/unosquare/uno-js?id=3&user=MarcoLPR';
+    const multipleUrl = 'https://github.com/unosquare/uno-js?id=3&user=MarcoLPR&param3=4';
     const anchorUrl = 'https://github.com/unosquare/uno-js?id=3#Documents';
 
     it('should return id', () => {
@@ -16,6 +16,10 @@ describe('getQueryParam', () => {
     it('should return user on multiple params', () => {
         const id = getQueryParam('user', multipleUrl);
         expect(id).toBe('MarcoLPR');
+    });
+    it('should return param3 on multiple params', () => {
+        const param3 = getQueryParam('param3', multipleUrl);
+        expect(param3).toBe('4');
     });
     it('should return null', () => {
         const id = getQueryParam('user', singleUrl);
