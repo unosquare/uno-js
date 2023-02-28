@@ -1,86 +1,86 @@
 {
-    "name": "uno-js",
-    "version": "2.2.0",
-    "description": "Javascript common used functions, zero dependencies",
-    "main": "dist/index.js",
-    "scripts": {
-        "test": "jest --runInBand",
-        "cest": "jest --collectCoverage --runInBand",
-        "lint": "eslint src/**/*.{js,ts}",
-        "lint:fix": "eslint src/**/*.{js,ts} --fix",
-        "prettier": "prettier --check src/**/*.ts*",
-        "prettier:fix": "prettier --write src/**/*.ts*",
-        "codestyle:fix": "npm run lint:fix && npm run prettier:fix",
-        "build": "tsc",
-        "preparepackage": "npm run build && npm run copypackage",
-        "copypackage": "npx shx cp package.json dist"
-    },
-    "prettier": {
-        "endOfLine": "auto",
-        "semi": true,
-        "trailingComma": "all",
-        "singleQuote": true,
-        "printWidth": 120,
-        "tabWidth": 4
-    },
-    "jest": {
-        "automock": false,
-        "setupFiles": [
-            "./setupJest.js"
-        ],
-        "coverageReporters": [
-            "lcov",
-            "text"
-        ],
-        "moduleFileExtensions": [
-            "ts",
-            "js"
-        ],
-        "transform": {
-            "^.+\\.(ts)$": "ts-jest"
-        },
-        "testMatch": [
-            "<rootDir>/test/**/*.spec.ts"
-        ],
-        "globals": {
-            "ts-jest": {
-                "diagnostics": false,
-                "tsconfig": "tsconfig.json"
-            }
-        },
-        "coverageThreshold": {
-            "global": {
-                "branches": 74,
-                "functions": 85,
-                "lines": 90,
-                "statements": -80
-            }
-        }
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/unosquare/uno-js.git"
-    },
-    "keywords": [
-        "Javascript",
-        "Functions",
-        "JS"
+  "name": "uno-js",
+  "version": "2.1.1",
+  "description": "Javascript common used functions, zero dependencies",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest --runInBand",
+    "cest": "jest --collectCoverage --runInBand",
+    "lint": "eslint src/**/*.{js,ts}",
+    "lint:fix": "eslint src/**/*.{js,ts} --fix",
+    "prettier": "prettier --check src/**/*.ts*",
+    "prettier:fix": "prettier --write src/**/*.ts*",
+    "codestyle:fix": "npm run lint:fix && npm run prettier:fix",
+    "build": "tsc",
+    "preparepackage": "npm run build && npm run copypackage",
+    "copypackage": "npx shx cp package.json dist"
+  },
+  "prettier": {
+    "endOfLine": "auto",
+    "semi": true,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 120,
+    "tabWidth": 4
+  },
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./setupJest.js"
     ],
-    "author": "Unosquare",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/unosquare/uno-js/issues"
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts)$": "ts-jest"
     },
-    "homepage": "https://github.com/unosquare/uno-js#readme",
-    "devDependencies": {
-        "@types/jest": "^27.4.1",
-        "eslint": "^8.34.0",
-        "eslint-config-unosquare": "^0.1.14",
-        "eslint-plugin-prettier": "^4.2.1",
-        "jest": "^27.5.1",
-        "jest-fetch-mock": "^3.0.3",
-        "prettier": "^2.8.4",
-        "ts-jest": "^27.1.4",
-        "typescript": "^4.9.5"
+    "testMatch": [
+      "<rootDir>/test/**/*.spec.ts"
+    ],
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false,
+        "tsconfig": "tsconfig.json"
+      }
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 74,
+        "functions": 85,
+        "lines": 90,
+        "statements": -80
+      }
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unosquare/uno-js.git"
+  },
+  "keywords": [
+    "Javascript",
+    "Functions",
+    "JS"
+  ],
+  "author": "Unosquare",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unosquare/uno-js/issues"
+  },
+  "homepage": "https://github.com/unosquare/uno-js#readme",
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "eslint": "^8.34.0",
+    "eslint-config-unosquare": "^0.1.14",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^27.5.1",
+    "jest-fetch-mock": "^3.0.3",
+    "prettier": "^2.8.4",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.9.5"
+  }
 }
