@@ -5,7 +5,8 @@ const escapeValuesWithQuotes = (str: string): string =>
 
 const wrapWithQuotes = (text: string) => `"${text}"`;
 
-const formatMixedEntry = (arr: string | any): string => arr.map(wrapWithQuotes).join();
+const formatMixedEntry = (arr: string | any): string =>
+    arr.constructor === Array ? arr.map(wrapWithQuotes).join() : wrapWithQuotes(arr);
 
 const formatEntryWithCommas = (textString: string, text: string | Array<string>) =>
     (textString.match(/(,\s)+/g) || []).length === 0
