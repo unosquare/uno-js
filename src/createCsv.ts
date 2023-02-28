@@ -3,14 +3,20 @@ import trimText from './trimText';
 const escapeValuesWithQuotes = (str: string): string =>
     str.match(/\$-?(\d{1,3},+)?(\d{1,3},\d{3}(\.\d)*)/g) ? str.replace(/,\$/g, '","$') : str.replace(/,/g, '","');
 
+const wrapWithQuotes = (text: string) => `"${text}"`;
+
+const formatMixedEntry = (arr: string | any): string => arr.map(wrapWithQuotes).join();
+
+const formatEntryWithCommas = (textString: string, text: string | Array<string>) =>
+    (textString.match(/(,\s)+/g) || []).length === 0
+        ? wrapWithQuotes(escapeValuesWithQuotes(textString))
+        : formatMixedEntry(text);
+
 const escapeValuesWithCommas = (data: any[]): string[] =>
     data.map((value: any) =>
-        value.map((text: string) => {
+        value.map((text: string | Array<string>) => {
             const textString = !text ? 'N/A' : trimText(text);
-            const paragraphCommas = (textString.match(/(,\s)+/g) || []).length;
-            return textString.includes(',') && paragraphCommas === 0
-                ? `"${escapeValuesWithQuotes(textString)}"`
-                : `"${textString}"`;
+            return textString.includes(',') ? formatEntryWithCommas(textString, text) : wrapWithQuotes(textString);
         }),
     );
 
