@@ -73,7 +73,7 @@
   },
   "homepage": "https://github.com/unosquare/uno-js#readme",
   "devDependencies": {
-    "@types/jest": "^27.4.1",
+    "@types/jest": "^29.5.0",
     "eslint": "^8.38.0",
     "eslint-config-unosquare": "^0.1.15",
     "eslint-plugin-prettier": "^4.2.1",
