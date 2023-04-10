@@ -37,17 +37,17 @@
       "js"
     ],
     "transform": {
-      "^.+\\.(ts)$": "ts-jest"
+        "^.+\\.(ts|tsx)$": [
+            "ts-jest",
+            {
+                "diagnostics": false,
+                "tsconfig": "tsconfig.json"
+            }
+        ]
     },
     "testMatch": [
       "<rootDir>/test/**/*.spec.ts"
     ],
-    "globals": {
-      "ts-jest": {
-        "diagnostics": false,
-        "tsconfig": "tsconfig.json"
-      }
-    },
     "coverageThreshold": {
       "global": {
         "branches": 74,
