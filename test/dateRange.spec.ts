@@ -24,7 +24,7 @@ describe('YearQuarter', () => {
     });
 
     it('should contains next year and quarter', () => {
-        const yearQuarter = YearQuarter.Next;
+        const yearQuarter = YearQuarter.Current.Next;
         const current = YearQuarter.Current;
         const nextQuarter = current.Quarter + 1;
         const nextYear = current.Year + (nextQuarter > 4 ? 1 : 0);
@@ -34,7 +34,7 @@ describe('YearQuarter', () => {
     });
 
     it('should contains previous year and quarter', () => {
-        const yearQuarter = YearQuarter.Previous;
+        const yearQuarter = YearQuarter.Current.Previous;
         const current = YearQuarter.Current;
         const previousQuarter = current.Quarter - 1;
         const previousYear = current.Year - (previousQuarter < 1 ? 1 : 0);
@@ -84,7 +84,7 @@ describe('YearMonth', () => {
     });
 
     it('should contains next year and month', () => {
-        const yearMonth = YearMonth.Next;
+        const yearMonth = YearMonth.Current.Next;
         const current = YearMonth.Current;
         const nextMonth = current.Month + 1;
         const nextYear = current.Year + (nextMonth > 12 ? 1 : 0);
@@ -94,7 +94,7 @@ describe('YearMonth', () => {
     });
 
     it('should contains previous year and month', () => {
-        const yearMonth = YearMonth.Previous;
+        const yearMonth = YearMonth.Current.Previous;
         const current = YearMonth.Current;
         const previousMonth = current.Month - 1;
         const previousYear = current.Year - (previousMonth < 1 ? 1 : 0);
@@ -166,7 +166,7 @@ describe('YearWeek', () => {
     });
 
     it('should contains next year and week', () => {
-        const yearWeek = YearWeek.Next;
+        const yearWeek = YearWeek.Current.Next;
         const current = YearWeek.Current;
         const nextWeek = current.Week + 1;
         const nextYear = current.Year + (nextWeek > 52 ? 1 : 0);
@@ -176,7 +176,7 @@ describe('YearWeek', () => {
     });
 
     it('should contains previous year and week', () => {
-        const yearWeek = YearWeek.Previous;
+        const yearWeek = YearWeek.Current.Previous;
         const current = YearWeek.Current;
         const previousWeek = current.Week - 1;
         const previousYear = current.Year - (previousWeek < 1 ? 1 : 0);

@@ -90,18 +90,16 @@ export class YearQuarter extends DateRange implements IYearQuarterDateRange {
         return new YearQuarter();
     }
 
-    static get Next(): YearQuarter {
-        const current = YearQuarter.Current;
-        const nextQuarter = current.Quarter + 1;
-        const nextYear = current.Year + (nextQuarter > 4 ? 1 : 0);
+    get Next(): YearQuarter {
+        const nextQuarter = this.Quarter + 1;
+        const nextYear = this.Year + (nextQuarter > 4 ? 1 : 0);
 
         return new YearQuarter(nextYear, nextQuarter > 4 ? 1 : nextQuarter);
     }
 
-    static get Previous(): YearQuarter {
-        const current = YearQuarter.Current;
-        const previousQuarter = current.Quarter - 1;
-        const previousYear = current.Year - (previousQuarter < 1 ? 1 : 0);
+    get Previous(): YearQuarter {
+        const previousQuarter = this.Quarter - 1;
+        const previousYear = this.Year - (previousQuarter < 1 ? 1 : 0);
 
         return new YearQuarter(previousYear, previousQuarter < 1 ? 4 : previousQuarter);
     }
@@ -134,22 +132,20 @@ export class YearMonth extends DateRange implements IYearMonthDateRange {
         return new YearMonth();
     }
 
-    static get Next(): YearMonth {
-        const current = YearMonth.Current;
-        const nextMonth = current.Month + 1;
-        const nextYear = current.Year + (nextMonth > 12 ? 1 : 0);
+    get Next(): YearMonth {
+        const nextMonth = this.Month + 1;
+        const nextYear = this.Year + (nextMonth > 12 ? 1 : 0);
 
         return new YearMonth(nextYear, nextMonth > 12 ? 1 : nextMonth);
     }
 
-    static get Previous(): YearMonth {
-        const current = YearMonth.Current;
-        const previousMonth = current.Month - 1;
-        const previousYear = current.Year - (previousMonth < 1 ? 1 : 0);
+    get Previous(): YearMonth {
+        const previousMonth = this.Month - 1;
+        const previousYear = this.Year - (previousMonth < 1 ? 1 : 0);
 
         return new YearMonth(previousYear, previousMonth < 1 ? 12 : previousMonth);
     }
-
+    
     toString(): string {
         return `${this.Year}-${this.Month.toString().padStart(2, '0')}`;
     }
@@ -191,22 +187,20 @@ export class YearWeek extends DateRange implements IYearWeekDateRange {
         return new YearWeek();
     }
 
-    static get Next(): YearWeek {
-        const current = YearWeek.Current;
-        const nextWeek = current.Week + 1;
-        const nextYear = current.Year + (nextWeek > 53 ? 1 : 0);
+    get Next(): YearWeek {
+        const nextWeek = this.Week + 1;
+        const nextYear = this.Year + (nextWeek > 52 ? 1 : 0);
 
-        return new YearWeek(nextYear, nextWeek > 53 ? 1 : nextWeek);
+        return new YearWeek(nextYear, nextWeek > 52 ? 1 : nextWeek);
     }
 
-    static get Previous(): YearWeek {
-        const current = YearWeek.Current;
-        const previousWeek = current.Week - 1;
-        const previousYear = current.Year - (previousWeek < 1 ? 1 : 0);
+    get Previous(): YearWeek {
+        const previousWeek = this.Week - 1;
+        const previousYear = this.Year - (previousWeek < 1 ? 1 : 0);
 
-        return new YearWeek(previousYear, previousWeek < 1 ? 53 : previousWeek);
+        return new YearWeek(previousYear, previousWeek < 1 ? 52 : previousWeek);
     }
-
+    
     toString(): string {
         return `${this.Year}-W${this.Week.toString().padStart(2, '0')}`;
     }
