@@ -1,4 +1,4 @@
-import toLocalTime from './toLocalTime';
+import { toLocalTime } from './dateUtils';
 import { truncate } from './truncate';
 
 export enum FormatTypes {

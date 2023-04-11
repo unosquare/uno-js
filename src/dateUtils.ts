@@ -1,3 +1,5 @@
+import isString from "./isString";
+
 export const getDateUtc = (date: string) => {
     const dateValue = new Date(date);
     return new Date(dateValue.getTime() + dateValue.getTimezoneOffset() * 60000).toString();
@@ -22,13 +24,6 @@ export const getWeekDaysRange = (week: number, year: number = null) => {
     return formatWeekDaysRange(weekStart, weekEnd);
 };
 
-export const getWeek = (date: any) => {
-    const onejan = new Date(date.getFullYear(), 0, 1);
-    return Math.ceil(((date - +onejan) / 86400000 + onejan.getDay() + 1) / 7);
-};
-
-export const getWeekOfYear = (): number => getWeek(new Date());
-
 export const compareDates = (a: string, b: string) => compareRealDates(new Date(a), new Date(b));
 
 export const compareRealDates = (a: Date, b: Date) => {
@@ -37,7 +32,59 @@ export const compareRealDates = (a: Date, b: Date) => {
     return 0;
 };
 
-export const formatQuarter = (rawQuarter: string) => {
-    const [year, quarter] = rawQuarter.split('-');
-    return `${quarter}-${year}`;
+export const toLocalTime = (date: string | Date): Date => {
+    if (typeof date === 'string' && date.toUpperCase().endsWith('Z')) {
+        return new Date(date);
+    }
+    const baseDate = date instanceof Date ? date : new Date(date);
+    return new Date(
+        Date.UTC(
+            baseDate.getFullYear(),
+            baseDate.getMonth(),
+            baseDate.getDate(),
+            baseDate.getHours(),
+            baseDate.getMinutes(),
+            baseDate.getSeconds(),
+            baseDate.getMilliseconds(),
+        ),
+    );
+};
+
+const regexISO = /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)/;
+const regexDate = /\d{4}-(0\d|1[0-2])-([0-2]\d|3[01])/;
+
+export const isDate = (value: unknown): boolean => {
+    const stringValue = value.toString();
+    const isValidDate = !Number.isNaN(new Date(stringValue).getDate());
+
+    if (value instanceof Date && isValidDate) return true;
+
+    const isValidDateString = isValidDate && stringValue.match(regexDate) !== null;
+    return isValidDateString && new Date(stringValue).toISOString().match(regexISO) !== null;
+};
+
+const dateTimeFormatOptions: Intl.DateTimeFormatOptions = {
+    month: 'long',
+    year: 'numeric',
+    day: 'numeric',
+};
+
+export const toLocaleString = (date: string, locales = 'en-us'): string => {
+    const dateString = toLocalTime(date).toLocaleDateString(locales, dateTimeFormatOptions);
+    return dateString !== 'Invalid Date' ? dateString : '';
+};
+
+export const toDate = (obj: string | Record<string, unknown>): void => {
+    Object.keys(obj).forEach((prop) => {
+        if (isString(obj[prop]) && isDate(obj[prop])) {
+            obj[prop] = toLocalTime(obj[prop]);
+        }
+        if (typeof obj[prop] === 'object' && obj[prop]) {
+            if (obj[prop] instanceof Array) {
+                obj[prop].forEach(toDate);
+            } else {
+                Object.keys(obj[prop]).forEach(() => toDate(obj[prop]));
+            }
+        }
+    });
 };

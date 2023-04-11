@@ -1,11 +1,10 @@
-import toDate from './toDate';
 import humanize from './humanize';
-import toLocalTime from './toLocalTime';
 import toTitleCase from './toTitleCase';
 import truncateText from './truncateText';
 import objectDifference from './objectDifference';
 import validateNotNull from './validateNotNull';
 import removeDuplicated from './removeDuplicated';
+import { toDate, toLocalTime } from './dateUtils';
 
 const install = (): void => {
     if (!Object.prototype.hasOwnProperty.call(Array, 'toDate')) {
