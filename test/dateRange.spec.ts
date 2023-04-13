@@ -47,6 +47,12 @@ describe('YearQuarter', () => {
         const yearQuarter = new YearQuarter(2019, 1);
         expect(yearQuarter.toString()).toBe('2019-Q1');
     });
+
+    it('should contains current year and quarter from date', () => {
+        const yearQuarter = YearQuarter.FromDate(new Date());
+        expect(yearQuarter.Year).toBe(new Date().getFullYear());
+        expect(yearQuarter.Quarter).toBe(Math.ceil(new Date().getMonth() + 1 / 3));
+    });
 });
 
 describe('YearMonth', () => {
@@ -106,6 +112,12 @@ describe('YearMonth', () => {
     it('should contains string representation', () => {
         const yearMonth = new YearMonth(2019, 1);
         expect(yearMonth.toString()).toBe('2019-01');
+    });
+
+    it('should contains current year and month from date', () => {
+        const yearMonth = YearMonth.FromDate(new Date());
+        expect(yearMonth.Year).toBe(new Date().getFullYear());
+        expect(yearMonth.Month).toBe(new Date().getMonth() + 1);
     });
 });
 

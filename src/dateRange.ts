@@ -70,7 +70,7 @@ export class DateRange implements IDateRange {
 export class YearQuarter extends DateRange implements IYearQuarterDateRange {
     constructor(year?: number, quarter?: number) {
         year = year ?? new Date().getFullYear();
-        quarter = quarter ?? Math.ceil(new Date().getMonth() + 1 / 3);
+        quarter = quarter ?? YearQuarter.CurrentQuarter;
 
         const startDate = new Date(year, (quarter - 1) * 3, 1);
         const endDate = new Date(year, quarter * 3, 0);
@@ -88,6 +88,18 @@ export class YearQuarter extends DateRange implements IYearQuarterDateRange {
 
     static get Current(): YearQuarter {
         return new YearQuarter();
+    }
+
+    static FromDate(date: Date): YearQuarter {
+        return new YearQuarter(date.getFullYear(), YearQuarter.CurrentQuarter);
+    }
+
+    static get CurrentQuarter(): number {
+        return Math.ceil(new Date().getMonth() + 1 / 3);
+    }
+
+    get IsCurrent(): boolean {
+        return this.Year === new Date().getFullYear() && this.Quarter === YearQuarter.CurrentQuarter;
     }
 
     get Next(): YearQuarter {
@@ -130,6 +142,14 @@ export class YearMonth extends DateRange implements IYearMonthDateRange {
 
     static get Current(): YearMonth {
         return new YearMonth();
+    }
+
+    static FromDate(date: Date): YearMonth {
+        return new YearMonth(date.getFullYear(), date.getMonth() + 1);
+    }
+
+    get IsCurrent(): boolean {
+        return this.Year === new Date().getFullYear() && this.Month === new Date().getMonth() + 1;
     }
 
     get Next(): YearMonth {
@@ -185,6 +205,10 @@ export class YearWeek extends DateRange implements IYearWeekDateRange {
 
     static get Current(): YearWeek {
         return new YearWeek();
+    }
+
+    static FromDate(date: Date): YearWeek {
+        return new YearWeek(date.getFullYear(), getWeekNumber(date));
     }
 
     get Next(): YearWeek {
