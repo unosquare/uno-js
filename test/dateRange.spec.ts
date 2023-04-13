@@ -20,7 +20,7 @@ describe('YearQuarter', () => {
     it('should contains current year and quarter', () => {
         const yearQuarter = YearQuarter.Current;
         expect(yearQuarter.Year).toBe(new Date().getFullYear());
-        expect(yearQuarter.Quarter).toBe(Math.ceil(new Date().getMonth() + 1 / 3));
+        expect(yearQuarter.Quarter).toBe(Math.floor(new Date().getMonth() / 3 + 1));
     });
 
     it('should contains next year and quarter', () => {
@@ -51,7 +51,7 @@ describe('YearQuarter', () => {
     it('should contains current year and quarter from date', () => {
         const yearQuarter = YearQuarter.FromDate(new Date());
         expect(yearQuarter.Year).toBe(new Date().getFullYear());
-        expect(yearQuarter.Quarter).toBe(Math.ceil(new Date().getMonth() + 1 / 3));
+        expect(yearQuarter.Quarter).toBe(Math.floor(new Date().getMonth() / 3 + 1));
     });
 });
 

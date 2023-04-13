@@ -95,7 +95,7 @@ export class YearQuarter extends DateRange implements IYearQuarterDateRange {
     }
 
     static get CurrentQuarter(): number {
-        return Math.ceil(new Date().getMonth() + 1 / 3);
+        return Math.floor(new Date().getMonth() / 3 + 1);
     }
 
     get IsCurrent(): boolean {
