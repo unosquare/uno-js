@@ -32,7 +32,7 @@ export const formatter = (data: string | number, format: FormatTypes): string =>
         case FormatTypes.PERCENTAGE:
             return `${Math.round(parseFloat(stringData))}%`;
         case FormatTypes.DECIMAL_PERCENTAGE:
-            return `${parseInt(stringData, 10).toFixed(2)}%`;
+            return `${truncate(parseFloat(stringData)).toFixed(2)}%`;
         case FormatTypes.NUMBER:
             return `${parseInt(stringData, 10)}`;
         case FormatTypes.DATE:
