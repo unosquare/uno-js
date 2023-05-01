@@ -63,8 +63,9 @@
   },
   "keywords": [
     "Javascript",
-    "Functions",
-    "JS"
+    "functions",
+    "JS",
+    "typescript"
   ],
   "author": "Unosquare",
   "license": "MIT",
