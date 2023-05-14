@@ -1,6 +1,6 @@
 {
   "name": "uno-js",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "JS/TS common used functions, zero dependencies",
   "main": "dist/index.js",
   "scripts": {
@@ -37,13 +37,13 @@
       "js"
     ],
     "transform": {
-        "^.+\\.(ts|tsx)$": [
-            "ts-jest",
-            {
-                "diagnostics": false,
-                "tsconfig": "tsconfig.json"
-            }
-        ]
+      "^.+\\.(ts|tsx)$": [
+        "ts-jest",
+        {
+          "diagnostics": false,
+          "tsconfig": "tsconfig.json"
+        }
+      ]
     },
     "testMatch": [
       "<rootDir>/test/**/*.spec.ts"
