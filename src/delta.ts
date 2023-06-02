@@ -1,12 +1,29 @@
-export const getDeltaString = (delta: number): 'unchanged' | 'increase' | 'decrease' => {
-    if (delta === 0) return 'unchanged';
+export const getDeltaString = (delta: number | null): 'unchanged' | 'increase' | 'decrease' => {
+    if (!delta) return 'unchanged';
     return delta > 0 ? 'increase' : 'decrease';
 };
 
-export const calculateDelta = (current: number, previous: number) => {
-    const delta = current - previous;
-    const deltaPercent = previous ? (delta / previous) * 100 : 0;
-    return [delta, deltaPercent, getDeltaString(delta)];
+export const getDeltaStringFromValues = (
+    current: number | null,
+    previous: number | null,
+): 'unchanged' | 'increase' | 'decrease' => {
+    if (!current || !previous) return 'unchanged';
+    return getDeltaString(current - previous);
+};
+
+export const calculateDeltaValue = (current: number | null, previous: number | null) => {
+    if (!current || !previous) return null;
+    return current - previous;
+};
+
+export const calculateDelta = (current: number | null, previous: number | null) => {
+    const delta = calculateDeltaValue(current, previous);
+    return [delta, calculateDeltaPercent(current, previous), getDeltaString(delta)];
+};
+
+export const calculateDeltaPercent = (current: number | null, previous: number | null) => {
+    if (!current || !previous) return null;
+    return ((current - previous) / previous) * 100;
 };
 
 export const padDecimal = (number: number, digits?: number) =>

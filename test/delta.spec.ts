@@ -19,7 +19,13 @@ describe('calculateDelta', () => {
         expect(deltaPercent).toBe(0);
         expect(deltaString).toBe('unchanged');
     });
-}  );
+    it('should return nulls for delta, deltaPercent, and deltaString', () => {
+        const [delta, deltaPercent, deltaString] = calculateDelta(null, 5);
+        expect(delta).toBe(null);
+        expect(deltaPercent).toBe(null);
+        expect(deltaString).toBe('unchanged');
+    });
+});
 
 describe('padDecimal', () => {
     it('should return a string with two decimal digits', () => {
