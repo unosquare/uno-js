@@ -1,3 +1,8 @@
+const dateOptions: any = { month: 'numeric', day: 'numeric', year: 'numeric' };
+
+export const formatDateRange = (start: Date, end: Date) =>
+    `[${start.toLocaleDateString('en-US', dateOptions)} - ${end.toLocaleDateString('en-US', dateOptions)}]`;
+
 export interface IHasYear {
     Year: number;
 }
@@ -43,6 +48,7 @@ export class DateRange implements IDateRange {
     }
 
     StartDate: Date;
+
     EndDate: Date;
 
     get DaysInBetween(): number {
@@ -82,8 +88,11 @@ export class YearQuarter extends DateRange implements IYearQuarterDateRange {
     }
 
     Year: number;
+
     Quarter: number;
+
     StartDate: Date;
+
     EndDate: Date;
 
     static get Current(): YearQuarter {
@@ -136,8 +145,11 @@ export class YearMonth extends DateRange implements IYearMonthDateRange {
     }
 
     Year: number;
+
     Month: number;
+
     StartDate: Date;
+
     EndDate: Date;
 
     static get Current(): YearMonth {
@@ -165,18 +177,12 @@ export class YearMonth extends DateRange implements IYearMonthDateRange {
 
         return new YearMonth(previousYear, previousMonth < 1 ? 12 : previousMonth);
     }
-    
+
     toString(): string {
         return `${this.Year}-${this.Month.toString().padStart(2, '0')}`;
     }
 }
 
-const dateOptions: any = { month: 'numeric', day: 'numeric', year: 'numeric' };
-
-export const formatDateRange = (start: Date, end: Date) =>
-    `[${start.toLocaleDateString('en-US', dateOptions)} - ${end.toLocaleDateString('en-US', dateOptions)}]`;
-
-    
 export const getWeekNumber = (date: any) => {
     const onejan = new Date(date.getFullYear(), 0, 1);
     return Math.ceil(((date - +onejan) / 86400000 + onejan.getDay() + 1) / 7);
@@ -199,8 +205,11 @@ export class YearWeek extends DateRange implements IYearWeekDateRange {
     }
 
     Year: number;
+
     Week: number;
+
     StartDate: Date;
+
     EndDate: Date;
 
     static get Current(): YearWeek {
@@ -224,9 +233,8 @@ export class YearWeek extends DateRange implements IYearWeekDateRange {
 
         return new YearWeek(previousYear, previousWeek < 1 ? 52 : previousWeek);
     }
-    
+
     toString(): string {
         return `${this.Year}-W${this.Week.toString().padStart(2, '0')}`;
     }
 }
-

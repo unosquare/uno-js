@@ -1,4 +1,4 @@
-import isString from "./isString";
+import { isString } from './isString';
 
 export const getDateUtc = (date: string) => {
     const dateValue = new Date(date);
@@ -24,18 +24,18 @@ export const getWeekDaysRange = (week: number, year: number = null) => {
     return formatWeekDaysRange(weekStart, weekEnd);
 };
 
-export const compareDates = (a: string, b: string) => compareRealDates(new Date(a), new Date(b));
-
 export const compareRealDates = (a: Date, b: Date) => {
     if (a < b) return -1;
-    if (a > b) return 1;
-    return 0;
+    return a > b ? 1 : 0;
 };
+
+export const compareDates = (a: string, b: string) => compareRealDates(new Date(a), new Date(b));
 
 export const toLocalTime = (date: string | Date): Date => {
     if (typeof date === 'string' && date.toUpperCase().endsWith('Z')) {
         return new Date(date);
     }
+
     const baseDate = date instanceof Date ? date : new Date(date);
     return new Date(
         Date.UTC(

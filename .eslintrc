@@ -15,6 +15,7 @@
     "plugins": ["prettier"],
     "rules": {
         "no-extend-native": 0,
-        "no-param-reassign": 0
+        "no-param-reassign": 0,
+        "max-classes-per-file": 1
     }
 }

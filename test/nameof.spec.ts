@@ -1,4 +1,4 @@
-import { nameof, selectNumberByName, sumByName, selectNumberBy, sumBy } from '../src/nameof';
+import { nameof, selectNumberByName, sumByName, selectNumberBy, sumBy, getAverage } from '../src/nameof';
 
 interface People {
     name: string;
@@ -101,5 +101,19 @@ describe('sumBy', () => {
             (x) => x * 2,
         );
         expect(result).toBe(140);
+    });
+});
+
+describe('getAverage', () => {
+    it('should return the average of the selected property', () => {
+        const data = [
+            {
+                name: 'John',
+                age: 20,
+            },
+            { name: 'Jane', age: 30 },
+        ];
+        const result = getAverage(data, 'age');
+        expect(result).toBe(25);
     });
 });

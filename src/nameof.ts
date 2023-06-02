@@ -1,8 +1,8 @@
 export const nameof = <T>(name: Extract<keyof T, string>): string => name;
 
-export const identity = (x: any) => x;
+export const identity = <T = unknown>(x: T) => x;
 
-export const selectNumberByName = <T>(data: T[], name: Extract<keyof T, string>): number[] =>
+export const selectNumberByName = <T = unknown>(data: T[], name: Extract<keyof T, string>): number[] =>
     data.map((i) => Number(i[name]));
 
 export const selectNumberBy = <T, K extends keyof any>(data: T[], selector: (obj: T) => K): number[] =>
@@ -21,3 +21,5 @@ export const sumBy = <T, K extends keyof any>(
     const innerCallback = callBack || identity;
     return selectNumberBy(data, selector).reduce((acc, item) => innerCallback(acc + item), 0);
 };
+
+export const getAverage = <T>(data: T[], prop: Extract<keyof T, string>) => sumByName<T>(data, prop) / data.length;
