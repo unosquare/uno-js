@@ -23,7 +23,7 @@ export const calculateDelta = (current: number | null, previous: number | null) 
 
 export const calculateDeltaPercent = (current: number | null, previous: number | null) => {
     if (!current || !previous) return null;
-    return ((current - previous) / previous) * 100;
+    return ((current - previous) / current) * 100;
 };
 
 export const padDecimal = (number: number, digits?: number) =>
