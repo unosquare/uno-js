@@ -100,7 +100,7 @@ export class YearQuarter extends DateRange implements IYearQuarterDateRange {
     }
 
     static FromDate(date: Date): YearQuarter {
-        return new YearQuarter(date.getFullYear(), YearQuarter.CurrentQuarter);
+        return new YearQuarter(date.getFullYear(), Math.floor(date.getMonth() / 3 + 1));
     }
 
     static get CurrentQuarter(): number {
@@ -123,6 +123,10 @@ export class YearQuarter extends DateRange implements IYearQuarterDateRange {
         const previousYear = this.Year - (previousQuarter < 1 ? 1 : 0);
 
         return new YearQuarter(previousYear, previousQuarter < 1 ? 4 : previousQuarter);
+    }
+
+    get YearMonths(): YearMonth[] {
+        return Array.from({ length: 3 }).map((_, i) => new YearMonth(this.Year, this.Quarter * 3 - 2 + i));
     }
 
     toString(): string {
@@ -176,6 +180,10 @@ export class YearMonth extends DateRange implements IYearMonthDateRange {
         const previousYear = this.Year - (previousMonth < 1 ? 1 : 0);
 
         return new YearMonth(previousYear, previousMonth < 1 ? 12 : previousMonth);
+    }
+
+    get YearQuarter(): YearQuarter {
+        return YearQuarter.FromDate(this.StartDate);
     }
 
     toString(): string {

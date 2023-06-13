@@ -53,6 +53,14 @@ describe('YearQuarter', () => {
         expect(yearQuarter.Year).toBe(new Date().getFullYear());
         expect(yearQuarter.Quarter).toBe(Math.floor(new Date().getMonth() / 3 + 1));
     });
+
+    it('should contains months', () => {
+        const yearQuarter = new YearQuarter(2019, 1);
+        expect(yearQuarter.YearMonths.length).toBe(3);
+        expect(yearQuarter.YearMonths[0].Month).toBe(1);
+        expect(yearQuarter.YearMonths[1].Month).toBe(2);
+        expect(yearQuarter.YearMonths[2].Month).toBe(3);
+    });
 });
 
 describe('YearMonth', () => {
@@ -118,6 +126,12 @@ describe('YearMonth', () => {
         const yearMonth = YearMonth.FromDate(new Date());
         expect(yearMonth.Year).toBe(new Date().getFullYear());
         expect(yearMonth.Month).toBe(new Date().getMonth() + 1);
+    });
+
+    it('should contains a YearQuarter', () => {
+        const yearMonth = new YearMonth(2019, 1);
+        expect(yearMonth.YearQuarter.Year).toBe(2019);
+        expect(yearMonth.YearQuarter.Quarter).toBe(1);
     });
 });
 
@@ -201,4 +215,4 @@ describe('YearWeek', () => {
         const yearWeek = new YearWeek(2019, 1);
         expect(yearWeek.toString()).toBe('2019-W01');
     });
-}  );
+});
