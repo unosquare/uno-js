@@ -4,18 +4,24 @@ import { truncate } from './truncate';
 export enum FormatTypes {
     MONEY = 'money',
     PERCENTAGE = 'percentage',
-    DECIMAL_PERCENTAGE = 'decimalPercentage',
     DATE = 'date',
-    DATE_LOCAL = 'dateLocal',
     DECIMAL = 'decimal',
     NUMBER = 'number',
     DAYS = 'days',
     MONTHS = 'months',
 }
 
-export const formatter = (data: string | number, format: FormatTypes): string => {
+const defaultOptions = { keepFormat: false, decimals: 2, nullValue: 'N/A' };
+
+export const formatter = (
+    data: string | number | null,
+    format: FormatTypes,
+    options?: { keepFormat?: boolean; decimals?: number; nullValue?: string },
+): string => {
+    const { keepFormat, decimals, nullValue } = { ...defaultOptions, ...options };
+
     if (!data && format === FormatTypes.MONEY) return '$0.00';
-    if (data == null) return 'N/A';
+    if (data == null) return nullValue;
 
     const stringData = data.toString();
 
@@ -23,31 +29,30 @@ export const formatter = (data: string | number, format: FormatTypes): string =>
         case FormatTypes.MONEY: {
             const parsedMoney = parseFloat(stringData);
             return !parsedMoney
-                ? 'N/A'
+                ? nullValue
                 : new Intl.NumberFormat('en-US', {
                       style: 'currency',
                       currency: 'USD',
                   }).format(truncate(parsedMoney, 100000));
         }
         case FormatTypes.PERCENTAGE:
-            return `${Math.round(parseFloat(stringData))}%`;
-        case FormatTypes.DECIMAL_PERCENTAGE:
-            return `${truncate(parseFloat(stringData)).toFixed(2)}%`;
+            if (decimals === 0) return `${Math.round(parseFloat(stringData))}%`;
+
+            return `${truncate(parseFloat(stringData)).toFixed(decimals)}%`;
         case FormatTypes.NUMBER:
             return `${parseInt(stringData, 10)}`;
         case FormatTypes.DATE:
-            return toLocalTime(stringData).toLocaleDateString('en-us');
-        case FormatTypes.DATE_LOCAL:
+            if (keepFormat) return toLocalTime(stringData).toLocaleDateString('en-us');
             return new Date(stringData).toLocaleDateString('en-us');
         case FormatTypes.DECIMAL: {
             const parsedDecimal = parseFloat(stringData);
-            return !parsedDecimal ? 'N/A' : parsedDecimal.toFixed(2);
+            return !parsedDecimal ? nullValue : parsedDecimal.toFixed(2);
         }
         case FormatTypes.DAYS:
-            return `${stringData} days`;
+            return Number(stringData) === 1 ? '1 day' : `${stringData} days`;
         case FormatTypes.MONTHS:
-            return `${stringData} months`;
+            return Number(stringData) === 1 ? '1 month' : `${stringData} months`;
         default:
-            return 'N/A';
+            return nullValue;
     }
 };

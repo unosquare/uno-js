@@ -8,7 +8,7 @@ const interpolation = (a: number[], b: number[], factor: number): number[] => {
     return inter;
 };
 
-const colorGenerator = (startColor: number[], endColor: number[], factor: number): string[] => {
+export default (startColor: number[], endColor: number[], factor: number): string[] => {
     const ret = [];
 
     for (let i = 0; i < factor; i++) {
@@ -18,5 +18,3 @@ const colorGenerator = (startColor: number[], endColor: number[], factor: number
 
     return ret;
 };
-
-export default colorGenerator;

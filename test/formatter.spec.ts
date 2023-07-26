@@ -19,11 +19,11 @@ describe('formatter', () => {
         expect(id).toBe('N/A');
     });
     it('should return 90%', () => {
-        const id = formatter(number, FormatTypes.PERCENTAGE);
+        const id = formatter(number, FormatTypes.PERCENTAGE, { decimals: 0 });
         expect(id).toBe('90%');
     });
     it('should return 90.00%', () => {
-        const id = formatter(number, FormatTypes.DECIMAL_PERCENTAGE);
+        const id = formatter(number, FormatTypes.PERCENTAGE);
         expect(id).toBe('90.00%');
     });
     it('should return 90.00', () => {
@@ -50,12 +50,20 @@ describe('formatter', () => {
         const id = formatter(number, FormatTypes.MONTHS);
         expect(id).toBe('90 months');
     });
+    it('should return 1 day', () => {
+        const id = formatter(1, FormatTypes.DAYS);
+        expect(id).toBe('1 day');
+    });
+    it('should return 1 month', () => {
+        const id = formatter(1, FormatTypes.MONTHS);
+        expect(id).toBe('1 month');
+    });
     it('should return formatted Date', () => {
-        const id = formatter(new Date().toLocaleString(), FormatTypes.DATE);
+        const id = formatter(new Date().toLocaleString(), FormatTypes.DATE, { keepFormat: true });
         expect(id).toBe(new Date().toLocaleDateString('en-us'));
     });
     it('should return formatted Local Date', () => {
-        const id = formatter(new Date().toLocaleString(), FormatTypes.DATE_LOCAL);
+        const id = formatter(new Date().toLocaleString(), FormatTypes.DATE);
         expect(id).toBe(new Date().toLocaleDateString('en-us'));
     });
 });
