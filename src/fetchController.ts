@@ -3,10 +3,6 @@ export type ResponsePromise = JsonPrimitives | JsonPrimitives[];
 export type ResponseResolver = (response: Response) => Promise<ResponsePromise>;
 export type HeadersData = Record<string, () => Promise<string>>;
 
-export interface FetchOptions {
-    responseResolver: ResponseResolver;
-}
-
 const resolveHeaders = async (headersData?: HeadersData) => {
     const headers = new Headers();
 
@@ -50,12 +46,7 @@ const defaultResponseResolver: ResponseResolver = async (response: Response) => 
     }
 };
 
-export enum RequestMethod {
-    Post = 'POST',
-    Get = 'GET',
-    Put = 'PUT',
-    Delete = 'DELETE',
-}
+export type RequestMethod  = 'POST' | 'GET' | 'PUT' | 'DELETE';
 
 export async function getRequest(
     url: string,
@@ -78,7 +69,7 @@ export async function getResponse(
     requestBody?: BodyInit,
     headersData?: HeadersData,
 ): Promise<Response> {
-    const request = await getRequest(url, requestMethod || RequestMethod.Get, requestBody, headersData);
+    const request = await getRequest(url, requestMethod || 'GET', requestBody, headersData);
     return fetch(request);
 }
 
