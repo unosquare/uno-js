@@ -1,45 +1,45 @@
-const dateOptions: any = { month: 'numeric', day: 'numeric', year: 'numeric' };
+const dateOptions: Intl.DateTimeFormatOptions = { month: 'numeric', day: 'numeric', year: 'numeric' };
 
 export const formatDateRange = (start: Date, end: Date) =>
     `[${start.toLocaleDateString('en-US', dateOptions)} - ${end.toLocaleDateString('en-US', dateOptions)}]`;
 
-export interface IHasYear {
+export type IHasYear = {
     Year: number;
-}
+};
 
-export interface IHasMonth {
+export type IHasMonth = {
     Month: number;
-}
+};
 
-export interface IHasQuarter {
+export type IHasQuarter = {
     Quarter: number;
-}
+};
 
-export interface IHasWeek {
+export type IHasWeek = {
     Week: number;
-}
+};
 
-export interface IHasStartDate {
+export type IHasStartDate = {
     StartDate: Date;
-}
+};
 
-export interface IHasEndDate {
+export type IHasEndDate = {
     EndDate: Date;
-}
+};
 
-export interface IYearQuarter extends IHasYear, IHasQuarter {}
+export type IYearQuarter = IHasYear & IHasQuarter;
 
-export interface IYearMonth extends IHasYear, IHasMonth {}
+export type IYearMonth = IHasYear & IHasMonth;
 
-export interface IYearWeek extends IHasYear, IHasWeek {}
+export type IYearWeek = IHasYear & IHasWeek;
 
-export interface IDateRange extends IHasStartDate, IHasEndDate {}
+export type IDateRange = IHasStartDate & IHasEndDate;
 
-export interface IYearQuarterDateRange extends IYearQuarter, IDateRange {}
+export type IYearQuarterDateRange = IYearQuarter & IDateRange;
 
-export interface IYearMonthDateRange extends IYearMonth, IDateRange {}
+export type IYearMonthDateRange = IYearMonth & IDateRange;
 
-export interface IYearWeekDateRange extends IYearWeek, IDateRange {}
+export type IYearWeekDateRange = IYearWeek & IDateRange;
 
 export class DateRange implements IDateRange {
     constructor(startDate: Date, endDate: Date) {
@@ -191,9 +191,9 @@ export class YearMonth extends DateRange implements IYearMonthDateRange {
     }
 }
 
-export const getWeekNumber = (date: any) => {
+export const getWeekNumber = (date: Date) => {
     const onejan = new Date(date.getFullYear(), 0, 1);
-    return Math.ceil(((date - +onejan) / 86400000 + onejan.getDay() + 1) / 7);
+    return Math.ceil(((date.getTime() - onejan.getTime()) / 86400000 + onejan.getDay() + 1) / 7);
 };
 
 export const getWeekOfYear = (): number => getWeekNumber(new Date());

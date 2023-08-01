@@ -22,10 +22,6 @@
     "tabWidth": 4
   },
   "jest": {
-    "automock": false,
-    "setupFiles": [
-      "./setupJest.js"
-    ],
     "coverageReporters": [
       "lcov",
       "text"
@@ -79,7 +75,6 @@
     "eslint-plugin-prettier": "^5.0.0",
     "jest": "^29.6.2",
     "jest-environment-jsdom": "^29.6.2",
-    "jest-fetch-mock": "^3.0.3",
     "prettier": "^3.0.0",
     "ts-jest": "^29.1.1",
     "typescript": "^5.1.6"

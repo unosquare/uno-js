@@ -1,6 +1,5 @@
 export { default as colorGenerator } from './colorGenerator';
 export * from './debounce';
-export * from './fetchController';
 export { default as humanize } from './humanize';
 export { default as objectDifference } from './objectDifference';
 export { default as removeDuplicated } from './removeDuplicated';
@@ -21,6 +20,5 @@ export { default as createCsv } from './createCsv';
 export { default as accurateSum } from './accurateSum';
 export { default as trimText } from './trimText';
 export * from './truncate';
-export * from './dictionary';
 export * from './nameof';
 export * from './dateRange';

@@ -8,7 +8,6 @@
     },
     "env": {
         "es6": true,
-        "browser": true,
         "jest": true
     },
     "extends": "eslint-config-unosquare",
@@ -17,6 +16,6 @@
         "no-extend-native": 0,
         "no-param-reassign": 0,
         "max-classes-per-file": 0,
-        "@typescript-eslint/no-explicit-any": 0
+        "@typescript-eslint/no-explicit-any": "warn"
     }
 }

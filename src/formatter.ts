@@ -6,8 +6,8 @@ export type FormatTypes = 'money' | 'percentage' | 'date' | 'decimal' | 'number'
 const defaultOptions = { keepFormat: false, decimals: 2, nullValue: 'N/A' };
 
 export const formatter = (
-    data: string | number | null,
-    format: FormatTypes,
+    data?: string | number,
+    format?: FormatTypes,
     options?: { keepFormat?: boolean; decimals?: number; nullValue?: string },
 ): string => {
     const { keepFormat, decimals, nullValue } = { ...defaultOptions, ...options };

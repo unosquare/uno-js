@@ -5,7 +5,7 @@ export const getDateUtc = (date: string) => {
     return new Date(dateValue.getTime() + dateValue.getTimezoneOffset() * 60000).toString();
 };
 
-const dateOptions: any = { month: 'numeric', day: 'numeric' };
+const dateOptions: Intl.DateTimeFormatOptions = { month: 'numeric', day: 'numeric' };
 
 const formatWeekDaysRange = (start: Date, end: Date) =>
     `[${start.toLocaleDateString('en-US', dateOptions)} - ${end.toLocaleDateString('en-US', dateOptions)}]`;
