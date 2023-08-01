@@ -1,9 +1,9 @@
 import { nameof, selectNumberByName, sumByName, selectNumberBy, sumBy, getAverage } from '../src/nameof';
 
-interface People {
+type People = {
     name: string;
     age?: number;
-}
+};
 
 describe('nameof', () => {
     it('should return the name of the property', () => {
@@ -22,14 +22,14 @@ describe('nameof', () => {
 
 describe('selectNumberByName', () => {
     it('should return an array of numbers', () => {
-        const data = [
+        const data: People[] = [
             {
                 name: 'John',
                 age: 20,
             },
             { name: 'Jane', age: 30 },
         ];
-        const result = selectNumberByName<People>(data, 'age');
+        const result = selectNumberByName(data, 'age');
         expect(result).toEqual([20, 30]);
     });
 });
@@ -62,14 +62,14 @@ describe('sumByName', () => {
     });
 
     it('should return the sum of the selected property with a callback', () => {
-        const data = [
+        const data: People[] = [
             {
                 name: 'John',
                 age: 20,
             },
             { name: 'Jane', age: 30 },
         ];
-        const result = sumByName<People>(data, 'age', (x) => x * 2);
+        const result = sumByName(data, 'age', (x) => x * 2);
         expect(result).toBe(140);
     });
 });
