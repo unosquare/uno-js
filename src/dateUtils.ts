@@ -1,5 +1,3 @@
-import { isString } from './isString';
-
 export const getDateUtc = (date: string) => {
     const dateValue = new Date(date);
     return new Date(dateValue.getTime() + dateValue.getTimezoneOffset() * 60000).toString();
@@ -59,8 +57,8 @@ export const isDate = (value: unknown): boolean => {
 
     if (value instanceof Date && isValidDate) return true;
 
-    const isValidDateString = isValidDate && stringValue.match(regexDate) !== null;
-    return isValidDateString && new Date(stringValue).toISOString().match(regexISO) !== null;
+    const isValidDateString = isValidDate && regexDate.exec(stringValue) !== null;
+    return isValidDateString && regexISO.exec(new Date(stringValue).toISOString()) !== null;
 };
 
 const dateTimeFormatOptions: Intl.DateTimeFormatOptions = {
@@ -76,10 +74,11 @@ export const toLocaleString = (date: string, locales = 'en-us'): string => {
 
 export const toDate = (obj: string | Record<string, unknown>): void => {
     Object.keys(obj).forEach((prop) => {
-        if (isString(obj[prop]) && isDate(obj[prop])) {
+        const currentType = typeof obj[prop];
+        if (currentType === 'string' && isDate(obj[prop])) {
             obj[prop] = toLocalTime(obj[prop]);
         }
-        if (typeof obj[prop] === 'object' && obj[prop]) {
+        if (currentType === 'object' && obj[prop]) {
             if (obj[prop] instanceof Array) {
                 obj[prop].forEach(toDate);
             } else {

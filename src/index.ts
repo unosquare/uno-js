@@ -10,7 +10,6 @@ export * from './withEnter';
 export { default as validateObject } from './validateObject';
 export { default as validateNotNull } from './validateNotNull';
 export * from './formatter';
-export * from './isString';
 export * from './delta';
 export * from './dateUtils';
 export * from './abortController';

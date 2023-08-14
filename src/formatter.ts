@@ -5,18 +5,11 @@ export type FormatTypes = 'money' | 'percentage' | 'date' | 'decimal' | 'number'
 
 const defaultOptions = { keepFormat: false, decimals: 2, nullValue: 'N/A' };
 
-export const formatter = (
-    data?: string | number,
-    format?: FormatTypes,
-    options?: { keepFormat?: boolean; decimals?: number; nullValue?: string },
+const internalFotmatter = (
+    stringData: string,
+    format: FormatTypes,
+    { keepFormat, decimals, nullValue }: { keepFormat: boolean; decimals: number; nullValue: string },
 ): string => {
-    const { keepFormat, decimals, nullValue } = { ...defaultOptions, ...options };
-
-    if (!data && format === 'money') return '$0.00';
-    if (data == null) return nullValue;
-
-    const stringData = data.toString();
-
     switch (format) {
         case 'money': {
             const parsedMoney = parseFloat(stringData);
@@ -47,4 +40,16 @@ export const formatter = (
         default:
             return nullValue;
     }
+};
+
+export const formatter = (
+    data?: string | number,
+    format?: FormatTypes,
+    options?: { keepFormat?: boolean; decimals?: number; nullValue?: string },
+): string => {
+    const { keepFormat, decimals, nullValue } = { ...defaultOptions, ...options };
+
+    if (!data && format === 'money') return '$0.00';
+
+    return data == null ? nullValue : internalFotmatter(data.toString(), format, { keepFormat, decimals, nullValue });
 };
