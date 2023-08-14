@@ -1,9 +1,7 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
-        "paths": { "*": ["types/*"] },
-        "target": "es6",
-        "lib": ["dom", "dom.iterable", "esnext"],
+        "target": "ES2016",
         "skipLibCheck": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
