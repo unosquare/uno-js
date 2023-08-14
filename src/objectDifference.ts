@@ -1,4 +1,4 @@
-const objectDifference = <T>(obj1: T, obj2: T | Record<string, unknown>): T | Record<string, unknown> => {
+export default <T>(obj1: T, obj2: T | Record<string, unknown>): T | Record<string, unknown> => {
     if (!obj2 || Object.prototype.toString.call(obj2) !== '[object Object]') {
         return obj1;
     }
@@ -15,5 +15,3 @@ const objectDifference = <T>(obj1: T, obj2: T | Record<string, unknown>): T | Re
 
     return diffs;
 };
-
-export default objectDifference;

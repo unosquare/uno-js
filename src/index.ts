@@ -1,11 +1,9 @@
-export { default as colorGenerator } from './colorGenerator';
 export * from './debounce';
 export { default as humanize } from './humanize';
 export { default as objectDifference } from './objectDifference';
 export { default as removeDuplicated } from './removeDuplicated';
 export { default as SimpleObservable } from './SimpleObservable';
 export * from './stringTemplate';
-export { default as Maybe } from './Maybe';
 export { default as toTitleCase } from './toTitleCase';
 export { default as truncateText } from './truncateText';
 export * from './withEnter';
