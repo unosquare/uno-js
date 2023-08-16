@@ -1,6 +1,5 @@
 export * from './debounce';
 export { default as humanize } from './humanize';
-export { default as objectDifference } from './objectDifference';
 export { default as removeDuplicated } from './removeDuplicated';
 export { default as SimpleObservable } from './SimpleObservable';
 export * from './stringTemplate';

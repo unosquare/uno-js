@@ -1,4 +1,4 @@
-export type stringTemplateType = (value: string, index?: number) => string;
+export type stringTemplateType = (value: string, index: number) => string;
 
 export const stringTemplate = (template: string | string[], isPrefix: boolean): stringTemplateType => {
     if (typeof template === 'object') {

@@ -7,8 +7,8 @@ const defaultOptions = { keepFormat: false, decimals: 2, nullValue: 'N/A' };
 
 const internalFotmatter = (
     stringData: string,
-    format: FormatTypes,
     { keepFormat, decimals, nullValue }: { keepFormat: boolean; decimals: number; nullValue: string },
+    format?: FormatTypes,
 ): string => {
     switch (format) {
         case 'money': {
@@ -51,5 +51,5 @@ export const formatter = (
 
     if (!data && format === 'money') return '$0.00';
 
-    return data == null ? nullValue : internalFotmatter(data.toString(), format, { keepFormat, decimals, nullValue });
+    return data == null ? nullValue : internalFotmatter(data.toString(), { keepFormat, decimals, nullValue }, format);
 };

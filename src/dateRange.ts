@@ -91,10 +91,6 @@ export class YearQuarter extends DateRange implements IYearQuarterDateRange {
 
     Quarter: number;
 
-    StartDate: Date;
-
-    EndDate: Date;
-
     static get Current(): YearQuarter {
         return new YearQuarter();
     }
@@ -151,10 +147,6 @@ export class YearMonth extends DateRange implements IYearMonthDateRange {
     Year: number;
 
     Month: number;
-
-    StartDate: Date;
-
-    EndDate: Date;
 
     static get Current(): YearMonth {
         return new YearMonth();
@@ -215,10 +207,6 @@ export class YearWeek extends DateRange implements IYearWeekDateRange {
     Year: number;
 
     Week: number;
-
-    StartDate: Date;
-
-    EndDate: Date;
 
     static get Current(): YearWeek {
         return new YearWeek();
