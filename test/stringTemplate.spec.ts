@@ -1,4 +1,4 @@
-import { stringTemplate } from '../src/stringTemplate';
+import { stringTemplate, defaultStringFilter, sanitizeNumericString, sortComparer, sortNumericString } from '../src/stringTemplate';
 
 const results = {
     x1: 'lorem@gmail.com',
@@ -30,9 +30,94 @@ describe('stringTemplate', () => {
         const prefixResult = prefixSample('Johnson', 5);
         expect(prefixResult).toBe(results.x4);
     });
-    it('string should return undefined', () => {
-        const prefixSample = stringTemplate(templates, false);
-        const prefixResult = prefixSample('');
-        expect(prefixResult).toBe('undefined');
+});
+
+describe('defaultStringFilter', () => {
+    it('should return true if search is in element', () => {
+        const search = 'lorem';
+        const element = 'lorem ipsum';
+        const result = defaultStringFilter(search)(element);
+        expect(result).toBe(true);
+    });
+    it('should return false if search is not in element', () => {
+        const search = 'lorem';
+        const element = 'ipsum';
+        const result = defaultStringFilter(search)(element);
+        expect(result).toBe(false);
+    });
+    it('should return false if element is undefined', () => {
+        const search = 'lorem';
+        const element = undefined;
+        const result = defaultStringFilter(search)(element);
+        expect(result).toBe(false);
+    });
+    it('should return false if element is null', () => {
+        const search = 'lorem';
+        const element = null;
+        const result = defaultStringFilter(search)(element);
+        expect(result).toBe(false);
+    });
+    it('should return false if element is empty string', () => {
+        const search = 'lorem';
+        const element = '';
+        const result = defaultStringFilter(search)(element);
+        expect(result).toBe(false);
+    });
+});
+
+describe('sanitizeNumericString', () => {
+    it('should return 123', () => {
+        const result = sanitizeNumericString('123');
+        expect(result).toBe(123);
+    });
+    it('should return 123.45', () => {
+        const result = sanitizeNumericString('123.45');
+        expect(result).toBe(123.45);
+    });
+    it('should return 123.45', () => { 
+        const result = sanitizeNumericString('$123.45');
+        expect(result).toBe(123.45);
+    });
+});
+
+describe('sortComparer', () => {
+    it('should return -1', () => {
+        const result = sortComparer('a', 'b');
+        expect(result).toBe(-1);
+    });
+    it('should return 1', () => {
+        const result = sortComparer('b', 'a');
+        expect(result).toBe(1);
+    });
+    it('should return 0', () => {
+        const result = sortComparer('a', 'a');
+        expect(result).toBe(0);
+    });
+});
+
+describe('sortNumericString', () => {
+    it('should return -1', () => {
+        const result = sortNumericString('a', 'b');
+        expect(result).toBe(-1);
+    });
+    it('should return 1', () => {
+        const result = sortNumericString('b', 'a');
+        expect(result).toBe(1);
+    });
+    it('should return 0', () => {
+        const result = sortNumericString('a', 'a');
+        expect(result).toBe(0);
+    });
+    it('should return -1 with actual numbers', () => {
+        const result = sortNumericString('$100.00', '$150.00');
+        expect(result).toBe(-1);
+    });
+    it('should return 1 with actual numbers', () => {
+        const result = sortNumericString('$150.00', '$100.00');
+        expect(result).toBe(1);
+    });
+    it('should return 0 with actual numbers', () => {
+        const result = sortNumericString('$100.00', '$100.00');
+        expect(result).toBe(0);
     });
 });

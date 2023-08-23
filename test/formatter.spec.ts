@@ -14,6 +14,10 @@ describe('formatter', () => {
         const id = formatter(zero, 'money');
         expect(id).toBe('$0.00');
     });
+    it('should return formatted $0.00 money', () => {
+        const id = formatter(undefined, 'money');
+        expect(id).toBe('$0.00');
+    });
     it('should return N/A on money', () => {
         const id = formatter(stringValue, 'money');
         expect(id).toBe('N/A');

@@ -39,6 +39,18 @@ describe('compareDates', () => {
         const date2 = '2020-01-01';
         expect(compareDates(date1, date2)).toBe(0);
     });
+
+    it('should return 1 when date1 is greater than date2', () => {
+        const date1 = '2020-01-02';
+        const date2 = '2020-01-01';
+        expect(compareDates(date1, date2)).toBe(1);
+    });
+
+    it('should return -1 when date1 is less than date2', () => {
+        const date1 = '2020-01-01';
+        const date2 = '2020-01-02';
+        expect(compareDates(date1, date2)).toBe(-1);
+    });
 });
 
 describe('toLocalTime', () => {

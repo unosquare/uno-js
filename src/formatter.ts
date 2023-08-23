@@ -43,7 +43,7 @@ const internalFotmatter = (
 };
 
 export const formatter = (
-    data?: string | number,
+    data: string | number | null | undefined,
     format?: FormatTypes,
     options?: { keepFormat?: boolean; decimals?: number; nullValue?: string },
 ): string => {

@@ -1,4 +1,4 @@
-const truncateText = (complement: TemplateStringsArray | string, text: string, length: number): string => {
+export default (complement: TemplateStringsArray | string, text: string, length: number): string => {
     let result = text;
 
     if (text && text.length > length) {
@@ -17,5 +17,3 @@ const truncateText = (complement: TemplateStringsArray | string, text: string, l
 
     return typeof complement === 'object' ? `${complement[0]}${result}${complement[2]}` : result;
 };
-
-export default truncateText;
