@@ -18,3 +18,4 @@ export { default as trimText } from './trimText';
 export * from './truncate';
 export * from './nameof';
 export * from './dateRange';
+export * from './safeMap';
