@@ -1,7 +1,8 @@
-import { identity } from './nameof';
+export const emptyIfNull = <T, Y>(value: T | null | undefined, func?: (i: T) => Y[]): Y[] => {
+    if (!value) return [];
 
-export const emptyIfNull = <T, Y>(value: T | null | undefined, func?: (i: T) => Y[]) =>
-    value ? (func ?? identity)(value) : [];
+    return func ? func(value) : (value as Y[]);
+};
 
 export const safeObjectMap = (
     value: Record<string, unknown> | null | undefined,
