@@ -9,7 +9,7 @@ const formatWeekDaysRange = (start: Date, end: Date) =>
     `[${start.toLocaleDateString('en-US', dateOptions)} - ${end.toLocaleDateString('en-US', dateOptions)}]`;
 
 export const getWeekDaysRange = (week: number, year?: number) => {
-    year = year || new Date().getFullYear();
+    year = year ?? new Date().getFullYear();
     const firstDayOfYear = new Date(year, 0, 1);
 
     let pivotDay = 1 + (week - 1) * 7 - firstDayOfYear.getDay();
@@ -68,4 +68,11 @@ const dateTimeFormatOptions: Intl.DateTimeFormatOptions = {
 export const toLocaleString = (date: string, locales = 'en-us'): string => {
     const dateString = toLocalTime(date).toLocaleDateString(locales, dateTimeFormatOptions);
     return dateString !== 'Invalid Date' ? dateString : '';
+};
+
+export const getPreviousQuarter = (currentQuarter: string) => {
+    const quarter = Number(currentQuarter.split('-Q')[1]);
+    const year = Number(currentQuarter.split('-Q')[0]);
+
+    return quarter === 1 ? `${year - 1}-Q4` : `${year}-Q${quarter - 1}`;
 };

@@ -17,7 +17,6 @@ export const sanitizeNumericString = (str: string) => Number(str.replace(/[^0-9.
 export const defaultStringFilter = (search: string) => (element: unknown) =>
     Boolean(element && String(element).toLocaleLowerCase().includes(search.toLocaleLowerCase()));
 
-
 export const sortComparer = (left: string, right: string) =>
     left.trim().localeCompare(right.trim(), undefined, { numeric: true, sensitivity: 'base' });
 

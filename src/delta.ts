@@ -26,4 +26,4 @@ export const calculateDelta = (current?: number, previous?: number) => {
 };
 
 export const padDecimal = (number: number, digits?: number) =>
-    number.toLocaleString('en-US', { minimumFractionDigits: digits || 2, maximumFractionDigits: digits || 2 });
+    number.toLocaleString('en-US', { minimumFractionDigits: digits ?? 2, maximumFractionDigits: digits ?? 2 });

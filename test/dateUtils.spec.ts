@@ -1,14 +1,4 @@
-import { compareDates, getWeekDaysRange, isDate, toLocalTime, toLocaleString } from '../src/dateUtils';
-
-const value = {
-    x1: '2020-01-21T06:00:00',
-    x2: '2020-01-01T00:00:00',
-    x3: { x31: '2020-01-05T06:00:00' },
-    x4: { x41: [{ x411: '2020-01-05T06:00:00' }, { x412: '2020-01-05T06:00:00' }] },
-    y1: 3,
-    y2: '20200101',
-    y3: null,
-};
+import { compareDates, getWeekDaysRange, isDate, toLocalTime, toLocaleString, getPreviousQuarter } from '../src/dateUtils';
 
 const stringDate = '2020-01-21T06:00:00';
 const locales = 'en-us';
@@ -98,5 +88,17 @@ describe('isDate', () => {
     it('Return false on invalid date object', () => {
         const result = isDate(new Date('Invalid'));
         expect(result).toBeFalsy();
+    });
+});
+
+describe('getPreviousQuarter', () => {
+    it('should return previous quarter', () => {
+        const currentQuarter = '2020-Q2';
+        expect(getPreviousQuarter(currentQuarter)).toBe('2020-Q1');
+    });
+
+    it('should return previous quarter', () => {
+        const currentQuarter = '2020-Q1';
+        expect(getPreviousQuarter(currentQuarter)).toBe('2019-Q4');
     });
 });
