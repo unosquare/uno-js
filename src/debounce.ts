@@ -1,11 +1,11 @@
 // based on https://github.com/chodorowicz/ts-debounce/blob/master/src/index.ts
-export type Procedure = (...args: any[]) => void;
+export type Procedure = (...args: unknown[]) => void;
 
 export function debounce<F extends Procedure>(func: F, waitMilliseconds = 500): F {
     let timeoutId: number | undefined;
 
     // tslint:disable-next-line: only-arrow-functions
-    return function (t: any, ...args: any[]) {
+    return function (t: unknown, ...args: unknown[]) {
         const context = t;
 
         const doLater = (): void => {

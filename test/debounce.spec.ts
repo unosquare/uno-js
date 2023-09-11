@@ -8,7 +8,7 @@ const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 describe('debounce', () => {
     it('should return array lenght == 1', async () => {
-        const result = [];
+        const result: string[] = [];
         const fn = debounce(() => {
             result.push('Hello!');
         }, 150);
@@ -22,7 +22,7 @@ describe('debounce', () => {
     });
 
     it('should return array lenght == 1', async () => {
-        const result = [];
+        const result: string[] = [];
         const fn = debounce(() => {
             result.push('Hello!');
         });

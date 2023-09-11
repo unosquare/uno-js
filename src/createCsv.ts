@@ -16,20 +16,19 @@ const formatEntryWithCommas = (textString: string, text: csvRow) =>
         : formatMixedEntry(text);
 
 const escapeValuesWithCommas = (data: csvRow[]): string[] =>
-    data.map((value: any) =>
-        value.map((text: csvRow) => {
-            const textString = !text ? 'N/A' : trimText(text);
-            return textString.includes(',') ? formatEntryWithCommas(textString, text) : wrapWithQuotes(textString);
-        }),
+    data.map((value: csvRow) =>
+        [...value]
+            .map((text: csvRow) => {
+                const textString = !text ? 'N/A' : trimText(text);
+                return textString.includes(',') ? formatEntryWithCommas(textString, text) : wrapWithQuotes(textString);
+            })
+            .join(','),
     );
 
-export const createCsvData = (csv: csvRow[], headers: string[]): string => {
-    const data = escapeValuesWithCommas([...csv]);
-    data.unshift(headers.join(','));
-    return data.join('\r\n');
-};
+export const createCsvData = (csv: csvRow[], headers: string[]): string =>
+    [headers.join(','), ...escapeValuesWithCommas(csv)].join('\r\n');
 
-const createCsv = (csv: csvRow[], headers: string[], fileName: string): void => {
+export default (csv: csvRow[], headers: string[], fileName: string): void => {
     const dataWithBom = `\uFEFF${createCsvData(csv, headers)}`;
     const blob = new Blob([dataWithBom], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
@@ -44,5 +43,3 @@ const createCsv = (csv: csvRow[], headers: string[], fileName: string): void => 
         document.body.removeChild(link);
     }
 };
-
-export default createCsv;
