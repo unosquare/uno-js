@@ -15,7 +15,7 @@ describe('formatter', () => {
         expect(id).toBe('$0.00');
     });
     it('should return formatted $0.00 money', () => {
-        const id = formatter(undefined, 'money');
+        const id = formatter(null, 'money');
         expect(id).toBe('$0.00');
     });
     it('should return N/A on money', () => {
@@ -45,6 +45,14 @@ describe('formatter', () => {
     it('should return N/A', () => {
         const id = formatter(null, 'decimal');
         expect(id).toBe('N/A');
+    });
+    it('should return N/A with undefined ignore', () => {
+        const id = formatter(undefined, 'decimal', { ignoreUndefined: true });
+        expect(id).toBe('N/A');
+    });
+    it('should return undefined', () => {
+        const id = formatter(undefined, 'decimal');
+        expect(id).toBe(undefined);
     });
     it('should return 90 days', () => {
         const id = formatter(number, 'days');
