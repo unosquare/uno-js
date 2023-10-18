@@ -20,4 +20,3 @@ export * from './nameof';
 export * from './dateRange';
 export * from './safeMap';
 export * from './groupBy';
-export * from './simpleHash';
