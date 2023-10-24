@@ -78,4 +78,8 @@ describe('formatter', () => {
         const id = formatter(new Date().toLocaleString(), 'date');
         expect(id).toBe(new Date().toLocaleDateString('en-us'));
     });
+    it('should return same value', () => {
+        const id = formatter('value', undefined);
+        expect(id).toBe('value');
+    });
 });

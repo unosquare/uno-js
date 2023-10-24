@@ -3,11 +3,17 @@ import { truncate } from './truncate';
 
 export type FormatTypes = 'money' | 'percentage' | 'date' | 'decimal' | 'number' | 'days' | 'months';
 
-const defaultOptions = { keepFormat: false, decimals: 2, nullValue: 'N/A', ignoreUndefined: false };
+const defaultOptions = { keepFormat: false, decimals: 2, nullValue: 'N/A', ignoreUndefined: false, locale: 'en-US' };
+const numberFormat = { style: 'currency', currency: 'USD' };
 
 const internalFotmatter = (
     stringData: string,
-    { keepFormat, decimals, nullValue }: { keepFormat: boolean; decimals: number; nullValue: string },
+    {
+        keepFormat,
+        decimals,
+        nullValue,
+        locale,
+    }: { keepFormat: boolean; decimals: number; nullValue: string; locale: string },
     format?: FormatTypes,
 ): string => {
     switch (format) {
@@ -15,10 +21,7 @@ const internalFotmatter = (
             const parsedMoney = parseFloat(stringData);
             return !parsedMoney
                 ? nullValue
-                : new Intl.NumberFormat('en-US', {
-                      style: 'currency',
-                      currency: 'USD',
-                  }).format(truncate(parsedMoney, 100000));
+                : new Intl.NumberFormat(locale, numberFormat).format(truncate(parsedMoney, 100000));
         }
         case 'percentage':
             if (decimals === 0) return `${Math.round(parseFloat(stringData))}%`;
@@ -27,8 +30,8 @@ const internalFotmatter = (
         case 'number':
             return `${parseInt(stringData, 10)}`;
         case 'date':
-            if (keepFormat) return toLocalTime(stringData).toLocaleDateString('en-us');
-            return new Date(stringData).toLocaleDateString('en-us');
+            if (keepFormat) return toLocalTime(stringData).toLocaleDateString(locale);
+            return new Date(stringData).toLocaleDateString(locale);
         case 'decimal': {
             const parsedDecimal = parseFloat(stringData);
             return !parsedDecimal ? nullValue : parsedDecimal.toFixed(2);
@@ -38,19 +41,27 @@ const internalFotmatter = (
         case 'months':
             return Number(stringData) === 1 ? '1 month' : `${stringData} months`;
         default:
-            return nullValue;
+            return stringData;
     }
 };
 
 export const formatter = (
     data: string | number | null | undefined,
     format?: FormatTypes,
-    options?: { keepFormat?: boolean; decimals?: number; nullValue?: string; ignoreUndefined?: boolean },
+    options?: {
+        keepFormat?: boolean;
+        decimals?: number;
+        nullValue?: string;
+        ignoreUndefined?: boolean;
+        locale?: string;
+    },
 ): string | undefined => {
-    const { keepFormat, decimals, nullValue, ignoreUndefined } = { ...defaultOptions, ...options };
+    const { keepFormat, decimals, nullValue, ignoreUndefined, locale } = { ...defaultOptions, ...options };
     if (data === undefined && !ignoreUndefined) return undefined;
 
     if (!data && format === 'money') return '$0.00';
 
-    return data == null ? nullValue : internalFotmatter(data.toString(), { keepFormat, decimals, nullValue }, format);
+    return data == null
+        ? nullValue
+        : internalFotmatter(String(data), { keepFormat, decimals, nullValue, locale }, format);
 };
