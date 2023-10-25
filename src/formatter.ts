@@ -9,9 +9,8 @@ const defaultOptions = <const>{
     nullValue: 'N/A',
     ignoreUndefined: false,
     locale: 'en-US',
+    currency: 'USD',
 };
-export const numberFormat = <const>{ style: 'currency', currency: 'USD' };
-
 const internalFotmatter = (
     stringData: string,
     {
@@ -19,7 +18,8 @@ const internalFotmatter = (
         decimals,
         nullValue,
         locale,
-    }: { keepFormat: boolean; decimals: number; nullValue: string; locale: string },
+        currency,
+    }: { keepFormat: boolean; decimals: number; nullValue: string; locale: string; currency: string },
     format?: FormatTypes,
 ): string => {
     switch (format) {
@@ -27,7 +27,7 @@ const internalFotmatter = (
             const parsedMoney = parseFloat(stringData);
             return !parsedMoney
                 ? nullValue
-                : new Intl.NumberFormat(locale, numberFormat).format(truncate(parsedMoney, 100000));
+                : new Intl.NumberFormat(locale, { style: 'currency', currency }).format(truncate(parsedMoney, 100000));
         }
         case 'percentage':
             if (decimals === 0) return `${Math.round(parseFloat(stringData))}%`;
@@ -60,14 +60,15 @@ export const formatter = (
         nullValue?: string;
         ignoreUndefined?: boolean;
         locale?: string;
+        currency?: string;
     },
 ): string | undefined => {
-    const { keepFormat, decimals, nullValue, ignoreUndefined, locale } = { ...defaultOptions, ...options };
+    const { keepFormat, decimals, nullValue, ignoreUndefined, locale, currency } = { ...defaultOptions, ...options };
     if (data === undefined && !ignoreUndefined) return undefined;
 
     if (!data && format === 'money') return '$0.00';
 
     return data == null
         ? nullValue
-        : internalFotmatter(String(data), { keepFormat, decimals, nullValue, locale }, format);
+        : internalFotmatter(String(data), { keepFormat, decimals, nullValue, locale, currency }, format);
 };
