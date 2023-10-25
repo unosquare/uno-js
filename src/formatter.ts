@@ -3,8 +3,14 @@ import { truncate } from './truncate';
 
 export type FormatTypes = 'money' | 'percentage' | 'date' | 'decimal' | 'number' | 'days' | 'months';
 
-const defaultOptions = { keepFormat: false, decimals: 2, nullValue: 'N/A', ignoreUndefined: false, locale: 'en-US' };
-const numberFormat = { style: 'currency', currency: 'USD' };
+const defaultOptions = <const>{
+    keepFormat: false,
+    decimals: 2,
+    nullValue: 'N/A',
+    ignoreUndefined: false,
+    locale: 'en-US',
+};
+export const numberFormat = <const>{ style: 'currency', currency: 'USD' };
 
 const internalFotmatter = (
     stringData: string,
