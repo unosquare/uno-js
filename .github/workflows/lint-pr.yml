@@ -6,6 +6,6 @@ on:
 
 jobs:
   build:    
-    uses: unosquare/bump-npm-version/.github/workflows/lint.yml@master
+    uses: unosquare/bump-npm-version/.github/workflows/lint-pnpm.yml@master
     secrets:
       github-token: ${{ secrets.GPR_ACCESS_TOKEN }}
