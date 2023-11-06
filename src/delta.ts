@@ -17,7 +17,7 @@ export const calculateDeltaValue = (current?: number, previous?: number) => {
 
 export const calculateDeltaPercent = (current?: number, previous?: number) => {
     if (!current || !previous) return null;
-    return ((current - previous) / current) * 100;
+    return ((current - previous) / previous) * 100;
 };
 
 export const calculateDelta = (current?: number, previous?: number) => {
