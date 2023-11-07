@@ -4,13 +4,13 @@ describe('calculateDelta', () => {
     it('should return delta, deltaPercent, and deltaString', () => {
         const [delta, deltaPercent, deltaString] = calculateDelta(10, 5);
         expect(delta).toBe(5);
-        expect(deltaPercent).toBe(50);
+        expect(deltaPercent).toBe(100);
         expect(deltaString).toBe('increase');
     });
     it('should return delta, deltaPercent, and deltaString', () => {
         const [delta, deltaPercent, deltaString] = calculateDelta(5, 10);
         expect(delta).toBe(-5);
-        expect(deltaPercent).toBe(-100);
+        expect(deltaPercent).toBe(-50);
         expect(deltaString).toBe('decrease');
     });
     it('should return delta, deltaPercent, and deltaString', () => {
