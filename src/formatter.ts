@@ -72,3 +72,9 @@ export const formatter = (
         ? nullValue
         : internalFotmatter(String(data), { keepFormat, decimals, nullValue, locale, currency }, format);
 };
+
+export const toMoney = (data: string | number | null | undefined, options?: { locale?: string; currency?: string }) =>
+    formatter(data, 'money', options);
+
+export const toPercentage = (data: string | number | null | undefined, options?: { decimals?: number }) =>
+    formatter(data, 'percentage', options);

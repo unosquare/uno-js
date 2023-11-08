@@ -1,4 +1,4 @@
-import { formatter } from '../src/formatter';
+import { formatter, toMoney, toPercentage } from '../src/formatter';
 
 describe('formatter', () => {
     const number = 90;
@@ -7,27 +7,27 @@ describe('formatter', () => {
     const stringValue = 'Money';
 
     it('should return formatted million money', () => {
-        const id = formatter(million, 'money');
+        const id = toMoney(million);
         expect(id).toBe('$1,000,000.00');
     });
     it('should return formatted 0 money', () => {
-        const id = formatter(zero, 'money');
+        const id = toMoney(zero);
         expect(id).toBe('$0.00');
     });
     it('should return formatted $0.00 money', () => {
-        const id = formatter(null, 'money');
+        const id = toMoney(null);
         expect(id).toBe('$0.00');
     });
     it('should return N/A on money', () => {
-        const id = formatter(stringValue, 'money');
+        const id = toMoney(stringValue);
         expect(id).toBe('N/A');
     });
     it('should return 90%', () => {
-        const id = formatter(number, 'percentage', { decimals: 0 });
+        const id = toPercentage(number, { decimals: 0 });
         expect(id).toBe('90%');
     });
     it('should return 90.00%', () => {
-        const id = formatter(number, 'percentage');
+        const id = toPercentage(number);
         expect(id).toBe('90.00%');
     });
     it('should return 90.00', () => {
