@@ -11,6 +11,7 @@ const defaultOptions = <const>{
     locale: 'en-US',
     currency: 'USD',
 };
+
 const internalFotmatter = (
     stringData: string,
     {
@@ -52,7 +53,7 @@ const internalFotmatter = (
 };
 
 export const formatter = (
-    data: string | number | null | undefined,
+    data: unknown,
     format?: FormatTypes,
     options?: {
         keepFormat?: boolean;
@@ -66,15 +67,12 @@ export const formatter = (
     const { keepFormat, decimals, nullValue, ignoreUndefined, locale, currency } = { ...defaultOptions, ...options };
     if (data === undefined && !ignoreUndefined) return undefined;
 
-    if (!data && format === 'money') return '$0.00';
-
     return data == null
         ? nullValue
         : internalFotmatter(String(data), { keepFormat, decimals, nullValue, locale, currency }, format);
 };
 
-export const toMoney = (data: string | number | null | undefined, options?: { locale?: string; currency?: string }) =>
-    formatter(data, 'money', options);
+export const toMoney = (data: unknown, options?: { locale?: string; currency?: string }) =>
+    formatter(data, 'money', { ...options, nullValue: '$0.00' });
 
-export const toPercentage = (data: string | number | null | undefined, options?: { decimals?: number }) =>
-    formatter(data, 'percentage', options);
+export const toPercentage = (data: unknown, options?: { decimals?: number }) => formatter(data, 'percentage', options);

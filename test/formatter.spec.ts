@@ -18,9 +18,9 @@ describe('formatter', () => {
         const id = toMoney(null);
         expect(id).toBe('$0.00');
     });
-    it('should return N/A on money', () => {
+    it('should return $0.00 on money', () => {
         const id = toMoney(stringValue);
-        expect(id).toBe('N/A');
+        expect(id).toBe('$0.00');
     });
     it('should return 90%', () => {
         const id = toPercentage(number, { decimals: 0 });
@@ -50,7 +50,7 @@ describe('formatter', () => {
         const id = formatter(undefined, 'decimal', { ignoreUndefined: true });
         expect(id).toBe('N/A');
     });
-    it('should return undefined', () => {
+    it('should pass-throught', () => {
         const id = formatter(undefined, 'decimal');
         expect(id).toBe(undefined);
     });
