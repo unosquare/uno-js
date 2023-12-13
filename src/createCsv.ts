@@ -1,5 +1,3 @@
-import trimText from './trimText';
-
 type csvRow = string | Array<string>;
 
 const escapeValuesWithQuotes = (str: string): string =>
@@ -19,7 +17,7 @@ const escapeValuesWithCommas = (data: csvRow[]): string[] =>
     data.map((value: csvRow) =>
         [...value]
             .map((text: csvRow) => {
-                const textString = !text ? 'N/A' : trimText(text);
+                const textString = !text ? 'N/A' : String(text);
                 return textString.includes(',') ? formatEntryWithCommas(textString, text) : wrapWithQuotes(textString);
             })
             .join(','),
