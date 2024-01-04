@@ -10,14 +10,14 @@ const formatWeekDaysRange = (start: Date, end: Date) =>
 
 export const getWeekDaysRange = (week: number, year?: number) => {
     year = year ?? new Date().getFullYear();
-    const firstDayOfYear = new Date(year, 0, 1);
 
-    let pivotDay = 1 + (week - 1) * 7 - firstDayOfYear.getDay();
+    const jan1st = new Date(year, 0, 1);
+    const offsetToFirstSunday = (7 - jan1st.getDay()) % 7;
+    const weekStart = new Date(jan1st);
+    weekStart.setDate(jan1st.getDate() + offsetToFirstSunday + (week - 1) * 7);
 
-    if (firstDayOfYear.getDay() > 4) pivotDay += 7;
-
-    const weekStart = new Date(year, 0, pivotDay);
-    const weekEnd = new Date(year, 0, pivotDay + 6);
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
 
     return formatWeekDaysRange(weekStart, weekEnd);
 };
