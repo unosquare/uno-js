@@ -19,4 +19,5 @@ export * from './truncate';
 export * from './nameof';
 export * from './dateRange';
 export * from './safeMap';
+export * from './weekUtils';
 export * from './groupBy';

@@ -1,4 +1,5 @@
-import { YearQuarter, YearMonth, DateRange, YearWeek, getWeekNumber } from '../src/dateRange';
+import { YearQuarter, YearMonth, DateRange, YearWeek } from '../src/dateRange';
+import { getWeekNumber } from '../src/weekUtils';
 
 describe('YearQuarter', () => {
     it('should contains year and quarter', () => {

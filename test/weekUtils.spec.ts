@@ -1,0 +1,48 @@
+import { getStartOfWeek, getWeekNumber, getWeekOfYear, getWeekIsoNumber, getWeekIsoOfYear } from '../src/weekUtils';
+
+describe('weekUtils', () => {
+    describe('getStartOfWeek', () => {
+        it('should return the start of the week for a given date', () => {
+            const date1 = new Date('2022-01-02');
+            const expected = new Date('2021-12-27');
+            expected.setHours(0, 0, 0, 0);
+            expect(getStartOfWeek(date1)).toEqual(expected);
+        });
+    });
+
+    describe('getWeekNumber', () => {
+        it('should return the week number for a given date', () => {
+            const date1 = new Date('2024-01-01');
+            expect(getWeekNumber(date1)).toBe(53);
+
+            const date2 = new Date('2025-01-01');
+            expect(getWeekNumber(date2)).toBe(52);
+        });
+    });
+
+    describe('getIsoWeekNumber', () => {
+        it('should return the week number for a given date', () => {
+            const date1 = new Date('2024-01-01');
+            expect(getWeekIsoNumber(date1)).toBe(1);
+
+            const date2 = new Date('2025-01-01');
+            expect(getWeekIsoNumber(date2)).toBe(1);
+        });
+    });
+
+    describe('getWeekOfYear', () => {
+        it('should return the week number of the current date', () => {
+            const currentDate = new Date();
+            const currentWeekNumber = getWeekNumber(currentDate);
+            expect(getWeekOfYear()).toBe(currentWeekNumber);
+        });
+    });
+
+    describe('getIsoWeekOfYear', () => {
+        it('should return the week number of the current date', () => {
+            const currentDate = new Date();
+            const currentWeekNumber = getWeekIsoNumber(currentDate);
+            expect(getWeekIsoOfYear()).toBe(currentWeekNumber);
+        });
+    });
+});
