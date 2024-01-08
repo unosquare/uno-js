@@ -1,5 +1,5 @@
-import { YearQuarter, YearMonth, DateRange, YearWeek } from '../src/dateRange';
-import { getWeekNumber } from '../src/weekUtils';
+import { YearQuarter, YearMonth, DateRange, YearWeek, YearWeekIso } from '../src/dateRange';
+import { getWeekIsoNumber, getWeekNumber } from '../src/weekUtils';
 
 describe('YearQuarter', () => {
     it('should contains year and quarter', () => {
@@ -215,5 +215,54 @@ describe('YearWeek', () => {
     it('should contains string representation', () => {
         const yearWeek = new YearWeek(2019, 1);
         expect(yearWeek.toString()).toBe('2019-W01');
+    });
+});
+
+describe('YearWeekIso', () => {
+    it('should contains year and week', () => {
+        const yearWeekIso = new YearWeek(2019, 1);
+        expect(yearWeekIso.Year).toBe(2019);
+        expect(yearWeekIso.Week).toBe(1);
+    });
+
+    it('should contains start date and end date', () => {
+        const yearWeekIso = new YearWeek(2023, 1);
+        expect(yearWeekIso.StartDate.getFullYear()).toBe(2023);
+        expect(yearWeekIso.StartDate.getMonth()).toBe(0);
+        expect(yearWeekIso.StartDate.getDate()).toBe(1);
+        expect(yearWeekIso.EndDate.getFullYear()).toBe(2023);
+        expect(yearWeekIso.EndDate.getMonth()).toBe(0);
+        expect(yearWeekIso.EndDate.getDate()).toBe(7);
+    });
+
+    it('should contains current year and week', () => {
+        const yearWeekIso = YearWeekIso.Current;
+        expect(yearWeekIso.Year).toBe(new Date().getFullYear());
+        expect(yearWeekIso.Week).toBe(getWeekIsoNumber(new Date()));
+    });
+
+    it('should contains next year and week', () => {
+        const yearWeekIso = YearWeekIso.Current.Next;
+        const current = YearWeekIso.Current;
+        const nextWeek = current.Week + 1;
+        const nextYear = current.Year + (nextWeek > 52 ? 1 : 0);
+
+        expect(yearWeekIso.Year).toBe(nextYear);
+        expect(yearWeekIso.Week).toBe(nextWeek > 52 ? 1 : nextWeek);
+    });
+
+    it('should contains previous year and week', () => {
+        const yearWeekIso = YearWeekIso.Current.Previous;
+        const current = YearWeekIso.Current;
+        const previousWeek = current.Week - 1;
+        const previousYear = current.Year - (previousWeek < 1 ? 1 : 0);
+
+        expect(yearWeekIso.Year).toBe(previousYear);
+        expect(yearWeekIso.Week).toBe(previousWeek < 1 ? 52 : previousWeek);
+    });
+
+    it('should contains string representation', () => {
+        const yearWeekIso = new YearWeek(2019, 1);
+        expect(yearWeekIso.toString()).toBe('2019-W01');
     });
 });

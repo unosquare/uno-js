@@ -1,4 +1,4 @@
-import { getWeekOfYear, getWeekNumber } from './weekUtils';
+import { getWeekOfYear, getWeekNumber, getWeekIsoOfYear, getWeekIsoNumber } from './weekUtils';
 
 const dateOptions: Intl.DateTimeFormatOptions = { month: 'numeric', day: 'numeric', year: 'numeric' };
 
@@ -223,6 +223,51 @@ export class YearWeek extends DateRange implements IYearWeekDateRange {
         const previousYear = this.Year - (previousWeek < 1 ? 1 : 0);
 
         return new YearWeek(previousYear, previousWeek < 1 ? 52 : previousWeek);
+    }
+
+    toString(): string {
+        return `${this.Year}-W${this.Week.toString().padStart(2, '0')}`;
+    }
+}
+
+export class YearWeekIso extends DateRange implements IYearWeekDateRange {
+    constructor(year?: number, week?: number) {
+        year = year ?? new Date().getFullYear();
+        week = week ?? getWeekIsoOfYear();
+
+        const startDate = new Date(year, 0, 1 + (week - 1) * 7);
+        const endDate = new Date(year, 0, 7 + (week - 1) * 7);
+
+        super(startDate, endDate);
+
+        this.Year = year;
+        this.Week = week;
+    }
+
+    Year: number;
+
+    Week: number;
+
+    static get Current(): YearWeekIso {
+        return new YearWeekIso();
+    }
+
+    static FromDate(date: Date): YearWeekIso {
+        return new YearWeekIso(date.getFullYear(), getWeekIsoNumber(date));
+    }
+
+    get Next(): YearWeekIso {
+        const nextWeek = this.Week + 1;
+        const nextYear = this.Year + (nextWeek > 52 ? 1 : 0);
+
+        return new YearWeekIso(nextYear, nextWeek > 52 ? 1 : nextWeek);
+    }
+
+    get Previous(): YearWeekIso {
+        const previousWeek = this.Week - 1;
+        const previousYear = this.Year - (previousWeek < 1 ? 1 : 0);
+
+        return new YearWeekIso(previousYear, previousWeek < 1 ? 52 : previousWeek);
     }
 
     toString(): string {
