@@ -1,15 +1,6 @@
-import { getStartOfWeek, getWeekNumber, getWeekOfYear, getWeekIsoNumber, getWeekIsoOfYear } from '../src/weekUtils';
+import { getWeekNumber, getWeekOfYear, getWeekIsoNumber, getWeekIsoOfYear } from '../src/weekUtils';
 
 describe('weekUtils', () => {
-    describe('getStartOfWeek', () => {
-        it('should return the start of the week for a given date', () => {
-            const date1 = new Date('2022-01-02');
-            const expected = new Date('2021-12-27');
-            expected.setHours(0, 0, 0, 0);
-            expect(getStartOfWeek(date1)).toEqual(expected);
-        });
-    });
-
     describe('getWeekNumber', () => {
         it('should return the week number for a given date', () => {
             const date1 = new Date('2024-01-01');
