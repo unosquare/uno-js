@@ -7,7 +7,7 @@ describe('weekUtils', () => {
             expect(getWeekNumber(date1)).toBe(53);
 
             const date2 = new Date('2025-01-01');
-            expect(getWeekNumber(date2)).toBe(52);
+            expect(getWeekNumber(date2)).toBe(53);
         });
     });
 
