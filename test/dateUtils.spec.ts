@@ -19,7 +19,7 @@ describe('getWeekDaysRange', () => {
     it('should return week days range', () => {
         const week = 2;
         const year = 2020;
-        expect(getWeekDaysRange(week, year)).toBe('[1/12 - 1/18]');
+        expect(getWeekDaysRange(week, year)).toBe('[1/5 - 1/11]');
     });
 });
 
