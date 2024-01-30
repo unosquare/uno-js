@@ -101,6 +101,11 @@ export class YearQuarter extends DateRange implements IYearQuarterDateRange {
         return new YearQuarter(date.getFullYear(), Math.floor(date.getMonth() / 3 + 1));
     }
 
+    static FromString(date: string): YearQuarter {
+        const [year, quarter] = date.split('-Q');
+        return new YearQuarter(parseInt(year), parseInt(quarter));
+    }
+
     static get CurrentQuarter(): number {
         return Math.floor(new Date().getMonth() / 3 + 1);
     }
@@ -158,6 +163,11 @@ export class YearMonth extends DateRange implements IYearMonthDateRange {
         return new YearMonth(date.getFullYear(), date.getMonth() + 1);
     }
 
+    static FromString(date: string): YearMonth {
+        const [year, month] = date.split('-');
+        return new YearMonth(parseInt(year), parseInt(month));
+    }
+
     get IsCurrent(): boolean {
         return this.Year === new Date().getFullYear() && this.Month === new Date().getMonth() + 1;
     }
@@ -211,6 +221,11 @@ export class YearWeek extends DateRange implements IYearWeekDateRange {
         return new YearWeek(date.getFullYear(), getWeekNumber(date));
     }
 
+    static FromString(date: string): YearWeek {
+        const [year, week] = date.split('-W');
+        return new YearWeek(parseInt(year), parseInt(week));
+    }
+
     get Next(): YearWeek {
         const nextWeek = this.Week + 1;
         const nextYear = this.Year + (nextWeek > 52 ? 1 : 0);
@@ -254,6 +269,11 @@ export class YearWeekIso extends DateRange implements IYearWeekDateRange {
 
     static FromDate(date: Date): YearWeekIso {
         return new YearWeekIso(date.getFullYear(), getWeekIsoNumber(date));
+    }
+
+    static FromString(date: string): YearWeekIso {
+        const [year, week] = date.split('-W');
+        return new YearWeekIso(parseInt(year), parseInt(week));
     }
 
     get Next(): YearWeekIso {

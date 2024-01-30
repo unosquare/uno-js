@@ -55,6 +55,12 @@ describe('YearQuarter', () => {
         expect(yearQuarter.Quarter).toBe(Math.floor(new Date().getMonth() / 3 + 1));
     });
 
+    it('should contains current year and quarter from string', () => {
+        const yearQuarter = YearQuarter.FromString('2019-Q1');
+        expect(yearQuarter.Year).toBe(2019);
+        expect(yearQuarter.Quarter).toBe(1);
+    });
+
     it('should contains months', () => {
         const yearQuarter = new YearQuarter(2019, 1);
         expect(yearQuarter.YearMonths.length).toBe(3);
@@ -127,6 +133,12 @@ describe('YearMonth', () => {
         const yearMonth = YearMonth.FromDate(new Date());
         expect(yearMonth.Year).toBe(new Date().getFullYear());
         expect(yearMonth.Month).toBe(new Date().getMonth() + 1);
+    });
+
+    it('should contains current year and month from string', () => {
+        const yearMonth = YearMonth.FromString('2019-01');
+        expect(yearMonth.Year).toBe(2019);
+        expect(yearMonth.Month).toBe(1);
     });
 
     it('should contains a YearQuarter', () => {
@@ -216,6 +228,18 @@ describe('YearWeek', () => {
         const yearWeek = new YearWeek(2019, 1);
         expect(yearWeek.toString()).toBe('2019-W01');
     });
+
+    it('should contains current year and week from date', () => {
+        const yearWeek = YearWeek.FromDate(new Date());
+        expect(yearWeek.Year).toBe(new Date().getFullYear());
+        expect(yearWeek.Week).toBe(getWeekNumber(new Date()));
+    });
+
+    it('should contains current year and week from string', () => {
+        const yearWeek = YearWeek.FromString('2019-W01');
+        expect(yearWeek.Year).toBe(2019);
+        expect(yearWeek.Week).toBe(1);
+    });
 });
 
 describe('YearWeekIso', () => {
@@ -264,5 +288,17 @@ describe('YearWeekIso', () => {
     it('should contains string representation', () => {
         const yearWeekIso = new YearWeek(2019, 1);
         expect(yearWeekIso.toString()).toBe('2019-W01');
+    });
+
+    it('should contains current year and week from date', () => {
+        const yearWeekIso = YearWeekIso.FromDate(new Date());
+        expect(yearWeekIso.Year).toBe(new Date().getFullYear());
+        expect(yearWeekIso.Week).toBe(getWeekIsoNumber(new Date()));
+    });
+
+    it('should contains current year and week from string', () => {
+        const yearWeekIso = YearWeekIso.FromString('2019-W01');
+        expect(yearWeekIso.Year).toBe(2019);
+        expect(yearWeekIso.Week).toBe(1);
     });
 });
