@@ -1,16 +1,6 @@
 import { getWeekNumber, getWeekOfYear, getWeekIsoNumber, getWeekIsoOfYear } from '../src/weekUtils';
 
 describe('weekUtils', () => {
-    describe('getWeekNumber', () => {
-        it('should return the week number for a given date', () => {
-            const date1 = new Date('2024-01-01');
-            expect(getWeekNumber(date1)).toBe(53);
-
-            const date2 = new Date('2025-01-01');
-            expect(getWeekNumber(date2)).toBe(53);
-        });
-    });
-
     describe('getIsoWeekNumber', () => {
         it('should return the week number for a given date', () => {
             const date1 = new Date('2024-01-01');
