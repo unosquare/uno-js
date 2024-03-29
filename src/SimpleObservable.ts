@@ -1,5 +1,5 @@
-class SimpleObservable {
-    private observers: Array<(change?: string) => void> = [];
+export default class {
+    private readonly observers: Array<(change?: string) => void> = [];
 
     public subscribe(observer: (change?: string) => void): () => void {
         this.observers.push(observer);
@@ -14,5 +14,3 @@ class SimpleObservable {
         this.observers.forEach((observer) => observer(change));
     }
 }
-
-export default SimpleObservable;
