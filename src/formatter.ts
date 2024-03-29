@@ -3,13 +3,30 @@ import { truncate } from './truncate';
 
 export type FormatTypes = 'money' | 'percentage' | 'date' | 'decimal' | 'number' | 'days' | 'months';
 
-const defaultOptions = <const>{
+const defaultOptions = {
     keepFormat: false,
     decimals: 2,
     nullValue: 'N/A',
     ignoreUndefined: false,
     locale: 'en-US',
     currency: 'USD',
+} as const;
+
+const formatMoney = (stringData: string, nullValue: string, locale: string, currency: string) => {
+    const parsedMoney = parseFloat(stringData);
+    return !parsedMoney
+        ? nullValue
+        : new Intl.NumberFormat(locale, { style: 'currency', currency }).format(truncate(parsedMoney, 100000));
+};
+
+const formatDays = (stringData: string) => (Number(stringData) === 1 ? '1 day' : `${stringData} days`);
+
+const formatMonths = (stringData: string) => (Number(stringData) === 1 ? '1 month' : `${stringData} months`);
+
+const formatPercentage = (stringData: string, decimals: number) => {
+    if (decimals === 0) return `${Math.round(parseFloat(stringData))}%`;
+
+    return `${truncate(parseFloat(stringData)).toFixed(decimals)}%`;
 };
 
 const internalFotmatter = (
@@ -24,16 +41,10 @@ const internalFotmatter = (
     format?: FormatTypes,
 ): string => {
     switch (format) {
-        case 'money': {
-            const parsedMoney = parseFloat(stringData);
-            return !parsedMoney
-                ? nullValue
-                : new Intl.NumberFormat(locale, { style: 'currency', currency }).format(truncate(parsedMoney, 100000));
-        }
+        case 'money':
+            return formatMoney(stringData, nullValue, locale, currency);
         case 'percentage':
-            if (decimals === 0) return `${Math.round(parseFloat(stringData))}%`;
-
-            return `${truncate(parseFloat(stringData)).toFixed(decimals)}%`;
+            return formatPercentage(stringData, decimals);
         case 'number':
             return `${parseInt(stringData, 10)}`;
         case 'date':
@@ -44,9 +55,9 @@ const internalFotmatter = (
             return !parsedDecimal ? nullValue : parsedDecimal.toFixed(2);
         }
         case 'days':
-            return Number(stringData) === 1 ? '1 day' : `${stringData} days`;
+            return formatDays(stringData);
         case 'months':
-            return Number(stringData) === 1 ? '1 month' : `${stringData} months`;
+            return formatMonths(stringData);
         default:
             return stringData;
     }

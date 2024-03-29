@@ -59,17 +59,6 @@ export const isDate = (value: unknown): boolean => {
     return isValidDateString && regexISO.exec(new Date(stringValue).toISOString()) !== null;
 };
 
-const dateTimeFormatOptions: Intl.DateTimeFormatOptions = {
-    month: 'long',
-    year: 'numeric',
-    day: 'numeric',
-};
-
-export const toLocaleString = (date: string, locales = 'en-us'): string => {
-    const dateString = toLocalTime(date).toLocaleDateString(locales, dateTimeFormatOptions);
-    return dateString !== 'Invalid Date' ? dateString : '';
-};
-
 export const getPreviousQuarter = (currentQuarter: string) => {
     const quarter = Number(currentQuarter.split('-Q')[1]);
     const year = Number(currentQuarter.split('-Q')[0]);
