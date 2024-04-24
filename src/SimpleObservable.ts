@@ -1,5 +1,5 @@
 export default class {
-    private readonly observers: Array<(change?: string) => void> = [];
+    private readonly observers: ((change?: string) => void)[] = [];
 
     public subscribe(observer: (change?: string) => void): () => void {
         this.observers.push(observer);
