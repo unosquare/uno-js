@@ -1,36 +1,17 @@
-import js from '@eslint/js';
-import eslintPluginTypescript from '@typescript-eslint/eslint-plugin';
-import eslintParserTypescript from '@typescript-eslint/parser';
-import eslintPluginPrettier from 'eslint-plugin-prettier';
-import path from 'path';
-import { fileURLToPath } from 'url';
+// @ts-check
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
 
-export default [
-    js.configs.recommended,
+export default tseslint.config(
+    eslint.configs.recommended,
+    ...tseslint.configs.recommended,
+    ...tseslint.configs.stylistic,
     {
-        files: ['src/**/*.ts'],
-        languageOptions: {
-            parser: eslintParserTypescript,
-            parserOptions: {
-                project: true,
-                tsconfigRootDir: __dirname,
-            },
-        },
-        plugins: {
-            eslintPluginTypescript,
-            eslintPluginPrettier,
-        },
+        files: ['src/*.ts'],
         rules: {
-            'no-extend-native': 'off',
-            'no-param-reassign': 'off',
-            'max-classes-per-file': 'off',
-            'eslintPluginTypescript/no-explicit-any': 'warn',
-            'eslintPluginTypescript/restrict-template-expressions': 'off',
-            'eslintPluginPrettier/prettier': 'error',
+            '@typescript-eslint/consistent-type-definitions': 'off',
             'arrow-body-style': ['error', 'as-needed'],
         },
     },
-];
+);

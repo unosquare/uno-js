@@ -1,4 +1,4 @@
-type csvRow = string | Array<string>;
+type csvRow = string | string[];
 
 const escapeValuesWithQuotes = (str: string): string =>
     str.match(/\$-?(\d{1,3},+)?(\d{1,3},\d{3}(\.\d)*)/g) ? str.replace(/,\$/g, '","$') : str.replace(/,/g, '","');
