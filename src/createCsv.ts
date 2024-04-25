@@ -3,7 +3,7 @@ type csvRow = string | string[];
 const escapeValuesWithQuotes = (str: string): string =>
     str.match(/\$-?(\d{1,3},+)?(\d{1,3},\d{3}(\.\d)*)/g) ? str.replace(/,\$/g, '","$') : str.replace(/,/g, '","');
 
-const wrapWithQuotes = (text: csvRow) => `"${text}"`;
+const wrapWithQuotes = (text: csvRow) => typeof text === 'string' ? `"${text.replace(/"/g, '""')}"` : `"${text}"`;
 
 const formatMixedEntry = (arr: csvRow): string =>
     arr.constructor === Array ? arr.map(wrapWithQuotes).join() : wrapWithQuotes(arr);
