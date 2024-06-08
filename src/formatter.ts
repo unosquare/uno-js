@@ -1,4 +1,5 @@
 import { toLocalTime } from './dateUtils';
+import { isMoneyObject } from './money';
 import { truncate } from './truncate';
 
 export type FormatTypes = 'money' | 'percentage' | 'date' | 'decimal' | 'number' | 'days' | 'months';
@@ -75,6 +76,8 @@ export const formatter = (
         currency?: string;
     },
 ): string | undefined => {
+    if (isMoneyObject(data)) return formatter(data.Amount, 'money', { ...options, currency: data.Currency });
+    
     const { keepFormat, decimals, nullValue, ignoreUndefined, locale, currency } = { ...defaultOptions, ...options };
     if (data === undefined && !ignoreUndefined) return undefined;
 
@@ -84,6 +87,13 @@ export const formatter = (
 };
 
 export const toMoney = (data: unknown, options?: { locale?: string; currency?: string }) =>
-    formatter(data, 'money', { ...options, nullValue: '$0.00' });
+    {
+        const defaultOptions = { ...options, nullValue: '$0.00' };
+
+        if (isMoneyObject(data)) 
+            return formatter(data.Amount, 'money', {...defaultOptions, currency: data.Currency});
+        
+        return formatter(data, 'money', defaultOptions);
+    };
 
 export const toPercentage = (data: unknown, options?: { decimals?: number }) => formatter(data, 'percentage', options);

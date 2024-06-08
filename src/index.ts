@@ -21,3 +21,4 @@ export * from './dateRange';
 export * from './safeMap';
 export * from './weekUtils';
 export * from './groupBy';
+export * from './money';
