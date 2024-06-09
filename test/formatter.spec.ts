@@ -1,10 +1,8 @@
 import { formatter, toMoney, toPercentage } from '../src/formatter';
 
-describe('formatter', () => {
-    const number = 90;
+describe('toMoney', () => {
     const zero = 0;
     const million = 1000000;
-    const stringValue = 'Money';
 
     it('should return formatted million money', () => {
         const id = toMoney(million);
@@ -19,9 +17,31 @@ describe('formatter', () => {
         expect(id).toBe('$0.00');
     });
     it('should return $0.00 on money', () => {
-        const id = toMoney(stringValue);
+        const id = toMoney('Money');
         expect(id).toBe('$0.00');
     });
+    it('should return currency with options and currency', () => {
+        const id = toMoney(million, { currency: 'USD', showCurrency: true });
+        expect(id).toBe('$1,000,000.00 USD');
+    });
+    it('should return currency with options and default currency', () => {
+        const id = toMoney(million, { showCurrency: true });
+        expect(id).toBe('$1,000,000.00 USD');
+    });
+    it('should return euro', () => {
+        const id = toMoney(million, { currency: 'EUR' });
+        expect(id).toBe('€1,000,000.00');
+    });
+    it('should return zero euro with null', () => {
+        const id = toMoney(null, { currency: 'EUR' });
+        expect(id).toBe('€0.00');
+    });
+});
+
+describe('formatter', () => {
+    const number = 90;
+    const stringValue = 'Money';
+
     it('should return 90%', () => {
         const id = toPercentage(number, { decimals: 0 });
         expect(id).toBe('90%');
