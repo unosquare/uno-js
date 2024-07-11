@@ -3,6 +3,7 @@
   "version": "3.110.0",
   "description": "JS/TS common used functions, zero dependencies",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "test": "jest --runInBand",
     "cest": "jest --collectCoverage --runInBand",
@@ -70,12 +71,13 @@
   "homepage": "https://github.com/unosquare/uno-js#readme",
   "devDependencies": {
     "@eslint/js": "^9.6.0",
+    "@types/eslint__js": "^8.42.3",
     "@types/jest": "^29.5.12",
     "eslint": "^9.6.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "ts-jest": "^29.1.5",
+    "ts-jest": "^29.2.2",
     "typescript": "^5.5.3",
-    "typescript-eslint": "^7.15.0"
+    "typescript-eslint": "^7.16.0"
   }
 }

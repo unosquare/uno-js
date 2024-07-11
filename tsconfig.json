@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
-        "target": "ES2022",
+        "target": "ES2023",
         "skipLibCheck": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "strict": true,
         "forceConsistentCasingInFileNames": true,
-        "module": "commonjs",
+        "module": "ES2022",
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "outDir": "./dist",
