@@ -18,3 +18,5 @@ To install uno-js through npm, you only need to run the following command:
 Check the documentation of this library at [https://unosquare.github.io/uno/uno-js](https://unosquare.github.io/uno/uno-js).
 
 ## Functions and classes
+
+* 
