@@ -1,7 +1,8 @@
 let abortController: AbortController;
 
 export const setAbortController = (ac: AbortController) => {
-    abortController = ac;
+	abortController = ac;
 };
 
-export const getAbortController = () => abortController || new AbortController();
+export const getAbortController = () =>
+	abortController || new AbortController();
