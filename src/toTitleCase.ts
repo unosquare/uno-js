@@ -1,9 +1,9 @@
 export default (title: string): string => {
-	const words = title.toLowerCase().split(" ");
+    const words = title.toLowerCase().split(' ');
 
-	for (let i = 0; i < words.length; i++) {
-		words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
-	}
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+    }
 
-	return words.join(" ");
+    return words.join(' ');
 };
