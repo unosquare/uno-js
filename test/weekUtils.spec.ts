@@ -1,4 +1,6 @@
 import {
+	getIsoYear,
+	getIsoYearByDate,
 	getWeekIsoNumber,
 	getWeekIsoOfYear,
 	getWeekNumber,
@@ -29,6 +31,22 @@ describe("weekUtils", () => {
 			const currentDate = new Date();
 			const currentWeekNumber = getWeekIsoNumber(currentDate);
 			expect(getWeekIsoOfYear()).toBe(currentWeekNumber);
+		});
+	});
+
+	describe("getIsoYear", () => {
+		it("should return the Iso year number of the current date", () => {
+			const currentDate = new Date();
+			const isoYearNumber = getIsoYearByDate(currentDate);
+			expect(getIsoYear()).toBe(isoYearNumber);
+		});
+	});
+	
+	describe("getIsoYearByDate", () => {
+		it("should return the Iso year number of an specific date", () => {
+			const specificDate = new Date(2024,12,31);
+			const isoCorrectYear = 2025;
+			expect(getIsoYearByDate(specificDate)).toBe(isoCorrectYear);
 		});
 	});
 });
