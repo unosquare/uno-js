@@ -1,4 +1,5 @@
 import {
+	getIsoYear,
 	getWeekIsoNumber,
 	getWeekIsoOfYear,
 	getWeekNumber,
@@ -273,7 +274,7 @@ export class YearWeek extends DateRange implements IYearWeekDateRange {
 
 export class YearWeekIso extends DateRange implements IYearWeekDateRange {
 	constructor(year?: number, week?: number) {
-		const actualYear = year ?? new Date().getFullYear();
+		const actualYear = year ?? getIsoYear();
 		const actualWeek = week ?? getWeekIsoOfYear();
 
 		const startDate = new Date(actualYear, 0, 1 + (actualWeek - 1) * 7);
