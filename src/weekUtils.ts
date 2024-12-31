@@ -23,3 +23,12 @@ export const getWeekIsoNumber = (date: Date): number => {
 };
 
 export const getWeekIsoOfYear = (): number => getWeekIsoNumber(new Date());
+
+export const getIsoYearByDate = (date: Date): number => {
+    const dayOfWeek = date.getDay() === 0 ? 7 : date.getDay();
+    const thursday = new Date(date);
+    thursday.setDate(date.getDate() + (4 - dayOfWeek));
+    return thursday.getFullYear();
+  };
+
+export const getIsoYear = () : number => getIsoYearByDate(new Date());
