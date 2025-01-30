@@ -301,4 +301,16 @@ describe('YearWeekIso', () => {
         expect(yearWeekIso.Year).toBe(2019);
         expect(yearWeekIso.Week).toBe(1);
     });
+
+    it('Should calculate correctly the date range for week 2 of 2025', () => {
+        const week = new YearWeekIso(2025, 2);
+        expect(week.StartDate.toISOString().split('T')[0]).toBe('2025-01-06');
+        expect(week.EndDate.toISOString().split('T')[0]).toBe('2025-01-12');
+    });
+
+    it('Should calculate correctly the date range for week 2 of 2024', () => {
+        const week = new YearWeekIso(2024, 2);
+        expect(week.StartDate.toISOString().split('T')[0]).toBe('2024-01-08');
+        expect(week.EndDate.toISOString().split('T')[0]).toBe('2024-01-14');
+    });
 });
