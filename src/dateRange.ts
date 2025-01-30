@@ -255,8 +255,7 @@ export class YearWeekIso extends DateRange implements IYearWeekDateRange {
         const actualWeek = week ?? getWeekIsoOfYear();
 
         const startDate = getDateOfISOWeek(actualWeek, actualYear);
-        const endDate = new Date(startDate);
-        endDate.setDate(startDate.getDate() + 6);
+        const endDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 6);
 
         super(startDate, endDate);
 
