@@ -21,3 +21,15 @@ export const getIsoYearByDate = (date: Date): number => {
 };
 
 export const getIsoYear = (): number => getIsoYearByDate(new Date());
+
+export const getDateOfISOWeek = (week: number, year: number): Date => {
+    const simple = new Date(year, 0, 1 + (week - 1) * 7);
+    const dayOfWeek = simple.getDay();
+    const ISOWeekStart = simple;
+    if (dayOfWeek <= 4) {
+        ISOWeekStart.setDate(simple.getDate() - simple.getDay() + 1);
+    } else {
+        ISOWeekStart.setDate(simple.getDate() + 8 - simple.getDay());
+    }
+    return ISOWeekStart;
+};
