@@ -53,15 +53,15 @@ describe('weekUtils', () => {
 
     describe('getDateOfISOWeek', () => {
         it('should return the Monday of week 2 of 2025', () => {
-            const result = getDateOfISOWeek(2, 2025);
-            expect(result.toISOString().split('T')[0]).toBe('2025-01-06');
+            const dateOfSpecificIsoWeek = getDateOfISOWeek(2, 2025);
+            expect(dateOfSpecificIsoWeek.toISOString().split('T')[0]).toBe('2025-01-06');
         });
     });
 
     describe('getDateOfISOWeek', () => {
         it('should return the Monday of week 2 of 2024', () => {
-            const result = getDateOfISOWeek(2, 2024);
-            expect(result.toISOString().split('T')[0]).toBe('2024-01-08');
+            const dateOfSpecificIsoWeek = getDateOfISOWeek(2, 2024);
+            expect(dateOfSpecificIsoWeek.toISOString().split('T')[0]).toBe('2024-01-08');
         });
     });
 });
