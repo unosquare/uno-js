@@ -19,4 +19,19 @@ Check the documentation of this library at [https://unosquare.github.io/uno/uno-
 
 ## Functions and classes
 
-* 
+### Migration Notes
+
+The following functions have been removed from the library as they are now covered by newer versions of Node.js, ECMAScript, or browsers. Here are the recommended alternatives:
+
+- `debounce`: Use the `debounce` function from the `lodash` library.
+- `abortController`: Use the native `AbortController` available in modern browsers and Node.js.
+- `nameof`: Use TypeScript's `keyof` operator.
+- `withEnter`: Use native event listeners for `onEnterKey` and `asyncOnEnterKey` functions.
+- `trimText`: Use the native `String.prototype.trim` method.
+
+### Removed Functions from dateUtils
+
+The following functions have been removed from `dateUtils` as they are now redundant. Here are the recommended alternatives:
+
+- `getDateUtc`: Use the native `Date` object and its methods.
+- `compareDates`: Use the native comparison operators for `Date` objects.

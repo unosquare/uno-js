@@ -1,8 +1,3 @@
-export const getDateUtc = (date: string) => {
-    const dateValue = new Date(date);
-    return new Date(dateValue.getTime() + dateValue.getTimezoneOffset() * 60000).toString();
-};
-
 const dateOptions: Intl.DateTimeFormatOptions = {
     month: 'numeric',
     day: 'numeric',
@@ -29,8 +24,6 @@ export const compareRealDates = (a: Date, b: Date) => {
     if (a < b) return -1;
     return a > b ? 1 : 0;
 };
-
-export const compareDates = (a: string, b: string) => compareRealDates(new Date(a), new Date(b));
 
 export const toLocalTime = (date: string | Date): Date => {
     if (typeof date === 'string' && date.toUpperCase().endsWith('Z')) return new Date(date);
