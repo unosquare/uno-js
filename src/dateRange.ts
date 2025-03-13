@@ -1,4 +1,4 @@
-import { getIsoYear, getWeekIsoNumber, getWeekIsoOfYear, getWeekNumber, getWeekOfYear } from './weekUtils';
+import { getDateOfISOWeek, getIsoYear, getWeekIsoNumber, getWeekIsoOfYear, getWeekNumber, getWeekOfYear } from './weekUtils';
 
 const dateOptions: Intl.DateTimeFormatOptions = {
     month: 'numeric',
@@ -254,8 +254,8 @@ export class YearWeekIso extends DateRange implements IYearWeekDateRange {
         const actualYear = year ?? getIsoYear();
         const actualWeek = week ?? getWeekIsoOfYear();
 
-        const startDate = new Date(actualYear, 0, 1 + (actualWeek - 1) * 7);
-        const endDate = new Date(actualYear, 0, 7 + (actualWeek - 1) * 7);
+        const startDate = getDateOfISOWeek(actualWeek, actualYear);
+        const endDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 6);
 
         super(startDate, endDate);
 

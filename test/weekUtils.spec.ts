@@ -1,4 +1,5 @@
 import {
+    getDateOfISOWeek,
     getIsoYear,
     getIsoYearByDate,
     getWeekIsoNumber,
@@ -47,6 +48,20 @@ describe('weekUtils', () => {
             const specificDate = new Date(2024, 12, 31);
             const isoCorrectYear = 2025;
             expect(getIsoYearByDate(specificDate)).toBe(isoCorrectYear);
+        });
+    });
+
+    describe('getDateOfISOWeek', () => {
+        it('should return the Monday of week 2 of 2025', () => {
+            const dateOfSpecificIsoWeek = getDateOfISOWeek(2, 2025);
+            expect(dateOfSpecificIsoWeek.toISOString().split('T')[0]).toBe('2025-01-06');
+        });
+    });
+
+    describe('getDateOfISOWeek', () => {
+        it('should return the Monday of week 2 of 2024', () => {
+            const dateOfSpecificIsoWeek = getDateOfISOWeek(2, 2024);
+            expect(dateOfSpecificIsoWeek.toISOString().split('T')[0]).toBe('2024-01-08');
         });
     });
 });
