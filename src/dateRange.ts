@@ -1,4 +1,11 @@
-import { getDateOfISOWeek, getIsoYear, getWeekIsoNumber, getWeekIsoOfYear, getWeekNumber, getWeekOfYear } from './weekUtils';
+import {
+    getDateOfISOWeek,
+    getIsoYear,
+    getWeekIsoNumber,
+    getWeekIsoOfYear,
+    getWeekNumber,
+    getWeekOfYear,
+} from './weekUtils';
 
 const dateOptions: Intl.DateTimeFormatOptions = {
     month: 'numeric',

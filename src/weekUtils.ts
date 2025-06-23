@@ -25,5 +25,9 @@ export const getIsoYear = (): number => getIsoYearByDate(new Date());
 export const getDateOfISOWeek = (week: number, year: number): Date => {
     const isoReferenceDate = new Date(year, 0, 4);
     const firstMondayOfISOWeek = new Date(year, 0, 4 - ((isoReferenceDate.getDay() + 6) % 7));
-    return new Date(firstMondayOfISOWeek.getFullYear(), firstMondayOfISOWeek.getMonth(), firstMondayOfISOWeek.getDate() + (week - 1) * 7);
+    return new Date(
+        firstMondayOfISOWeek.getFullYear(),
+        firstMondayOfISOWeek.getMonth(),
+        firstMondayOfISOWeek.getDate() + (week - 1) * 7,
+    );
 };
